@@ -13,7 +13,6 @@ from contextlib import contextmanager
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-import yfinance as yf
 
 app = FastAPI(title="Aeon Nimbus Intelligence API", version="1.0.0")
 app.add_middleware(
@@ -26,6 +25,12 @@ app.add_middleware(
 DB_PATH = os.path.expanduser("~/.aeon/intelligence.db")
 
 # ─── Database Setup ──────────────────────────────────────────
+# NOTE: the `events` and `news_feed` schemas below match what's actually on
+# disk (created long ago by calendar_sync.py's INSERT shape / an older
+# service variant) — not the richer schema this file used to declare
+# (event_date/category/affected_assets/source/...), which never matched the
+# real table and made every query here raise "no such column" at request
+# time. `economic_calendar` and `alert_rules` were already consistent.
 
 @contextmanager
 def get_db():
@@ -43,30 +48,24 @@ def init_db():
             CREATE TABLE IF NOT EXISTS events (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 title TEXT NOT NULL,
-                category TEXT NOT NULL,
-                event_date TEXT NOT NULL,
-                event_time TEXT,
-                source TEXT NOT NULL,
-                source_channel TEXT,
-                raw_text TEXT,
-                affected_assets TEXT,
-                sentiment_score INTEGER,
-                confidence_level REAL,
+                description TEXT,
+                date TEXT NOT NULL,
+                event_type TEXT,
                 phase TEXT,
-                analysis_json TEXT,
-                created_at TEXT NOT NULL,
-                updated_at TEXT
+                affected_tickers TEXT,
+                recommendation TEXT,
+                impact_score REAL
             );
 
             CREATE TABLE IF NOT EXISTS news_feed (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                source TEXT NOT NULL,
-                channel TEXT,
-                message TEXT NOT NULL,
+                title TEXT NOT NULL,
+                content TEXT,
+                source TEXT,
+                url TEXT,
                 timestamp TEXT NOT NULL,
-                event_id INTEGER,
-                processed BOOLEAN DEFAULT 0,
-                FOREIGN KEY (event_id) REFERENCES events(id)
+                affected_tickers TEXT,
+                sentiment TEXT
             );
 
             CREATE TABLE IF NOT EXISTS economic_calendar (
@@ -95,23 +94,37 @@ def init_db():
                 created_at TEXT
             );
 
-            CREATE INDEX IF NOT EXISTS idx_events_date ON events(event_date);
-            CREATE INDEX IF NOT EXISTS idx_events_category ON events(category);
+            CREATE INDEX IF NOT EXISTS idx_events_date ON events(date);
+            CREATE INDEX IF NOT EXISTS idx_events_type ON events(event_type);
             CREATE INDEX IF NOT EXISTS idx_news_timestamp ON news_feed(timestamp);
         """)
 
 init_db()
 
+def _tickers(raw: Optional[str]) -> List[str]:
+    """affected_tickers is stored as a plain comma-joined string, not JSON."""
+    return [t.strip() for t in raw.split(",") if t.strip()] if raw else []
+
+def _phase_for(days_until: int):
+    if days_until <= 0:
+        return "live", "#ef4444"
+    if days_until <= 2:
+        return "danger", "#ef4444"
+    if days_until <= 9:
+        return "euforia", "#f59e0b"
+    if days_until <= 20:
+        return "accumulation", "#10b981"
+    return "pre-rumor", "#3b82f6"
+
 # ─── Request/Response Models ─────────────────────────────────
 
 class CreateEventRequest(BaseModel):
     title: str
-    category: str
-    event_date: str
-    event_time: Optional[str] = None
-    source: str
-    raw_text: Optional[str] = None
-    affected_assets: Optional[List[str]] = None
+    event_type: str
+    date: str
+    description: Optional[str] = None
+    affected_tickers: Optional[List[str]] = None
+    impact_score: Optional[float] = None
 
 class AlertRuleRequest(BaseModel):
     event_category: Optional[str] = None
@@ -130,49 +143,27 @@ def health():
 def get_live_events(timeframe: str = "30days"):
     """Get all events within timeframe with D-X countdown"""
 
-    if timeframe == "30days":
-        end_date = datetime.now() + timedelta(days=30)
-    elif timeframe == "7days":
-        end_date = datetime.now() + timedelta(days=7)
-    elif timeframe == "90days":
-        end_date = datetime.now() + timedelta(days=90)
-    else:
-        end_date = datetime.now() + timedelta(days=30)
+    days = {"7days": 7, "30days": 30, "90days": 90}.get(timeframe, 30)
+    end_date = datetime.now() + timedelta(days=days)
 
     with get_db() as conn:
         rows = conn.execute("""
             SELECT * FROM events
-            WHERE date(event_date) BETWEEN date('now') AND date(?)
-            ORDER BY event_date ASC
+            WHERE date(date) BETWEEN date('now') AND date(?)
+            ORDER BY date ASC
         """, (end_date.date().isoformat(),)).fetchall()
 
         events = []
         for row in rows:
             event = dict(row)
-            event_date = datetime.fromisoformat(event['event_date'])
+            event_date = datetime.fromisoformat(event['date'])
             days_until = (event_date.date() - datetime.now().date()).days
-
-            # Calculate phase
-            if days_until <= 0:
-                phase = "live"
-                phase_color = "#ef4444"
-            elif days_until <= 2:
-                phase = "danger"
-                phase_color = "#ef4444"
-            elif days_until <= 9:
-                phase = "euforia"
-                phase_color = "#f59e0b"
-            elif days_until <= 20:
-                phase = "accumulation"
-                phase_color = "#10b981"
-            else:
-                phase = "pre-rumor"
-                phase_color = "#3b82f6"
+            phase, phase_color = _phase_for(days_until)
 
             event['days_until'] = days_until
             event['phase'] = phase
             event['phase_color'] = phase_color
-            event['affected_assets'] = json.loads(event['affected_assets']) if event['affected_assets'] else []
+            event['affected_tickers'] = _tickers(event['affected_tickers'])
 
             events.append(event)
 
@@ -198,21 +189,27 @@ def get_event_detail(event_id: int):
             raise HTTPException(404, "Event not found")
 
         event = dict(row)
-        event_date = datetime.fromisoformat(event['event_date'])
+        event_date = datetime.fromisoformat(event['date'])
         days_until = (event_date.date() - datetime.now().date()).days
 
         event['days_until'] = days_until
-        event['affected_assets'] = json.loads(event['affected_assets']) if event['affected_assets'] else []
+        tickers = _tickers(event['affected_tickers'])
+        event['affected_tickers'] = tickers
 
-        # Get related news
-        news_rows = conn.execute("""
-            SELECT * FROM news_feed
-            WHERE event_id = ?
-            ORDER BY timestamp DESC
-            LIMIT 10
-        """, (event_id,)).fetchall()
+        # Related news: no FK between events and news_feed in the real schema,
+        # so match on ticker overlap instead.
+        related_news = []
+        if tickers:
+            like_clauses = " OR ".join(["affected_tickers LIKE ?"] * len(tickers))
+            news_rows = conn.execute(f"""
+                SELECT * FROM news_feed
+                WHERE {like_clauses}
+                ORDER BY timestamp DESC
+                LIMIT 10
+            """, tuple(f"%{t}%" for t in tickers)).fetchall()
+            related_news = [dict(n) for n in news_rows]
 
-        event['related_news'] = [dict(n) for n in news_rows]
+        event['related_news'] = related_news
 
         # Calculate phase progress
         if days_until <= 0:
@@ -237,17 +234,15 @@ def create_event(req: CreateEventRequest):
     with get_db() as conn:
         cursor = conn.execute("""
             INSERT INTO events
-            (title, category, event_date, event_time, source, raw_text, affected_assets, created_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            (title, description, date, event_type, affected_tickers, impact_score)
+            VALUES (?, ?, ?, ?, ?, ?)
         """, (
             req.title,
-            req.category,
-            req.event_date,
-            req.event_time,
-            req.source,
-            req.raw_text,
-            json.dumps(req.affected_assets) if req.affected_assets else None,
-            datetime.now().isoformat()
+            req.description,
+            req.date,
+            req.event_type,
+            ",".join(req.affected_tickers) if req.affected_tickers else None,
+            req.impact_score,
         ))
         conn.commit()
         event_id = cursor.lastrowid
@@ -268,14 +263,14 @@ def get_news_feed(limit: int = 50):
         return {"feed": [dict(r) for r in rows], "count": len(rows)}
 
 @app.post("/api/news/feed")
-def add_news_item(source: str, channel: str, message: str):
-    """Add news item to feed (called by Telegram monitor)"""
+def add_news_item(source: str, message: str, title: Optional[str] = None, url: Optional[str] = None):
+    """Add news item to feed (called by Telegram monitor or a fetcher)"""
 
     with get_db() as conn:
         cursor = conn.execute("""
-            INSERT INTO news_feed (source, channel, message, timestamp, processed)
-            VALUES (?, ?, ?, ?, 0)
-        """, (source, channel, message, datetime.now().isoformat()))
+            INSERT INTO news_feed (title, content, source, url, timestamp)
+            VALUES (?, ?, ?, ?, ?)
+        """, (title or message[:80], message, source, url, datetime.now().isoformat()))
         conn.commit()
         news_id = cursor.lastrowid
 
@@ -285,29 +280,25 @@ def add_news_item(source: str, channel: str, message: str):
 def get_calendar(view: str = "month"):
     """Get calendar view of events"""
 
-    if view == "week":
-        end_date = datetime.now() + timedelta(days=7)
-    elif view == "month":
-        end_date = datetime.now() + timedelta(days=30)
-    else:
-        end_date = datetime.now() + timedelta(days=90)
+    days = {"week": 7, "month": 30}.get(view, 90)
+    end_date = datetime.now() + timedelta(days=days)
 
     with get_db() as conn:
         rows = conn.execute("""
             SELECT * FROM events
-            WHERE date(event_date) BETWEEN date('now') AND date(?)
-            ORDER BY event_date ASC
+            WHERE date(date) BETWEEN date('now') AND date(?)
+            ORDER BY date ASC
         """, (end_date.date().isoformat(),)).fetchall()
 
         # Group by date
         calendar = {}
         for row in rows:
             event = dict(row)
-            date_key = event['event_date']
+            date_key = event['date']
             if date_key not in calendar:
                 calendar[date_key] = []
 
-            event['affected_assets'] = json.loads(event['affected_assets']) if event['affected_assets'] else []
+            event['affected_tickers'] = _tickers(event['affected_tickers'])
             calendar[date_key].append(event)
 
     return {"view": view, "calendar": calendar}
@@ -353,12 +344,12 @@ def get_triggered_alerts():
             # Find matching events
             events = conn.execute("""
                 SELECT * FROM events
-                WHERE date(event_date) BETWEEN date('now', ? || ' days') AND date('now', ? || ' days')
+                WHERE date(date) BETWEEN date('now', ? || ' days') AND date('now', ? || ' days')
             """, (f"+{min_days}", f"+{max_days}")).fetchall()
 
             for event in events:
                 event_dict = dict(event)
-                event_date = datetime.fromisoformat(event_dict['event_date'])
+                event_date = datetime.fromisoformat(event_dict['date'])
                 days_until = (event_date.date() - datetime.now().date()).days
 
                 triggered.append({
@@ -378,18 +369,14 @@ def get_stats():
         total_events = conn.execute("SELECT COUNT(*) as cnt FROM events").fetchone()['cnt']
         upcoming_7d = conn.execute("""
             SELECT COUNT(*) as cnt FROM events
-            WHERE date(event_date) BETWEEN date('now') AND date('now', '+7 days')
+            WHERE date(date) BETWEEN date('now') AND date('now', '+7 days')
         """).fetchone()['cnt']
         total_news = conn.execute("SELECT COUNT(*) as cnt FROM news_feed").fetchone()['cnt']
-        unprocessed_news = conn.execute("""
-            SELECT COUNT(*) as cnt FROM news_feed WHERE processed = 0
-        """).fetchone()['cnt']
 
         return {
             "total_events": total_events,
             "upcoming_7days": upcoming_7d,
             "total_news_items": total_news,
-            "unprocessed_news": unprocessed_news
         }
 
 if __name__ == "__main__":

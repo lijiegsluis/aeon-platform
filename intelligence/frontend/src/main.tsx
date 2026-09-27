@@ -1,10 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Intelligence from './Intelligence'
-import './Intelligence.css'
+import { ProfessionalProduct } from './ProfessionalProduct'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <Intelligence />
+    <ProfessionalProduct />
   </React.StrictMode>,
 )

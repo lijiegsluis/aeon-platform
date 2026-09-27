@@ -71,18 +71,29 @@ export const ProfessionalProduct: React.FC = () => {
   const fetchData = async () => {
     try {
       const [eventsRes, newsRes] = await Promise.all([
-        fetch('http://localhost:8001/api/events/live'),
-        fetch('http://localhost:8001/api/news/live')
+        fetch('http://localhost:8001/api/events/live?timeframe=90days'),
+        fetch('http://localhost:8001/api/news/feed?limit=100')
       ]);
 
-      const eventsData = await eventsRes.json();
-      const newsData = await newsRes.json();
+      const eventsJson = await eventsRes.json();
+      const newsJson = await newsRes.json();
 
-      setEvents(eventsData || []);
-      setNews(Array.isArray(newsData) ? newsData : newsData.news || []);
+      // Backend returns { events: [...] } with affected_tickers as an array
+      // and lowercase phase names ("danger"/"euforia"/.../"live") and
+      // days_until (not days_away) — normalize to what this UI expects.
+      const mappedEvents: Event[] = (eventsJson.events || []).map((e: any) => ({
+        ...e,
+        affected_tickers: Array.isArray(e.affected_tickers) ? e.affected_tickers.join(',') : e.affected_tickers,
+        days_away: e.days_until,
+        phase: e.phase === 'live' ? 'DANGER' : String(e.phase).toUpperCase(),
+      }));
+      const newsList: NewsItem[] = newsJson.feed || [];
+
+      setEvents(mappedEvents);
+      setNews(newsList);
       setLoadingStates({ events: false, news: false });
 
-      calculateFearGreed(eventsData, Array.isArray(newsData) ? newsData : newsData.news || []);
+      calculateFearGreed(mappedEvents, newsList);
     } catch (error) {
       console.error('Error fetching data:', error);
       setLoadingStates({ events: false, news: false });
