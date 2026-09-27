@@ -1,0 +1,18 @@
+node_modules/
+dist/
+.wrangler/
+.env
+*.log
+.DS_Store
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+*.egg-info/
+
+# Third-party vendored clones/SDKs/binaries (~11GB: Qt, OpenBB, FinRobot, venvs,
+# .dmg installers) — not our source, never meant to be tracked in this repo.
+vendor/
+# Large marketing/demo media, not source.
+demo-video/
