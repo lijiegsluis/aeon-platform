@@ -45,6 +45,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.on_event("startup")
+def _seed_market_events():
+    """Populate market_events (backs RumorNewsTiming.tsx) so it's never
+    unconditionally empty on a fresh run. Runs in a background thread since
+    each seeded event's auto-analysis hits yfinance over the network."""
+    from seed_data import seed_database
+    threading.Thread(target=seed_database, daemon=True).start()
+
 # Register API extensions
 register_api_extensions(app, lambda ticker: quote(ticker))
 
