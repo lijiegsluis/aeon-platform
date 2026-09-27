@@ -91,22 +91,24 @@ export default function App() {
                                     {group.ids.map((id) => (
                                         <button key={id} onClick={() => setTab(id)}
                                             style={{
-                                                padding: '10px 14px',
+                                                padding: '9px 14px',
+                                                margin: '6px 1px',
                                                 fontFamily: '"JetBrains Mono", monospace',
                                                 fontSize: '11px',
                                                 fontWeight: 500,
                                                 letterSpacing: '0.05em',
                                                 textTransform: 'uppercase',
                                                 whiteSpace: 'nowrap',
-                                                border: 'none',
-                                                borderBottom: tab === id ? '2px solid var(--gold)' : '2px solid transparent',
-                                                background: 'none',
-                                                color: tab === id ? 'var(--gold)' : 'var(--ink3)',
+                                                border: '1px solid transparent',
+                                                borderRadius: '8px',
+                                                background: tab === id ? 'rgba(212,175,55,0.10)' : 'transparent',
+                                                borderColor: tab === id ? 'var(--goldrl)' : 'transparent',
+                                                color: tab === id ? 'var(--gold2)' : 'var(--ink3)',
                                                 cursor: 'pointer',
-                                                transition: 'color 0.15s, border-color 0.15s',
+                                                transition: 'color 0.15s, background 0.15s, border-color 0.15s',
                                             }}
-                                            onMouseEnter={e => { if (tab !== id) (e.target as HTMLElement).style.color = 'var(--ink2)'; }}
-                                            onMouseLeave={e => { if (tab !== id) (e.target as HTMLElement).style.color = 'var(--ink3)'; }}
+                                            onMouseEnter={e => { if (tab !== id) { (e.target as HTMLElement).style.color = 'var(--ink2)'; (e.target as HTMLElement).style.background = 'rgba(255,255,255,0.04)'; } }}
+                                            onMouseLeave={e => { if (tab !== id) { (e.target as HTMLElement).style.color = 'var(--ink3)'; (e.target as HTMLElement).style.background = 'transparent'; } }}
                                         >
                                             {TAB_LABEL[id]}
                                         </button>

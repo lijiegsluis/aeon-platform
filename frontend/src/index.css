@@ -49,7 +49,9 @@
     line-height: 1.6;
   }
 
-  /* Ambient warmth — very subtle */
+  /* Ambient warmth — two soft corner blobs, static (no drift animation —
+     this app's numbers refresh constantly, and Intelligence's moving blobs
+     would fight for attention against live data rather than sit behind it) */
   body::before {
     content: '';
     position: fixed;
@@ -57,7 +59,19 @@
     right: -300px;
     width: 800px;
     height: 800px;
-    background: radial-gradient(circle, rgba(212,175,55,0.03) 0%, transparent 60%);
+    background: radial-gradient(circle, rgba(212,175,55,0.05) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    bottom: -260px;
+    left: -200px;
+    width: 640px;
+    height: 640px;
+    background: radial-gradient(circle, rgba(0,217,255,0.035) 0%, transparent 60%);
     pointer-events: none;
     z-index: 0;
   }
@@ -70,7 +84,7 @@
   /* Typographic reset */
   h1, h2, h3, h4, h5 {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-weight: 400;
+    font-weight: 700;
     color: var(--ink);
     letter-spacing: -0.02em;
   }
@@ -83,45 +97,47 @@
 /* ─── Components ──────────────────────────────────────────────────── */
 @layer components {
 
-  /* Card — flat, editorial, no chrome */
+  /* Card — editorial base, now with Intelligence's rounded-panel gradient */
   .card {
-    background: var(--bg1);
+    background: linear-gradient(180deg, var(--bg1), var(--bg2));
     border: 1px solid var(--rule2);
-    border-radius: 4px;
-    transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+    border-radius: 10px;
+    transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease), transform 0.2s var(--ease);
   }
 
   .card:hover {
     border-color: var(--rule);
-    box-shadow: 0 4px 32px rgba(0,0,0,0.6);
+    box-shadow: 0 4px 32px rgba(0,0,0,0.6), 0 0 20px rgba(212,175,55,0.05);
+    transform: translateY(-2px);
   }
 
   /* Glass variant */
   .card-glass {
     background: rgba(13,12,16,0.72);
     border: 1px solid var(--rule2);
-    border-radius: 4px;
+    border-radius: 10px;
     backdrop-filter: blur(16px);
   }
 
   /* Gold-bordered premium card */
   .card-premium {
-    background: var(--bg1);
+    background: linear-gradient(180deg, var(--bg1), var(--bg2));
     border: 1px solid var(--rule);
-    border-radius: 4px;
-    transition: border-color 0.2s var(--ease);
+    border-radius: 10px;
+    transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease), transform 0.2s var(--ease);
   }
 
   .card-premium:hover {
     border-color: rgba(212,175,55,0.28);
-    box-shadow: 0 4px 32px rgba(0,0,0,0.6), 0 0 20px rgba(212,175,55,0.06);
+    box-shadow: 0 4px 32px rgba(0,0,0,0.6), 0 0 20px rgba(212,175,55,0.08);
+    transform: translateY(-2px);
   }
 
   /* Accent card — used for the main ticker strip */
   .card-cyan {
-    background: var(--bg1);
+    background: linear-gradient(180deg, var(--bg1), var(--bg2));
     border: 1px solid var(--rule);
-    border-radius: 4px;
+    border-radius: 10px;
   }
 
   /* ── Buttons ───────────────────────────────────────────────────── */
@@ -138,7 +154,7 @@
     letter-spacing: 0.06em;
     text-transform: uppercase;
     border: none;
-    border-radius: 3px;
+    border-radius: 8px;
     cursor: pointer;
     transition: opacity 0.15s var(--ease), transform 0.15s var(--ease);
   }
@@ -162,7 +178,7 @@
     font-weight: 500;
     letter-spacing: 0.04em;
     border: 1px solid var(--rule2);
-    border-radius: 3px;
+    border-radius: 8px;
     cursor: pointer;
     transition: border-color 0.15s var(--ease), color 0.15s var(--ease);
   }
@@ -184,7 +200,7 @@
     font-weight: 600;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    border-radius: 3px;
+    border-radius: 8px;
     cursor: pointer;
     transition: opacity 0.15s;
   }
@@ -201,7 +217,7 @@
     font-family: 'JetBrains Mono', monospace;
     font-size: 12px;
     border: 1px solid var(--rule2);
-    border-radius: 3px;
+    border-radius: 8px;
     cursor: pointer;
     transition: border-color 0.15s;
   }
@@ -213,7 +229,7 @@
     width: 100%;
     background: var(--bg);
     border: 1px solid var(--rule2);
-    border-radius: 3px;
+    border-radius: 8px;
     padding: 8px 12px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 13px;
@@ -233,13 +249,13 @@
   .badge {
     display: inline-flex;
     align-items: center;
-    padding: 1px 7px;
+    padding: 2px 9px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     font-weight: 600;
     letter-spacing: 0.07em;
     text-transform: uppercase;
-    border-radius: 2px;
+    border-radius: 999px;
   }
 
   .badge-accent {
@@ -286,16 +302,17 @@
 
   /* ── Score bar ─────────────────────────────────────────────────── */
   .score-bar {
-    height: 2px;
-    border-radius: 1px;
+    height: 4px;
+    border-radius: 2px;
     background: var(--rule2);
     overflow: hidden;
   }
 
   .score-bar-fill {
     height: 100%;
-    border-radius: 1px;
+    border-radius: 2px;
     background: linear-gradient(90deg, var(--gold), var(--gold2));
+    box-shadow: 0 0 8px rgba(212,175,55,0.45);
     transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
