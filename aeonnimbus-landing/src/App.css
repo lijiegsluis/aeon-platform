@@ -313,6 +313,7 @@
 }
 .status.live { background: rgba(0,255,136,0.12); color: var(--success); }
 .status.wip { background: rgba(255,165,0,0.12); color: var(--warning); }
+.status.desktop { background: rgba(0,255,136,0.12); color: var(--success); }
 .product-card .cta {
   margin-top: 4px;
   font-size: 13px;

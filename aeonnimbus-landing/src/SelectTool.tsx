@@ -42,13 +42,15 @@ export default function SelectTool() {
                 <div className="layer">{p.layer}</div>
                 <h3>{p.name}</h3>
                 <span className={`status ${p.status}`}>
-                  {p.status === 'live' ? 'LIVE' : 'IN REDESIGN'}
+                  {p.status === 'live' ? 'LIVE' : p.status === 'desktop' ? 'LIVE · DESKTOP APP' : 'IN REDESIGN'}
                 </span>
                 <p><b style={{ color: 'var(--text)' }}>{p.tag}.</b> {p.desc}</p>
                 {p.href ? (
                   <a className="cta" href={p.href} target="_blank" rel="noreferrer">
                     Launch {p.name} →
                   </a>
+                ) : p.status === 'desktop' ? (
+                  <span className="cta" style={{ color: 'var(--text-dim)' }}>Runs locally as a native app</span>
                 ) : (
                   <span className="cta" style={{ color: 'var(--text-dim)' }}>Coming soon</span>
                 )}

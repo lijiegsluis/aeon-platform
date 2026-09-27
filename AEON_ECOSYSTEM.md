@@ -13,9 +13,9 @@ that changes.
 | Layer | Product | What it does | Status | Where | Dev ports |
 |---|---|---|---|---|---|
 | Foundation | **Aeon Analysis** | Deep single-ticker research: Fusion valuation ensemble, CAPM DCF, Council of Agents, grounded persona commentary, Houston research-ops (brief/gates/notes). "Know WHAT to buy." | **Live** | `analytics/` + `frontend/` | backend :8000, frontend :5173 |
-| Event | **Aeon Intelligence** | Event/catalyst countdown dashboard — "Buy the rumor, sell the news" timing matrix. "Know WHEN to trade." | **Live, but demo data**: events are synthetic and regenerate per restart, no ticker filter until this redesign, no auth. | `intelligence/` | backend :8001, frontend :5175 |
+| Event | **Aeon Intelligence** | Event/catalyst countdown dashboard — "Buy the rumor, sell the news" timing matrix. "Know WHEN to trade." | **Live, real data.** `calendar_sync.py` seeds real, sourced 2026 dates for FOMC/NFP/CPI/PPI/ECB/BOJ; events with no publicly fixed schedule this far out (individual earnings, OPEC+, G7, debt ceiling) keep an honestly-labeled "— estimated date" placeholder rather than a false-precision guess. A background startup sync also pulls real RSS financial news, CNN Fear & Greed, VIX, and SEC Form 4 insider trades into the news feed, each tagged with its real source (never `'demo'`). No ticker filter until this redesign, no auth. | `intelligence/` | backend :8001, frontend :5175 |
 | Research | **Aeon Platform** | Filings-to-published-research pipeline: a sourced Data Studio (search a company → auto-research it from filings/public sources → review → recompute → export), Bull/Base/Bear DCF, formula-driven Excel model generator, coverage-universe scoring. "Turn the thesis into a full research report." | **Live.** Confirmed running (`uvicorn aeon_nimbus.api:app`, port 5174) with a substantial, actively-maintained FastAPI codebase and its own test suite. The marketing site's `status: 'live'` in `aeonnimbus-landing/src/products.ts` is accurate — an earlier version of this doc wrongly called it vaporware because it only searched this repo. | **Not in this repo.** Separate codebase at `~/AeonNimbus/AeonNimbus_Platform/Platform_Source_Code`, its own git history (if any), own `.venv`/`.env`/Dockerfile. | backend + frontend :5174 (single FastAPI process, dashboard and Data Studio both served from `/`) |
-| Execution | **Aeon Terminal** | Real-time execution/monitoring dashboard prototype. | **WIP** — real hand-written scaffold, not a stub, but incomplete. Distinct from Aeon Analysis's removed in-app "Terminal" launcher tab and from Aeon Analysis's own former internal branding (both since renamed/removed to stop the collision). | `terminal/frontend/` | frontend has no assigned port yet — defaults to Vite's 5173, which **will collide** with Aeon Analysis if both are run at once. Assign it a dedicated port before running alongside Aeon Analysis. |
+| Execution | **Aeon Terminal** | The real Fincept Terminal — a Qt-based native desktop trading terminal (order flow, live watchlists, multi-tab workspace), not a browser app. | **Live** as a codebase — substantial, complete, with its own git repo, Dockerfile, and `setup.sh`. Honest caveat: the *installed* copy on this machine is currently `~/Applications/FinceptTerminal-original.app.bak` — the `.bak` suffix means it won't launch via Finder/Spotlight until renamed back or reinstalled from the vendored `.dmg`. The in-house `terminal/frontend/` scaffold (a genuinely-WIP hand-built React shell, no Fincept branding anywhere) is retired from this slot — parked, not deleted. | `vendor/FinceptTerminal/` (+ `.dmg` installer alongside it); in-house scaffold parked at `terminal/frontend/` | native desktop app — no dev port; not a `localhost` destination |
 
 Separately, **Nipun AI** (root `cli/` + `worker/`) is a real, independently
 shipped `npx aeon-ai` single-ticker report CLI running on Cloudflare Workers
@@ -27,13 +27,15 @@ shared code, no shared data — and isn't part of this redesign.
 - Aeon Analysis links out to Aeon Intelligence per-ticker (Rumor/News tab,
   Houston brief) — a plain navigation link to Intelligence's own UI at
   `:5175/?ticker=...`, not shared data or a shared backend. Intelligence reads
-  that query param to filter/highlight its own (still-synthetic) event feed.
-- That's it by design: Intelligence's event data is 100% synthetic and
-  regenerates on every backend restart, so fusing it into Aeon Analysis's
-  otherwise-real signals would import fake data into a product that has
-  worked hard to be honest about what's real vs. approximated (see
-  `frontend/src/dataProvenance.ts`). A link that's clearly labeled as opening
-  a separate demo view is the honest version of that integration.
+  that query param to filter/highlight its own event feed.
+- That's it by design: Intelligence's calendar and news feed are populated
+  from real sources (sourced 2026 macro calendars, real RSS/SEC/CNN/VIX
+  fetchers) but are still Intelligence's own separate database, not fused
+  into Aeon Analysis's signals — importing another product's event feed into
+  Analysis's otherwise-real signals would blur which product is asserting
+  what (see `frontend/src/dataProvenance.ts`). A link that's clearly labeled
+  as opening a separate product's own view is the honest version of that
+  integration.
 - Aeon Analysis's own "Alpha Digest" (new in this redesign) synthesizes its
   own real signals — Fusion, DCF, Council of Agents, personas, Houston gates —
   into one per-ticker view. It does **not** replace Aeon Platform's research
@@ -51,7 +53,12 @@ Three different things have been called "Terminal" in this repo at various
 points: (1) a launcher tab inside Aeon Analysis for the third-party Fincept
 terminal — removed; (2) Aeon Analysis's own earlier internal branding
 ("Aeon Nimbus Terminal") — renamed to "Aeon Nimbus Analysis" to match its
-actual header/footer branding; (3) the real, distinct Execution-Layer product
-above, which keeps the name "Aeon Terminal." If you find a doc or comment
+actual header/footer branding; (3) the in-house `terminal/frontend/` scaffold,
+which briefly held the "Aeon Terminal" / Execution-Layer slot in the ecosystem
+while it was being built out. That slot has since been resolved: the
+Execution Layer now points at the real, vendored Fincept Terminal
+(`vendor/FinceptTerminal/`) instead — a substantial, complete third-party
+desktop app, not the in-house scaffold. The scaffold is parked, not deleted,
+and is no longer tracked as a live product. If you find a doc or comment
 still saying "Terminal" and meaning Aeon Analysis, it's stale — see
 `docs/archive/`.

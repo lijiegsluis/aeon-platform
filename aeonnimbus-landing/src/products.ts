@@ -4,7 +4,7 @@ export type Product = {
   name: string
   tag: string
   desc: string
-  status: 'live' | 'wip'
+  status: 'live' | 'wip' | 'desktop'
   href: string | null
   video: string
 }
@@ -45,9 +45,9 @@ export const PRODUCTS: Product[] = [
     layer: 'Execution Layer',
     name: 'Aeon Terminal',
     tag: "Know what's happening NOW",
-    desc: 'A live watchlist tape, an upcoming events calendar and per-ticker sentiment scoring. Currently a focused single view — the full multi-tab workspace is next.',
-    status: 'wip',
-    href: 'http://localhost:5178',
+    desc: 'The Fincept Terminal — a full Qt-based desktop trading terminal (not a browser app): live watchlists, order flow, and multi-tab workspaces. Runs natively on your machine rather than opening in a tab.',
+    status: 'desktop',
+    href: null,
     video: '/videos/tool-terminal.mp4',
   },
 ]
