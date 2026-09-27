@@ -6,6 +6,7 @@ Purpose: Real-time event aggregation, countdown tracking, sentiment analysis
 import json
 import os
 import sqlite3
+import threading
 from datetime import datetime, timedelta
 from typing import List, Optional
 from contextlib import contextmanager
@@ -13,6 +14,8 @@ from contextlib import contextmanager
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+
+import real_data
 
 app = FastAPI(title="Aeon Nimbus Intelligence API", version="1.0.0")
 app.add_middleware(
@@ -100,6 +103,75 @@ def init_db():
         """)
 
 init_db()
+
+# ─── Real data sync ──────────────────────────────────────────
+# Pulls real_data.py's fetchers (RSS news, CNN Fear & Greed, VIX, SEC Form 4
+# insider filings) into news_feed as regular rows, tagged with their real
+# source — never 'demo'. Runs once at startup in a background thread so slow
+# or timed-out network calls never delay the API from serving requests.
+# Every fetch fails soft (returns None/[]) per real_data.py's own contract.
+
+def sync_real_data():
+    rows_to_add = []
+
+    for item in real_data.get_real_news(limit=30):
+        rows_to_add.append((
+            item["title"], item["summary"], item["source"], item["url"],
+            item["published_at"], item["tickers"], item["sentiment"],
+        ))
+
+    fear_greed = real_data.get_fear_greed()
+    if fear_greed:
+        rating_word = ("bullish" if fear_greed["value"] > 55
+                        else "bearish" if fear_greed["value"] < 45 else "neutral")
+        rows_to_add.append((
+            f"Fear & Greed Index: {fear_greed['value']} ({fear_greed['rating']})",
+            "CNN Fear & Greed Index reading", "Fear & Greed Index", "",
+            datetime.now().isoformat(), "", rating_word,
+        ))
+
+    vix = real_data.get_vix()
+    if vix is not None:
+        rows_to_add.append((
+            f"VIX: {vix}", "CBOE Volatility Index (VIX) latest close", "VIX Index", "",
+            datetime.now().isoformat(), "", "bearish" if vix > 20 else "neutral",
+        ))
+
+    for t in real_data.get_recent_form4_trades(max_filings=8):
+        if not t.get("issuer_ticker") or not t.get("total_value"):
+            continue
+        action = "buys" if t["is_buy"] else "sells"
+        rows_to_add.append((
+            f"{t['insider_name']} ({t['role']}) {action} {t['issuer_ticker']}",
+            f"SEC Form 4: {t['insider_name']} {action} {t['shares']:,} shares of "
+            f"{t['issuer_ticker']} (~${t['total_value']:,.0f}) at {t['issuer_name']}",
+            "SEC Form 4", "", t.get("filed_at") or t["date"], t["issuer_ticker"],
+            "bullish" if t["is_buy"] else "bearish",
+        ))
+
+    if not rows_to_add:
+        print("[sync_real_data] no real data available this run (all sources failed soft)")
+        return
+
+    with get_db() as conn:
+        existing_titles = {r[0] for r in conn.execute("SELECT title FROM news_feed").fetchall()}
+        added = 0
+        for title, content, source, url, timestamp, tickers, sentiment in rows_to_add:
+            if title in existing_titles:
+                continue
+            conn.execute("""
+                INSERT INTO news_feed (title, content, source, url, timestamp, affected_tickers, sentiment)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
+            """, (title, content, source, url, timestamp, tickers, sentiment))
+            existing_titles.add(title)
+            added += 1
+        conn.commit()
+
+    print(f"[sync_real_data] added {added} real news_feed rows ({len(rows_to_add)} fetched)")
+
+@app.on_event("startup")
+def _start_real_data_sync():
+    threading.Thread(target=sync_real_data, daemon=True).start()
 
 def _tickers(raw: Optional[str]) -> List[str]:
     """affected_tickers is stored as a plain comma-joined string, not JSON."""
