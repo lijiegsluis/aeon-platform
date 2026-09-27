@@ -19,6 +19,11 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<'events' | 'signals' | 'portfolio'>('events');
+  // Opened from Aeon Analysis with ?ticker=XYZ — filters this (still synthetic
+  // demo) event feed down to that ticker instead of showing everything.
+  const [tickerFilter, setTickerFilter] = useState(
+    () => new URLSearchParams(window.location.search).get('ticker') || ''
+  );
 
   useEffect(() => {
     const fetchData = async () => {
@@ -117,7 +122,24 @@ function App() {
 
         <div className="events-list">
           <h2>TRACKED EVENTS</h2>
-          {events.slice(0, 20).map(event => (
+          {tickerFilter && (
+            <div className="event-meta" style={{ marginBottom: 12 }}>
+              Filtered to <strong>{tickerFilter.toUpperCase()}</strong> ·{' '}
+              <button
+                onClick={() => {
+                  setTickerFilter('');
+                  window.history.replaceState(null, '', window.location.pathname);
+                }}
+                style={{ background: 'none', border: 'none', color: 'inherit', textDecoration: 'underline', cursor: 'pointer', padding: 0 }}
+              >
+                view all events
+              </button>
+            </div>
+          )}
+          {(tickerFilter
+            ? events.filter(e => e.affected_tickers.toUpperCase().includes(tickerFilter.toUpperCase()))
+            : events
+          ).slice(0, 20).map(event => (
             <div key={event.id} className="event-card">
               <div className="event-header">
                 <div className="event-ticker">{event.affected_tickers}</div>

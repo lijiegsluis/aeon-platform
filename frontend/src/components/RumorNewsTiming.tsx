@@ -189,10 +189,21 @@ export default function RumorNewsTiming() {
                                             <h3 className="font-bold text-lg" style={{ color: 'var(--gold)' }}>
                                                 {event.title}
                                             </h3>
-                                            <div className="flex gap-2 mt-1">
+                                            <div className="flex gap-2 mt-1 items-center flex-wrap">
                                                 {event.affected_assets.map(asset => (
                                                     <span key={asset} className="badge-accent text-xs">{asset}</span>
                                                 ))}
+                                                <a
+                                                    href={`http://localhost:5175/?ticker=${encodeURIComponent(event.affected_assets[0] || '')}`}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    onClick={e => e.stopPropagation()}
+                                                    className="text-xs"
+                                                    style={{ color: 'var(--gold)', opacity: 0.75 }}
+                                                    title="Opens Aeon Intelligence's own event view for this ticker — separate demo data, not shared with this app"
+                                                >
+                                                    View in Aeon Intelligence ↗
+                                                </a>
                                                 {event.source === 'demo' && (
                                                     <span className="badge-gold text-xs" title="Placeholder sample event, not live market data">
                                                         DEMO DATA

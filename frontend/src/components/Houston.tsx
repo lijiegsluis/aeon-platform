@@ -127,6 +127,16 @@ function GatesPanel() {
                         {g.target && <span className="text-xs text-emerald">→ {g.target}</span>}
                         {g.stop && <span className="text-xs text-rose">Stop {g.stop}</span>}
                         {g.size && <span className="text-xs text-ink2">| {g.size}</span>}
+                        <a
+                            href={`http://localhost:5175/?ticker=${encodeURIComponent(g.ticker)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xs"
+                            style={{ color: 'var(--gold)', opacity: 0.75 }}
+                            title="Opens Aeon Intelligence's own event view for this ticker — separate demo data, not shared with this app"
+                        >
+                            View in Aeon Intelligence ↗
+                        </a>
                         <span className="text-[11px] text-ink3 ml-auto">{g.file}</span>
                     </div>
                     {g.kill && <div className="text-xs leading-relaxed" style={{ color: 'var(--gold2)' }}>
