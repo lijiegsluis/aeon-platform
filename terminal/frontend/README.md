@@ -1,32 +1,19 @@
-# React + TypeScript + Vite
+# Aeon Terminal (Execution Layer) — work in progress
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+This is the real, hand-written scaffold for **Aeon Terminal**, the ecosystem's
+Execution Layer product ("know what's happening NOW"). It's genuinely under
+active development, not an abandoned template — but it's not ready to run
+alongside the other Aeon products yet:
 
-Currently, two official plugins are available:
+- No dev port has been assigned; Vite will default to **5173**, the same port
+  Aeon Analysis's own frontend uses. Assign this project its own port in
+  `vite.config.ts` before running it at the same time as Aeon Analysis.
+- See [`AEON_ECOSYSTEM.md`](../../AEON_ECOSYSTEM.md) at the repo root for how
+  this fits with the other Aeon products and their real status.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Dev
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
 ```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+npm install
+npm run dev
+```
