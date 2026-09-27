@@ -1,7 +1,7 @@
 /**
- * Houston — Research-ops tab for Aeon Nimbus Terminal.
+ * Houston — Research-ops tab for Aeon Nimbus Analysis.
  * Three panels: Brief (morning synthesis), Gates (thesis gates), Notes (KB).
- * All data lives in ~/AeonNimbus/ — Terminal is the UI, Platform is the DB.
+ * All data lives in ~/AeonNimbus/.
  */
 import { useEffect, useState } from 'react';
 import { jget, jpost } from '../utils/api';

@@ -22,7 +22,7 @@ export default function About() {
                 </div>
                 <h1 className="font-display text-3xl font-black">
                     <span className="text-gradient-hero">Aeon Nimbus</span>{' '}
-                    <span className="text-gradient">Terminal</span>
+                    <span className="text-gradient">Analysis</span>
                 </h1>
                 <p className="mt-2 text-sm text-white/50">
                     A unified financial workstation — one ticker, every engine, entirely on your machine.
