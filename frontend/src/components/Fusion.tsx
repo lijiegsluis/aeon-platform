@@ -76,15 +76,22 @@ export default function FusionTab() {
         try {
             const { jobId } = await jpost<{ jobId: string }>(`${AEON}/fusion/council`,
                 { ticker, geminiKey: key, includeDebate: deep });
-            localStorage.setItem('aeonnimbus_council_job', jobId);   // survive tab switches
+            // Stored with its ticker (not just the jobId) so other tabs — e.g.
+            // Alpha Digest — can tell whether a cached job matches their ticker.
+            localStorage.setItem('aeonnimbus_council_job', JSON.stringify({ jobId, ticker }));
             poll(jobId);
         } catch (e) { setErr(String(e)); setBusy(false); }
     };
 
     // Resume a council that was convened before a tab switch or reload
     useEffect(() => {
-        const pending = localStorage.getItem('aeonnimbus_council_job');
-        if (pending) { setBusy(true); poll(pending); }
+        const raw = localStorage.getItem('aeonnimbus_council_job');
+        if (raw) {
+            try {
+                const { jobId } = JSON.parse(raw);
+                if (jobId) { setBusy(true); poll(jobId); }
+            } catch { localStorage.removeItem('aeonnimbus_council_job'); }
+        }
         return () => { if (timer.current) clearInterval(timer.current); };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);

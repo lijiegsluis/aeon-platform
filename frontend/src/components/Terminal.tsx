@@ -116,7 +116,7 @@ export function ProgressBar({ pct, label, sub }: { pct: number; label: string; s
     );
 }
 
-function SourceBadge({ id, label: labelOverride }: { id: string; label?: string }) {
+export function SourceBadge({ id, label: labelOverride }: { id: string; label?: string }) {
     const src = getSource(id);
     const real = src?.real ?? true;
     const label = labelOverride ?? src?.label ?? id;

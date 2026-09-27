@@ -19,12 +19,14 @@ import ComparisonView from './components/ComparisonView';
 import AnalysisHistory from './components/AnalysisHistory';
 import WatchlistManager from './components/WatchlistManager';
 import RumorNewsTiming from './components/RumorNewsTiming';
+import AlphaDigest from './components/AlphaDigest';
 
 const ReportViewer = lazy(() => import('./components/ReportViewer'));
 
 const TABS = [
     ['overview',    'Overview'],
     ['fusion',      'Fusion'],
+    ['digest',      'Alpha Digest'],
     ['research',    'Research'],
     ['finrobot',    'Reports'],
     ['analyst',     'Deep Research'],
@@ -40,7 +42,7 @@ const TABS = [
 type Tab = (typeof TABS)[number][0];
 
 const TAB_GROUPS: { label: string; ids: Tab[] }[] = [
-    { label: 'Command',  ids: ['overview', 'fusion'] },
+    { label: 'Command',  ids: ['overview', 'fusion', 'digest'] },
     { label: 'Research', ids: ['research', 'finrobot', 'analyst'] },
     { label: 'Markets',  ids: ['markets', 'agents', 'rumor'] },
     { label: 'Tools',    ids: ['compare', 'alerts', 'history', 'watchlist'] },
@@ -117,6 +119,7 @@ export default function App() {
                 <main className="mx-auto max-w-7xl px-6 py-6">
                     {tab === 'overview'  && <ErrorBoundary><OverviewTab goTo={(t) => setTab(t as Tab)} /></ErrorBoundary>}
                     {tab === 'fusion'    && <ErrorBoundary><FusionTab /></ErrorBoundary>}
+                    {tab === 'digest'    && <ErrorBoundary><AlphaDigest /></ErrorBoundary>}
                     {tab === 'markets'   && <ErrorBoundary><MarketsTab /></ErrorBoundary>}
                     {tab === 'agents'    && <ErrorBoundary><AgentDeskTab /></ErrorBoundary>}
                     {tab === 'finrobot'  && <ErrorBoundary><DeepReports /></ErrorBoundary>}
