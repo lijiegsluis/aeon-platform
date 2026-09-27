@@ -204,6 +204,17 @@ export default function RumorNewsTiming() {
                                                 >
                                                     View in Aeon Intelligence ↗
                                                 </a>
+                                                <a
+                                                    href="http://localhost:5174"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    onClick={e => e.stopPropagation()}
+                                                    className="text-xs"
+                                                    style={{ color: 'var(--gold)', opacity: 0.75 }}
+                                                    title="Opens Aeon Platform's Data Studio — a separate app, not ticker-linked (it lives outside this codebase)"
+                                                >
+                                                    View in Aeon Platform ↗
+                                                </a>
                                                 {event.source === 'demo' && (
                                                     <span className="badge-gold text-xs" title="Placeholder sample event, not live market data">
                                                         DEMO DATA

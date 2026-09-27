@@ -137,6 +137,16 @@ function GatesPanel() {
                         >
                             View in Aeon Intelligence ↗
                         </a>
+                        <a
+                            href="http://localhost:5174"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xs"
+                            style={{ color: 'var(--gold)', opacity: 0.75 }}
+                            title="Opens Aeon Platform's Data Studio — a separate app, not ticker-linked (it lives outside this codebase)"
+                        >
+                            View in Aeon Platform ↗
+                        </a>
                         <span className="text-[11px] text-ink3 ml-auto">{g.file}</span>
                     </div>
                     {g.kill && <div className="text-xs leading-relaxed" style={{ color: 'var(--gold2)' }}>
