@@ -31,16 +31,18 @@ from sentiment_analyzer import analyze_market_event, SentimentAnalyzer
 from api_extensions import register_api_extensions
 
 app = FastAPI(title="Aeon Nimbus Analytics")
+_DEFAULT_ORIGINS = [
+    "http://localhost:5173", "http://127.0.0.1:5173",
+    "http://localhost:5174", "http://127.0.0.1:5174",
+    "http://localhost:5176", "http://127.0.0.1:5176",
+    "http://localhost:5177", "http://127.0.0.1:5177",
+    "http://localhost:5180", "http://127.0.0.1:5180",
+    "http://localhost:5178", "http://127.0.0.1:5178",
+]
+_EXTRA_ORIGINS = [o.strip() for o in os.environ.get("AEON_ANALYTICS_ALLOWED_ORIGINS", "").split(",") if o.strip()]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173", "http://127.0.0.1:5173",
-        "http://localhost:5174", "http://127.0.0.1:5174",
-        "http://localhost:5176", "http://127.0.0.1:5176",
-        "http://localhost:5177", "http://127.0.0.1:5177",
-        "http://localhost:5180", "http://127.0.0.1:5180",
-        "http://localhost:5178", "http://127.0.0.1:5178",
-    ],
+    allow_origins=_DEFAULT_ORIGINS + _EXTRA_ORIGINS,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -626,7 +628,7 @@ def sync_keys(req: SyncKeysReq):
 # Original composites that use ALL vendored projects' overlapping
 # capabilities as an ensemble instead of picking one winner.
 
-TA_SERVICE = "http://127.0.0.1:8001"
+TA_SERVICE = os.environ.get("AEON_TA_SERVICE_URL", "http://127.0.0.1:8001")
 
 # FinRobot's real agent profile, quoted from
 # vendor/FinRobot/finrobot/agents/agent_library.py (Market_Analyst)
@@ -1186,4 +1188,6 @@ def sentiment_scan(timeframe: str = "week"):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+    host = os.environ.get("AEON_ANALYTICS_HOST", "127.0.0.1")
+    port = int(os.environ.get("PORT", os.environ.get("AEON_ANALYTICS_PORT", "8000")))
+    uvicorn.run(app, host=host, port=port)

@@ -10,11 +10,11 @@ export default function SelectTool() {
 
       <nav className="nav">
         <div className="nav-inner">
-          <a className="brand" href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+          <a className="brand" href={import.meta.env.BASE_URL} style={{ textDecoration: 'none', color: 'inherit' }}>
             <span className="mark">A</span>
             AEON NIMBUS
           </a>
-          <a className="nav-cta" href="/">← Back to Home</a>
+          <a className="nav-cta" href={import.meta.env.BASE_URL}>← Back to Home</a>
         </div>
       </nav>
 
@@ -47,7 +47,7 @@ export default function SelectTool() {
                 <p><b style={{ color: 'var(--text)' }}>{p.tag}.</b> {p.desc}</p>
                 {p.href ? (
                   <a className="cta" href={p.href} target="_blank" rel="noreferrer">
-                    Launch {p.name} →
+                    {p.status === 'desktop' ? `Get ${p.name} source` : `Launch ${p.name}`} →
                   </a>
                 ) : p.status === 'desktop' ? (
                   <span className="cta" style={{ color: 'var(--text-dim)' }}>Runs locally as a native app</span>

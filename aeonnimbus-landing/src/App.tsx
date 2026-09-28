@@ -50,7 +50,7 @@ export default function App() {
             <a href="#track-record">Track Record</a>
             <a href="#pricing">Pricing</a>
           </div>
-          <a className="nav-cta" href="/select">Start Free Trial</a>
+          <a className="nav-cta" href={`${import.meta.env.BASE_URL}select.html`}>Start Free Trial</a>
         </div>
       </nav>
 
@@ -70,7 +70,7 @@ export default function App() {
             +28.4% model portfolio. Not a signal box. The workflow itself.
           </p>
           <div className="hero-ctas">
-            <a className="btn-primary" href="/select">Start Free Trial</a>
+            <a className="btn-primary" href={`${import.meta.env.BASE_URL}select.html`}>Start Free Trial</a>
             <a className="btn-ghost" href="#suite">See the 4 tools →</a>
           </div>
 
@@ -106,7 +106,7 @@ export default function App() {
           </Reveal>
           <Reveal>
             <div className="watch-video">
-              <video src="/videos/aeon-explainer.mp4" controls playsInline preload="metadata" />
+              <video src={`${import.meta.env.BASE_URL}videos/aeon-explainer.mp4`} controls playsInline preload="metadata" />
             </div>
           </Reveal>
         </section>
@@ -130,10 +130,10 @@ export default function App() {
                     {p.status === 'live' ? 'LIVE' : p.status === 'desktop' ? 'LIVE · DESKTOP APP' : 'IN REDESIGN'}
                   </span>
                   <p><b style={{ color: 'var(--text)' }}>{p.tag}.</b> {p.desc}</p>
-                  <video className="card-video" src={p.video} controls playsInline preload="metadata" />
+                  <video className="card-video" src={`${import.meta.env.BASE_URL}${p.video.replace(/^\//, '')}`} controls playsInline preload="metadata" />
                   {p.href ? (
                     <a className="cta" href={p.href} target="_blank" rel="noreferrer">
-                      Launch {p.name} →
+                      {p.status === 'desktop' ? `Get ${p.name} source` : `Launch ${p.name}`} →
                     </a>
                   ) : p.status === 'desktop' ? (
                     <span className="cta" style={{ color: 'var(--text-dim)' }}>Runs locally as a native app</span>
@@ -143,6 +143,12 @@ export default function App() {
                 </div>
               ))}
             </div>
+          </Reveal>
+          <Reveal>
+            <p className="verify-note" style={{ marginTop: 28 }}>
+              Aeon Platform's own coverage: <b style={{ color: 'var(--text)' }}>319 global companies</b> tracked ·{' '}
+              <b style={{ color: 'var(--text)' }}>35+ live API endpoints</b> powering its research pipeline.
+            </p>
           </Reveal>
         </section>
 
@@ -278,7 +284,7 @@ export default function App() {
                   <li>Platform: unlimited signals & alerts</li>
                   <li>Terminal: real-time, all sources</li>
                 </ul>
-                <button onClick={() => { window.location.href = '/select' }}>Start Free Trial</button>
+                <button onClick={() => { window.location.href = `${import.meta.env.BASE_URL}select.html` }}>Start Free Trial</button>
               </div>
               <div className="price-card">
                 <h4>Systematic</h4>
@@ -311,7 +317,7 @@ export default function App() {
             <h2>The same tools behind a +34.5% average return.<br />Now available to you.</h2>
             <p>14-day free trial on Professional. No card required.</p>
             <div className="hero-ctas" style={{ marginTop: 28 }}>
-              <a className="btn-primary" href="/select">Start Free Trial</a>
+              <a className="btn-primary" href={`${import.meta.env.BASE_URL}select.html`}>Start Free Trial</a>
               <a className="btn-ghost" href="#suite">Explore the Suite</a>
             </div>
           </Reveal>

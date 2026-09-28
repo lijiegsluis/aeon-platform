@@ -4,12 +4,13 @@ SQLite for simplicity, easy to upgrade to Postgres later
 """
 import sqlite3
 import json
+import os
 from datetime import datetime
 from pathlib import Path
 from typing import Optional, List, Dict, Any
 from contextlib import contextmanager
 
-DB_PATH = Path.home() / ".aeon" / "terminal.db"
+DB_PATH = Path(os.environ.get("AEON_ANALYTICS_DB_PATH", str(Path.home() / ".aeon" / "terminal.db")))
 DB_PATH.parent.mkdir(parents=True, exist_ok=True)
 
 # Single-user app for now: the frontend hardcodes user_id=1 everywhere

@@ -16,3 +16,9 @@ venv/
 vendor/
 # Large marketing/demo media, not source.
 demo-video/
+
+# Live personal credentials — Telegram API_ID/API_HASH configs and authenticated
+# Telethon session files. Never commit these; they're per-machine logins, not source.
+*.session
+*.session-journal
+*.ini

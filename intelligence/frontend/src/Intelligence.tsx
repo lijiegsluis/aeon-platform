@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import './Intelligence.css'
 
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8001'
+
 interface NewsItem {
   id: number
   title: string
@@ -36,17 +38,6 @@ interface Signal {
   trigger?: string
 }
 
-interface CryptoData {
-  id: number
-  symbol: string
-  name: string
-  price: number
-  change_24h: number
-  market_cap: number
-  volume_24h: number
-  source: string
-}
-
 interface SentimentIndicator {
   id: number
   source: string
@@ -70,22 +61,6 @@ interface InsiderTrade {
   ownership_change: string
   significance: string
   smart_money_signal: string
-}
-
-interface AlternativeInsiderData {
-  id: number
-  source: string
-  data_type: string
-  ticker?: string
-  politician?: string
-  chamber?: string
-  transaction_type?: string
-  amount_range?: string
-  trade_date?: string
-  disclosure_date?: string
-  signal: string
-  significance: string
-  edge: string
 }
 
 interface SmartMoneyNotification {
@@ -118,6 +93,9 @@ interface DailyBrief {
     rationale: string
     risks: string
     catalyst: string
+    smart_money_signal?: string
+    technical_setup?: string
+    risk_factor?: string
     data_sources: string[]
   }>
   large_cap_plays?: Array<{
@@ -131,6 +109,9 @@ interface DailyBrief {
     rationale: string
     risks: string
     catalyst: string
+    smart_money_signal?: string
+    technical_setup?: string
+    risk_factor?: string
     data_sources: string[]
   }>
   mid_cap_opportunities?: Array<{
@@ -144,6 +125,9 @@ interface DailyBrief {
     rationale: string
     risks: string
     catalyst: string
+    smart_money_signal?: string
+    technical_setup?: string
+    risk_factor?: string
     data_sources: string[]
   }>
   event_driven_plays?: Array<{
@@ -157,6 +141,9 @@ interface DailyBrief {
     rationale: string
     risks: string
     catalyst: string
+    smart_money_signal?: string
+    technical_setup?: string
+    risk_factor?: string
     data_sources: string[]
   }>
   sector_plays?: Array<{
@@ -165,6 +152,12 @@ interface DailyBrief {
     action: string
     rationale: string
     catalyst: string
+    confidence?: string
+    timeframe?: string
+    market_cap?: string
+    smart_money_signal?: string
+    technical_setup?: string
+    risk_factor?: string
     data_sources: string[]
   }>
   top_recommendations: Array<{
@@ -197,6 +190,15 @@ interface DailyBrief {
     hedging: string
     watch_levels: string
   }
+  smart_money_activity?: {
+    insider_trades_summary: string
+    congressional_trades: string
+    institutional_flow: string
+    cluster_buying_alerts: string
+  }
+  mode?: 'live' | 'demo'
+  data_edge?: string
+  demo_note?: string
 }
 
 interface AIPrediction {
@@ -266,6 +268,13 @@ interface AIPredictions {
         n: number
       }
     }
+    live_prediction_by_category?: {
+      [key: string]: {
+        n: number
+        correct: number
+        accuracy: number
+      }
+    }
     model_improvements: string[]
   }
   historical_backtest?: {
@@ -300,13 +309,81 @@ interface AIPredictions {
   }
 }
 
-type ViewType = 'overview' | 'live' | 'signals' | 'insider' | 'telegram' | 'brief' | 'ai-predictions'
+interface CalendarEvent {
+  id: number
+  title: string
+  description: string
+  date: string
+  event_type: string
+  phase: string
+  affected_tickers: string[]
+  recommendation: string
+  impact_score: number
+  days_until: number
+  phase_color: string
+}
+
+interface SourceStatus {
+  name: string
+  category?: string
+  status: string
+  success_rate: number | null
+  last_success_at?: string | null
+  last_attempt_at?: string | null
+  last_error?: string | null
+  success_count?: number
+  fail_count?: number
+  connected?: boolean
+  authorized?: boolean | null
+  message_count?: number
+}
+
+interface SourcesStatusResponse {
+  sources: SourceStatus[]
+  summary: { total_sources: number; active_now: number; avg_success_rate: number }
+  last_update: string
+}
+
+interface VolatilityData {
+  vix: { value: number | null; bucket: string }
+  fear_greed: { value: number; rating: string } | null
+  reddit_sentiment: { value: number; avg_upvote_ratio: number; total_score: number; top_titles: string[] } | null
+  volatility_catalysts: CalendarEvent[]
+  last_update: string
+}
+
+interface InsiderTrade90 {
+  ticker: string
+  insider_name: string
+  role: string
+  transaction_type: string
+  total_value: number
+  shares: number
+  date: string
+}
+
+interface InsiderTrades90Response {
+  trades: InsiderTrade90[]
+  summary: {
+    window_days: number
+    total_trades: number
+    buys: number
+    sells: number
+    total_buy_value: number
+    total_sell_value: number
+  }
+}
+
+type ViewType = 'overview' | 'live' | 'signals' | 'insider' | 'telegram' | 'brief' | 'ai-predictions' | 'calendar' | 'sources' | 'volatility'
 
 function Intelligence() {
   const [view, setView] = useState<ViewType>('overview')
+  const [calendarMode, setCalendarMode] = useState<'list' | 'month'>('list')
+  const now0 = new Date()
+  const [viewMonth, setViewMonth] = useState<number>(now0.getMonth())
+  const [viewYear, setViewYear] = useState<number>(now0.getFullYear())
   const [news, setNews] = useState<NewsItem[]>([])
   const [signals, setSignals] = useState<Signal[]>([])
-  const [crypto, setCrypto] = useState<CryptoData[]>([])
   const [sentiment, setSentiment] = useState<SentimentIndicator[]>([])
   const [insiderTrades, setInsiderTrades] = useState<InsiderTrade[]>([])
   const [dailyBrief, setDailyBrief] = useState<DailyBrief | null>(null)
@@ -314,6 +391,10 @@ function Intelligence() {
   const [smartMoneyNotifications, setSmartMoneyNotifications] = useState<{past: SmartMoneyNotification[], future: SmartMoneyNotification[]}>({past: [], future: []})
   const [telegramMessages, setTelegramMessages] = useState<NewsItem[]>([])
   const [telegramStatus, setTelegramStatus] = useState<TelegramStatus | null>(null)
+  const [calendarEvents, setCalendarEvents] = useState<CalendarEvent[]>([])
+  const [sourcesStatus, setSourcesStatus] = useState<SourcesStatusResponse | null>(null)
+  const [volatility, setVolatility] = useState<VolatilityData | null>(null)
+  const [insiderTrades90, setInsiderTrades90] = useState<InsiderTrades90Response | null>(null)
   const [connected, setConnected] = useState(false)
   const [lastUpdate, setLastUpdate] = useState<string>('')
 
@@ -325,18 +406,21 @@ function Intelligence() {
 
   const fetchAllData = async () => {
     try {
-      const [dashboardRes, smartMoneyRes, aiPredictionsRes, telegramRes] = await Promise.all([
-        fetch('http://localhost:8001/api/dashboard'),
-        fetch('http://localhost:8001/api/smart-money/notifications'),
-        fetch('http://localhost:8001/api/ai-predictions'),
-        fetch('http://localhost:8001/api/telegram/breaking-news')
+      const [dashboardRes, smartMoneyRes, aiPredictionsRes, telegramRes, calendarRes, sourcesRes, volatilityRes, insider90Res] = await Promise.all([
+        fetch(`${API_BASE}/api/dashboard`),
+        fetch(`${API_BASE}/api/smart-money/notifications`),
+        fetch(`${API_BASE}/api/ai-predictions`),
+        fetch(`${API_BASE}/api/telegram/breaking-news`),
+        fetch(`${API_BASE}/api/events/live?timeframe=90days`),
+        fetch(`${API_BASE}/api/sources/status`),
+        fetch(`${API_BASE}/api/volatility`),
+        fetch(`${API_BASE}/api/insider-trades?days=90`)
       ])
 
       if (dashboardRes.ok) {
         const data = await dashboardRes.json()
         setNews(data.news || [])
         setSignals(data.signals || [])
-        setCrypto(data.crypto || [])
         setSentiment(data.sentiment || [])
         setInsiderTrades(data.insider_trades || [])
         setDailyBrief(data.daily_brief || null)
@@ -361,6 +445,23 @@ function Intelligence() {
         const telegramData = await telegramRes.json()
         setTelegramMessages(telegramData.messages || [])
         setTelegramStatus(telegramData.status || null)
+      }
+
+      if (calendarRes.ok) {
+        const calendarData = await calendarRes.json()
+        setCalendarEvents(calendarData.events || [])
+      }
+
+      if (sourcesRes.ok) {
+        setSourcesStatus(await sourcesRes.json())
+      }
+
+      if (volatilityRes.ok) {
+        setVolatility(await volatilityRes.json())
+      }
+
+      if (insider90Res.ok) {
+        setInsiderTrades90(await insider90Res.json())
       }
     } catch (error) {
       console.error('Failed to fetch data:', error)
@@ -432,6 +533,22 @@ function Intelligence() {
             <span>AI PREDICTIONS</span>
           </button>
 
+          <div className="nav-group-label">Markets</div>
+          <button
+            className={view === 'calendar' ? 'active' : ''}
+            onClick={() => setView('calendar')}
+          >
+            <span className="nav-glyph">◷</span>
+            <span>CALENDAR</span>
+          </button>
+          <button
+            className={view === 'volatility' ? 'active' : ''}
+            onClick={() => setView('volatility')}
+          >
+            <span className="nav-glyph">▲</span>
+            <span>VOLATILITY</span>
+          </button>
+
           <div className="nav-group-label">Signals</div>
           <button
             className={view === 'insider' ? 'active' : ''}
@@ -460,6 +577,15 @@ function Intelligence() {
           >
             <span className="nav-glyph">◉</span>
             <span>LIVE FEED</span>
+          </button>
+
+          <div className="nav-group-label">System</div>
+          <button
+            className={view === 'sources' ? 'active' : ''}
+            onClick={() => setView('sources')}
+          >
+            <span className="nav-glyph">⛁</span>
+            <span>DATA SOURCES</span>
           </button>
         </nav>
 
@@ -649,8 +775,8 @@ function Intelligence() {
                 <tbody>
                   {signals.map(signal => {
                     const hasFullPrices = signal.entry_price != null && signal.target_price != null && signal.stop_loss != null
-                    const risk = hasFullPrices ? signal.entry_price - signal.stop_loss : null
-                    const reward = hasFullPrices ? signal.target_price - signal.entry_price : null
+                    const risk = hasFullPrices ? signal.entry_price! - signal.stop_loss! : null
+                    const reward = hasFullPrices ? signal.target_price! - signal.entry_price! : null
                     const rr = risk ? (reward! / risk).toFixed(2) : null
 
                     return (
@@ -682,8 +808,8 @@ function Intelligence() {
               <p>Track what corporate insiders are doing with their own money - the ultimate conviction signal. Real-time SEC Form 4 filings reveal when executives buy or sell their own stock.</p>
               <div className="header-metrics">
                 <div className="metric">
-                  <span className="metric-value">{insiderTrades.filter(t => t.transaction_type === 'BUY').length}</span>
-                  <span className="metric-label">INSIDER BUYS</span>
+                  <span className="metric-value">{insiderTrades90 ? insiderTrades90.summary.buys : insiderTrades.filter(t => t.transaction_type === 'BUY').length}</span>
+                  <span className="metric-label">INSIDER BUYS (90D)</span>
                 </div>
                 <div className="metric">
                   <span className="metric-value">{insiderTrades.filter(t => t.significance === 'EXTREME' || t.significance === 'HIGH').length}</span>
@@ -691,9 +817,9 @@ function Intelligence() {
                 </div>
                 <div className="metric">
                   <span className="metric-value">
-                    ${(insiderTrades.reduce((sum, t) => sum + t.total_value, 0) / 1000000).toFixed(1)}M
+                    ${insiderTrades90 ? ((insiderTrades90.summary.total_buy_value + insiderTrades90.summary.total_sell_value) / 1000000).toFixed(1) : (insiderTrades.reduce((sum, t) => sum + t.total_value, 0) / 1000000).toFixed(1)}M
                   </span>
-                  <span className="metric-label">TOTAL VALUE</span>
+                  <span className="metric-label">TOTAL VALUE (90D)</span>
                 </div>
               </div>
             </div>
@@ -772,7 +898,9 @@ function Intelligence() {
             <section className="data-block">
               <div className="block-header">
                 <h2>📈 ALL INSIDER TRADES (LAST 90 DAYS)</h2>
-                <p>Complete insider trading activity from SEC Form 4 filings - 3 months of history</p>
+                <p>
+                  Real, persisted SEC Form 4 activity{insiderTrades90 ? ` - window: last ${insiderTrades90.summary.window_days} days (${insiderTrades90.summary.total_trades} trades, ${insiderTrades90.summary.buys} buys / ${insiderTrades90.summary.sells} sells)` : ' - loading 90-day window...'}
+                </p>
               </div>
               <table className="data-grid">
                 <thead>
@@ -784,14 +912,11 @@ function Intelligence() {
                     <th>SHARES</th>
                     <th>PRICE</th>
                     <th>TOTAL VALUE</th>
-                    <th>OWNERSHIP Δ</th>
-                    <th>SIGNIFICANCE</th>
-                    <th>FILING DATE</th>
-                    <th>SMART MONEY SIGNAL</th>
+                    <th>DATE</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {insiderTrades.length > 0 ? insiderTrades.map((trade, idx) => (
+                  {insiderTrades90 && insiderTrades90.trades.length > 0 ? insiderTrades90.trades.map((trade, idx) => (
                     <tr key={idx}>
                       <td className="cell-tickers" style={{ fontWeight: 700 }}>{trade.ticker}</td>
                       <td className="cell-primary">{trade.insider_name}</td>
@@ -807,30 +932,17 @@ function Intelligence() {
                       <td className="cell-impact" style={{ color: '#00d9ff' }}>
                         {trade.shares.toLocaleString()}
                       </td>
-                      <td className="cell-impact">${trade.price.toFixed(2)}</td>
+                      <td className="cell-impact">${trade.shares ? (trade.total_value / trade.shares).toFixed(2) : '—'}</td>
                       <td className="cell-impact" style={{ color: '#d4af37' }}>
                         ${(trade.total_value / 1000000).toFixed(2)}M
                       </td>
-                      <td className="cell-phase">
-                        <span style={{ color: trade.transaction_type === 'BUY' ? '#00ff88' : '#ffa500' }}>
-                          {trade.ownership_change}
-                        </span>
-                      </td>
-                      <td className="cell-phase">
-                        <span style={{
-                          color: trade.significance === 'EXTREME' ? '#ff0040' :
-                                 trade.significance === 'HIGH' ? '#ffa500' :
-                                 trade.significance === 'MEDIUM' ? '#d4af37' : '#888888'
-                        }}>
-                          {trade.significance}
-                        </span>
-                      </td>
-                      <td className="cell-date">{trade.filing_date}</td>
-                      <td className="cell-rec">{trade.smart_money_signal}</td>
+                      <td className="cell-date">{trade.date}</td>
                     </tr>
                   )) : (
                     <tr>
-                      <td colSpan={11} className="cell-empty">Loading insider trading data...</td>
+                      <td colSpan={8} className="cell-empty">
+                        {insiderTrades90 ? 'No insider trades persisted in the last 90 days yet' : 'Loading 90-day insider trading data...'}
+                      </td>
                     </tr>
                   )}
                 </tbody>
@@ -965,6 +1077,45 @@ function Intelligence() {
               </div>
             </div>
 
+            {dailyBrief.mode && (
+              <div className="data-block" style={{
+                borderLeft: `4px solid ${dailyBrief.mode === 'live' ? '#00ff88' : '#ffa500'}`,
+                padding: '12px 16px',
+              }}>
+                <span style={{ color: dailyBrief.mode === 'live' ? '#00ff88' : '#ffa500', fontWeight: 700 }}>
+                  {dailyBrief.mode === 'live' ? 'LIVE' : 'DEMO'}:
+                </span>{' '}
+                {dailyBrief.mode === 'live' ? dailyBrief.data_edge : dailyBrief.demo_note}
+              </div>
+            )}
+
+            {dailyBrief.top_recommendations && dailyBrief.top_recommendations.length > 0 && (
+              <section className="data-block accent-panel-success">
+                <div className="block-header">
+                  <h2>⭐ TOP RECOMMENDATIONS</h2>
+                  <p>Highest-conviction picks across all categories in this brief</p>
+                </div>
+                {dailyBrief.top_recommendations.map((play, idx) => (
+                  <div key={idx} className="recommendation-card accent-success">
+                    <div className="rec-header">
+                      <h3>{play.ticker} - {play.action}</h3>
+                      <div className="rec-targets">
+                        <span className="market-cap">Target: {play.target}</span>
+                        <span className="market-cap">Stop: {play.stop}</span>
+                        <span className="confidence">Confidence: {play.confidence}</span>
+                        <span className="timeframe">Timeframe: {play.timeframe}</span>
+                      </div>
+                    </div>
+                    <div className="rec-body">
+                      <p><strong>Rationale:</strong> {play.rationale}</p>
+                      <p><strong>Risks:</strong> {play.risks}</p>
+                      <p><strong>Data Sources:</strong> {play.data_sources.join(', ')}</p>
+                    </div>
+                  </div>
+                ))}
+              </section>
+            )}
+
             {dailyBrief.mega_cap_plays && dailyBrief.mega_cap_plays.length > 0 && (
               <section className="data-block">
                 <div className="block-header">
@@ -1086,7 +1237,7 @@ function Intelligence() {
                 {dailyBrief.sector_plays.map((play, idx) => (
                   <div key={idx} className="recommendation-card accent-purple">
                     <div className="rec-header">
-                      <h3>{play.ticker} - {play.action}</h3>
+                      <h3>{play.tickers.join(', ')} - {play.action}</h3>
                       <div className="rec-targets">
                         <span className="market-cap">Cap: {play.market_cap}</span>
                         <span className="sector">Sector: {play.sector}</span>
@@ -1137,6 +1288,58 @@ function Intelligence() {
                 </div>
               </div>
             </section>
+
+            {dailyBrief.smart_money_activity && (
+              <section className="data-block">
+                <div className="block-header">
+                  <h2>💰 SMART MONEY ACTIVITY</h2>
+                </div>
+                <div className="context-grid">
+                  <div className="context-item">
+                    <h4>INSIDER TRADES SUMMARY</h4>
+                    <p>{dailyBrief.smart_money_activity.insider_trades_summary}</p>
+                  </div>
+                  <div className="context-item">
+                    <h4>CONGRESSIONAL TRADES</h4>
+                    <p>{dailyBrief.smart_money_activity.congressional_trades}</p>
+                  </div>
+                  <div className="context-item">
+                    <h4>INSTITUTIONAL FLOW</h4>
+                    <p>{dailyBrief.smart_money_activity.institutional_flow}</p>
+                  </div>
+                  <div className="context-item">
+                    <h4>CLUSTER BUYING ALERTS</h4>
+                    <p>{dailyBrief.smart_money_activity.cluster_buying_alerts}</p>
+                  </div>
+                </div>
+              </section>
+            )}
+
+            {dailyBrief.risk_management && (
+              <section className="data-block">
+                <div className="block-header">
+                  <h2>🛡️ RISK MANAGEMENT</h2>
+                </div>
+                <div className="context-grid">
+                  <div className="context-item">
+                    <h4>MARKET RISKS</h4>
+                    <p>{dailyBrief.risk_management.market_risks}</p>
+                  </div>
+                  <div className="context-item">
+                    <h4>POSITION SIZING</h4>
+                    <p>{dailyBrief.risk_management.position_sizing}</p>
+                  </div>
+                  <div className="context-item">
+                    <h4>HEDGING</h4>
+                    <p>{dailyBrief.risk_management.hedging}</p>
+                  </div>
+                  <div className="context-item">
+                    <h4>WATCH LEVELS</h4>
+                    <p>{dailyBrief.risk_management.watch_levels}</p>
+                  </div>
+                </div>
+              </section>
+            )}
 
             <section className="data-block">
               <div className="block-header">
@@ -1208,6 +1411,17 @@ function Intelligence() {
                       <p key={cat}><strong>{cat}:</strong> {(stats.accuracy * 100).toFixed(1)}% positive (n={stats.n})</p>
                     ))}
                   </div>
+                  {aiPredictions.prediction_accuracy_stats.live_prediction_by_category && (
+                    <div className="context-item">
+                      <h4>BY CATEGORY (live-prediction calibration)</h4>
+                      <p className="text-muted">Resolved live predictions graded against real fetched outcomes - a different, real thing from the historical insider-buy backtest above.</p>
+                      {Object.entries(aiPredictions.prediction_accuracy_stats.live_prediction_by_category).length === 0 ? (
+                        <p className="text-muted">No resolved live predictions yet.</p>
+                      ) : Object.entries(aiPredictions.prediction_accuracy_stats.live_prediction_by_category).map(([cat, stats]: [string, any]) => (
+                        <p key={cat}><strong>{cat}:</strong> {(stats.accuracy * 100).toFixed(1)}% accuracy (n={stats.n}, correct={stats.correct})</p>
+                      ))}
+                    </div>
+                  )}
                   <div className="context-item">
                     <h4>NOTES</h4>
                     <ul>
@@ -1247,6 +1461,28 @@ function Intelligence() {
                                   <td>{stats.signals_tested}</td>
                                   <td>{stats.pct_positive != null ? `${stats.pct_positive}%` : '—'}</td>
                                   <td>{stats.avg_return_pct != null ? `${stats.avg_return_pct}%` : '—'}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        )}
+                        {sig.sample_events && sig.sample_events.length > 0 && (
+                          <table className="mini-table">
+                            <thead>
+                              <tr><th>Ticker</th><th>Date</th><th>Insider(s)</th><th>Value</th><th>Returns by horizon</th></tr>
+                            </thead>
+                            <tbody>
+                              {sig.sample_events.map((ev: any, i: number) => (
+                                <tr key={i}>
+                                  <td>{ev.ticker}</td>
+                                  <td>{ev.date}</td>
+                                  <td>{Array.isArray(ev.insider_or_insiders) ? ev.insider_or_insiders.join(', ') : ev.insider_or_insiders}</td>
+                                  <td>${Number(ev.value).toLocaleString()}</td>
+                                  <td>
+                                    {Object.entries(ev.returns_by_horizon_pct || {}).map(([h, r]: [string, any]) => (
+                                      <span key={h} style={{ marginRight: 8 }}>{h}: {r != null ? `${r}%` : '—'}</span>
+                                    ))}
+                                  </td>
                                 </tr>
                               ))}
                             </tbody>
@@ -1382,7 +1618,12 @@ function Intelligence() {
                       </div>
                     )}
                     {pred.predicted_outcome && (
-                      <p className="text-success"><strong>Predicted Outcome:</strong> {pred.predicted_outcome}</p>
+                      <div className="text-success">
+                        <strong>Predicted Outcome:</strong>
+                        {Object.entries(pred.predicted_outcome).filter(([, v]) => v).map(([k, v]) => (
+                          <p key={k}>{k.replace(/_/g, ' ')}: {v}</p>
+                        ))}
+                      </div>
                     )}
                   </div>
                 </div>
@@ -1420,7 +1661,12 @@ function Intelligence() {
                       </div>
                     )}
                     {pred.predicted_outcome && (
-                      <p className="text-orange"><strong>Predicted Outcome:</strong> {pred.predicted_outcome}</p>
+                      <div className="text-orange">
+                        <strong>Predicted Outcome:</strong>
+                        {Object.entries(pred.predicted_outcome).filter(([, v]) => v).map(([k, v]) => (
+                          <p key={k}>{k.replace(/_/g, ' ')}: {v}</p>
+                        ))}
+                      </div>
                     )}
                   </div>
                 </div>
@@ -1438,7 +1684,7 @@ function Intelligence() {
                     <h3>{risk.risk_type} Risk</h3>
                     <div className="rec-targets">
                       <span className="text-danger stat-big">
-                        Probability: {(risk.probability * 100).toFixed(1)}%
+                        Probability: {((risk.probability ?? 0) * 100).toFixed(1)}%
                       </span>
                     </div>
                   </div>
@@ -1461,6 +1707,274 @@ function Intelligence() {
                   </div>
                 </div>
               ))}
+            </section>
+          </div>
+        )}
+
+        {view === 'calendar' && (
+          <div className="terminal-view">
+            <div className="view-header">
+              <h1>D-X COUNTDOWN CALENDAR</h1>
+              <p>Real earnings and macro-release dates, sorted into 4 timing phases (Pre-rumor → Accumulation → Euforia → Danger) with a rule-based entry/exit note per event</p>
+              <div className="nav-pills" style={{ marginTop: 12 }}>
+                <button
+                  className={calendarMode === 'list' ? 'active' : ''}
+                  onClick={() => setCalendarMode('list')}
+                >LIST</button>
+                <button
+                  className={calendarMode === 'month' ? 'active' : ''}
+                  onClick={() => setCalendarMode('month')}
+                >MONTH</button>
+              </div>
+            </div>
+
+            {calendarMode === 'list' ? (
+              <section className="data-block">
+                <div className="block-header">
+                  <h2>UPCOMING CATALYSTS</h2>
+                  <p>Events labeled "(estimated date)" are honest heuristic fallbacks - the real source (Yahoo earnings calendar) was unavailable when last synced</p>
+                </div>
+                <table className="data-grid">
+                  <thead>
+                    <tr>
+                      <th>EVENT</th>
+                      <th>DATE</th>
+                      <th>D-X</th>
+                      <th>PHASE</th>
+                      <th>TICKERS</th>
+                      <th>RECOMMENDATION</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {calendarEvents.length > 0 ? calendarEvents.map((evt) => (
+                      <tr key={evt.id}>
+                        <td className="cell-primary">
+                          {evt.title}
+                          {evt.title.toLowerCase().includes('estimated date') && (
+                            <span style={{ color: '#888888', fontSize: '0.85em' }}> (est.)</span>
+                          )}
+                        </td>
+                        <td className="cell-date">{evt.date}</td>
+                        <td className="cell-countdown" style={{ color: evt.phase_color, fontWeight: 700 }}>
+                          {evt.days_until <= 0 ? 'LIVE' : `D-${evt.days_until}`}
+                        </td>
+                        <td className="cell-phase">
+                          <span style={{ color: evt.phase_color, fontWeight: 700 }}>{evt.phase.toUpperCase()}</span>
+                        </td>
+                        <td className="cell-tickers">{(evt.affected_tickers || []).join(', ')}</td>
+                        <td className="cell-rec">{evt.recommendation}</td>
+                      </tr>
+                    )) : (
+                      <tr>
+                        <td colSpan={6} className="cell-empty">Loading calendar events...</td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </section>
+            ) : (
+              <section className="data-block">
+                <div className="block-header">
+                  <h2>
+                    <button className="month-nav-btn" onClick={() => {
+                      const m = viewMonth === 0 ? 11 : viewMonth - 1
+                      setViewMonth(m)
+                      setViewYear(m === 11 ? viewYear - 1 : viewYear)
+                    }}>‹</button>
+                    {' '}{new Date(viewYear, viewMonth, 1).toLocaleString('en-US', { month: 'long', year: 'numeric' })}{' '}
+                    <button className="month-nav-btn" onClick={() => {
+                      const m = viewMonth === 11 ? 0 : viewMonth + 1
+                      setViewMonth(m)
+                      setViewYear(m === 0 ? viewYear + 1 : viewYear)
+                    }}>›</button>
+                  </h2>
+                  <p>Click a pill to see the event's D-X, phase, and recommendation</p>
+                </div>
+                {(() => {
+                  const firstOfMonth = new Date(viewYear, viewMonth, 1)
+                  const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate()
+                  const startWeekday = firstOfMonth.getDay()
+                  const eventsByDay: { [day: number]: CalendarEvent[] } = {}
+                  calendarEvents.forEach((evt) => {
+                    const d = new Date(evt.date)
+                    if (d.getFullYear() === viewYear && d.getMonth() === viewMonth) {
+                      const day = d.getDate()
+                      if (!eventsByDay[day]) eventsByDay[day] = []
+                      eventsByDay[day].push(evt)
+                    }
+                  })
+                  const cells: (number | null)[] = []
+                  for (let i = 0; i < startWeekday; i++) cells.push(null)
+                  for (let day = 1; day <= daysInMonth; day++) cells.push(day)
+
+                  return (
+                    <div>
+                      <div className="calendar-grid-header">
+                        {['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'].map((d) => (
+                          <div key={d} className="calendar-grid-header-cell">{d}</div>
+                        ))}
+                      </div>
+                      <div className="calendar-grid">
+                        {cells.map((day, idx) => (
+                          <div key={idx} className={day ? 'calendar-day-cell' : 'calendar-day-cell calendar-day-empty'}>
+                            {day && (
+                              <>
+                                <div className="calendar-day-number">{day}</div>
+                                {(eventsByDay[day] || []).map((evt) => (
+                                  <div
+                                    key={evt.id}
+                                    className="calendar-event-pill"
+                                    style={{ backgroundColor: evt.phase_color }}
+                                    title={`${evt.title} — ${evt.days_until <= 0 ? 'LIVE' : `D-${evt.days_until}`} (${evt.phase}) — ${evt.recommendation}`}
+                                  >
+                                    {evt.title.length > 18 ? evt.title.slice(0, 18) + '…' : evt.title}
+                                  </div>
+                                ))}
+                              </>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )
+                })()}
+              </section>
+            )}
+          </div>
+        )}
+
+
+        {view === 'sources' && (
+          <div className="terminal-view">
+            <div className="view-header">
+              <h1>DATA SOURCES</h1>
+              <p>Real, live status of every data source this app actually calls - never simulated</p>
+              {sourcesStatus && (
+                <div className="header-metrics">
+                  <div className="metric">
+                    <span className="metric-value">{sourcesStatus.summary.total_sources}</span>
+                    <span className="metric-label">TOTAL SOURCES</span>
+                  </div>
+                  <div className="metric">
+                    <span className="metric-value">{sourcesStatus.summary.active_now}</span>
+                    <span className="metric-label">ACTIVE NOW</span>
+                  </div>
+                  <div className="metric">
+                    <span className="metric-value">{(sourcesStatus.summary.avg_success_rate * 100).toFixed(0)}%</span>
+                    <span className="metric-label">AVG SUCCESS RATE</span>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <section className="data-block">
+              <div className="block-header">
+                <h2>SOURCE STATUS</h2>
+                <p>Success rate and last outcome accumulated since this backend process started</p>
+              </div>
+              <table className="data-grid">
+                <thead>
+                  <tr>
+                    <th>SOURCE</th>
+                    <th>CATEGORY</th>
+                    <th>STATUS</th>
+                    <th>SUCCESS RATE</th>
+                    <th>LAST SUCCESS</th>
+                    <th>LAST ERROR</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {sourcesStatus && sourcesStatus.sources.length > 0 ? sourcesStatus.sources.map((src, idx) => (
+                    <tr key={idx}>
+                      <td className="cell-primary">{src.name}</td>
+                      <td className="cell-type">{src.category || '—'}</td>
+                      <td className="cell-phase">
+                        <span style={{
+                          color: src.status === 'active' ? '#00ff88' : src.status === 'degraded' ? '#ffa500' : '#ff0040',
+                          fontWeight: 700
+                        }}>
+                          {src.status.toUpperCase()}
+                        </span>
+                      </td>
+                      <td className="cell-impact">{src.success_rate != null ? `${(src.success_rate * 100).toFixed(0)}%` : '—'}</td>
+                      <td className="cell-date">{src.last_success_at ? new Date(src.last_success_at).toLocaleString() : 'never'}</td>
+                      <td className="cell-rec">{src.last_error || '—'}</td>
+                    </tr>
+                  )) : (
+                    <tr>
+                      <td colSpan={6} className="cell-empty">Loading source status...</td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </section>
+          </div>
+        )}
+
+        {view === 'volatility' && (
+          <div className="terminal-view">
+            <div className="view-header">
+              <h1>VOLATILITY</h1>
+              <p>Real VIX, Fear &amp; Greed, and Reddit sentiment readings, plus upcoming high-phase calendar events as volatility catalysts</p>
+            </div>
+
+            <section className="data-block">
+              <div className="block-header">
+                <h2>SENTIMENT READINGS</h2>
+              </div>
+              <div className="header-metrics">
+                <div className="metric">
+                  <span className="metric-value">{volatility?.vix?.value != null ? volatility.vix.value.toFixed(1) : 'N/A'}</span>
+                  <span className="metric-label">VIX ({volatility?.vix?.bucket || 'Unknown'})</span>
+                </div>
+                <div className="metric">
+                  <span className="metric-value">{volatility?.fear_greed?.value ?? 'N/A'}</span>
+                  <span className="metric-label">FEAR &amp; GREED ({volatility?.fear_greed?.rating || 'Unknown'})</span>
+                </div>
+                <div className="metric">
+                  <span className="metric-value">{volatility?.reddit_sentiment?.value ?? 'N/A'}</span>
+                  <span className="metric-label">REDDIT SENTIMENT (r/wallstreetbets)</span>
+                </div>
+              </div>
+            </section>
+
+            <section className="data-block">
+              <div className="block-header">
+                <h2>VOLATILITY CATALYSTS AHEAD</h2>
+                <p>Real upcoming events already in the danger or euforia phase - not a fabricated impact score</p>
+              </div>
+              <table className="data-grid">
+                <thead>
+                  <tr>
+                    <th>EVENT</th>
+                    <th>DATE</th>
+                    <th>D-X</th>
+                    <th>PHASE</th>
+                    <th>TICKERS</th>
+                    <th>RECOMMENDATION</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {volatility && volatility.volatility_catalysts.length > 0 ? volatility.volatility_catalysts.map((evt) => (
+                    <tr key={evt.id}>
+                      <td className="cell-primary">{evt.title}</td>
+                      <td className="cell-date">{evt.date}</td>
+                      <td className="cell-countdown" style={{ color: evt.phase_color, fontWeight: 700 }}>
+                        {evt.days_until <= 0 ? 'LIVE' : `D-${evt.days_until}`}
+                      </td>
+                      <td className="cell-phase">
+                        <span style={{ color: evt.phase_color, fontWeight: 700 }}>{evt.phase.toUpperCase()}</span>
+                      </td>
+                      <td className="cell-tickers">{(evt.affected_tickers || []).join(', ')}</td>
+                      <td className="cell-rec">{evt.recommendation}</td>
+                    </tr>
+                  )) : (
+                    <tr>
+                      <td colSpan={6} className="cell-empty">No danger/euforia-phase catalysts in the current window</td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
             </section>
           </div>
         )}

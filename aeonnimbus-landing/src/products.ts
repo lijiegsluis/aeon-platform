@@ -27,7 +27,7 @@ export const PRODUCTS: Product[] = [
     tag: 'Know WHEN to trade',
     desc: 'A D-X countdown timeline for earnings and macro releases, sorted into 4 timing phases, with a 90-day insider-trade tracker and categorized AI-prediction views.',
     status: 'live',
-    href: 'http://localhost:5176',
+    href: 'http://localhost:5175',
     video: '/videos/tool-intelligence.mp4',
   },
   {
@@ -45,9 +45,9 @@ export const PRODUCTS: Product[] = [
     layer: 'Execution Layer',
     name: 'Aeon Terminal',
     tag: "Know what's happening NOW",
-    desc: 'The Fincept Terminal — a full Qt-based desktop trading terminal (not a browser app): live watchlists, order flow, and multi-tab workspaces. Runs natively on your machine rather than opening in a tab.',
+    desc: 'A local financial workstation that fuses five open-source finance engines plus original Aeon analytics into one instrument — live watchlists, multi-agent research, and quant tools running natively on your machine, not in a browser tab. Open source: clone it and run one script to start every service.',
     status: 'desktop',
-    href: null,
+    href: 'PLACEHOLDER_GITHUB_REPO_URL',
     video: '/videos/tool-terminal.mp4',
   },
 ]

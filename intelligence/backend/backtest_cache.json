@@ -16,11 +16,11 @@
       "SHOP"
     ],
     "period": {
-      "start": "2026-03-31",
-      "end": "2026-09-27",
+      "start": "2026-04-01",
+      "end": "2026-09-28",
       "days": 180
     },
-    "filings_checked": 209,
+    "filings_checked": 208,
     "signals": {
       "single_buy": {
         "events_found": 1,
@@ -75,7 +75,7 @@
         "sample_events": []
       }
     },
-    "computed_at": "2026-09-27T17:34:37.371092",
+    "computed_at": "2026-09-28T02:02:42.850219",
     "data_sources": "Real SEC Form 4 filing history (data.sec.gov) + real historical daily closes (Yahoo Finance)",
     "caveat": "Small sample size for a handful of large-cap tickers over 6 months - read percentages as directional, not a statistically robust edge. This does not measure the accuracy of the live LLM-generated predictions themselves."
   }

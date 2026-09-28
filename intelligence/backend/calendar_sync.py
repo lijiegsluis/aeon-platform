@@ -7,22 +7,27 @@ the dates below are hardcoded from that published 2026 calendar, not
 guessed — see the source comment above each block. These need a yearly
 refresh (re-pull each schedule once the source publishes next year's dates).
 
-Events with no publicly fixed schedule this far out (individual company
-earnings, OPEC+, G7, debt-ceiling deadlines, GDP advance estimate, retail
-sales) are still date-estimated via a heuristic offset from today, and are
-labeled "(estimated date)" in their title so the UI's D-day countdown isn't
-read as more precise than it actually is.
+Events with no publicly fixed schedule this far out (OPEC+, G7, debt-ceiling
+deadlines, GDP advance estimate, retail sales) are still date-estimated via a
+heuristic offset from today, and are labeled "(estimated date)" in their title
+so the UI's D-day countdown isn't read as more precise than it actually is.
+Individual company earnings dates attempt a real fetch (real_data.get_earnings_date,
+Yahoo Finance calendarEvents) first and only fall back to the same kind of
+heuristic-offset placeholder, honestly labeled, when that fetch fails.
 """
 
 import sqlite3
+import os
 from datetime import datetime, timedelta
 from pathlib import Path
+
+import real_data
 
 
 def seed_calendar():
     """Seed calendar with major economic events"""
 
-    db_path = Path.home() / ".aeon" / "intelligence.db"
+    db_path = Path(os.environ.get("AEON_INTEL_DB_PATH", str(Path.home() / ".aeon" / "intelligence.db")))
     conn = sqlite3.connect(str(db_path))
     c = conn.cursor()
 
@@ -160,8 +165,9 @@ def seed_calendar():
             'impact_score': 7.5
         })
 
-    # Major Tech Earnings — real companies, but no sourced reporting calendar
-    # for this run, so every date is a placeholder offset, not a confirmed one.
+    # Major Tech Earnings — try a real per-ticker earnings date first (Yahoo
+    # Finance calendarEvents); only fall back to the offset-guess placeholder,
+    # clearly labeled "(estimated date)", when the real fetch fails.
     earnings_date = now + timedelta(days=21)
     tech_earnings = [
         ('AAPL', 'Apple Q4 Earnings', 'iPhone sales, Services revenue, China growth'),
@@ -173,14 +179,25 @@ def seed_calendar():
         ('AMZN', 'Amazon Q4 Earnings', 'AWS growth, retail margins, Prime growth'),
     ]
     for i, (ticker, title, desc) in enumerate(tech_earnings):
-        events.append({
-            'title': f'{title} — estimated date',
-            'description': f'{desc}. Exact reporting date not yet confirmed by the company; shown date is a placeholder.',
-            'date': (earnings_date + timedelta(days=i)).replace(hour=16, minute=0).isoformat(),
-            'event_type': 'earnings',
-            'affected_tickers': ticker,
-            'impact_score': 8.5 if ticker in ['AAPL', 'NVDA', 'TSLA'] else 8.0
-        })
+        real_date_iso = real_data.get_earnings_date(ticker)
+        if real_date_iso:
+            events.append({
+                'title': title,
+                'description': desc,
+                'date': real_date_iso,
+                'event_type': 'earnings',
+                'affected_tickers': ticker,
+                'impact_score': 8.5 if ticker in ['AAPL', 'NVDA', 'TSLA'] else 8.0
+            })
+        else:
+            events.append({
+                'title': f'{title} — estimated date',
+                'description': f'{desc}. Exact reporting date not yet confirmed by the company; shown date is a placeholder.',
+                'date': (earnings_date + timedelta(days=i)).replace(hour=16, minute=0).isoformat(),
+                'event_type': 'earnings',
+                'affected_tickers': ticker,
+                'impact_score': 8.5 if ticker in ['AAPL', 'NVDA', 'TSLA'] else 8.0
+            })
 
     # Oil & Energy — EIA publishes weekly, always Wednesday 10:30am ET; the
     # weekday/time is real, we just walk forward week by week from today.
