@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - Aeon Nimbus</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --text: #1f2937;
+            --text-light: #6b7280;
+            --bg: #ffffff;
+            --bg-light: #f9fafb;
+            --border: #e5e7eb;
+            --success: #10b981;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg-light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            padding: 20px 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .hero-pricing {
+            text-align: center;
+            padding: 80px 20px 60px;
+        }
+
+        .hero-pricing h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .hero-pricing p {
+            font-size: 20px;
+            color: var(--text-light);
+            margin-bottom: 40px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .pricing-card {
+            background: var(--bg);
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            padding: 40px 32px;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary);
+            border-width: 3px;
+            position: relative;
+        }
+
+        .badge {
+            background: var(--primary);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+
+        .plan-name {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .plan-description {
+            color: var(--text-light);
+            margin-bottom: 24px;
+        }
+
+        .price {
+            font-size: 56px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .price span {
+            font-size: 20px;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .cta-button {
+            background: var(--primary);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            margin: 24px 0;
+            width: 100%;
+            transition: background 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: var(--primary-dark);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .features-list {
+            list-style: none;
+            text-align: left;
+            margin-top: 32px;
+        }
+
+        .features-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .check {
+            color: var(--success);
+            font-weight: 700;
+        }
+
+        .faq {
+            background: var(--bg);
+            padding: 80px 20px;
+        }
+
+        .faq h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 48px;
+        }
+
+        .faq-item {
+            max-width: 800px;
+            margin: 0 auto 24px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .faq-item h3 {
+            margin-bottom: 12px;
+            font-size: 18px;
+        }
+
+        footer {
+            background: var(--text);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero-pricing h1 { font-size: 36px; }
+            .price { font-size: 40px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">Aeon Nimbus</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-pricing">
+            <div class="container">
+                <h1>Choose Your Plan</h1>
+                <p>Start free, upgrade when you need more power</p>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="plan-name">Explorer</div>
+                    <div class="plan-description">Perfect for individual investors</div>
+                    <div class="price">$0<span>/month</span></div>
+                    <button class="cta-button secondary">Start Free</button>
+
+                    <ul class="features-list">
+                        <li><span class="check">✓</span> Access to 319 companies</li>
+                        <li><span class="check">✓</span> Basic financial data</li>
+                        <li><span class="check">✓</span> Interactive map visualization</li>
+                        <li><span class="check">✓</span> Search and filtering</li>
+                        <li><span class="check">✓</span> CSV export</li>
+                        <li><span class="check">✓</span> 5 companies in watchlist</li>
+                    </ul>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="badge">Most Popular</div>
+                    <div class="plan-name">Professional</div>
+                    <div class="plan-description">For serious analysts and traders</div>
+                    <div class="price">$29<span>/month</span></div>
+                    <button class="cta-button">Start 14-Day Trial</button>
+
+                    <ul class="features-list">
+                        <li><span class="check">✓</span> Everything in Explorer</li>
+                        <li><span class="check">✓</span> Real-time pricing data</li>
+                        <li><span class="check">✓</span> Historical price charts</li>
+                        <li><span class="check">✓</span> Peer benchmarking</li>
+                        <li><span class="check">✓</span> PDF report export</li>
+                        <li><span class="check">✓</span> Email price alerts</li>
+                        <li><span class="check">✓</span> Company news feed</li>
+                        <li><span class="check">✓</span> Earnings calendar</li>
+                        <li><span class="check">✓</span> Unlimited watchlist</li>
+                        <li><span class="check">✓</span> Advanced screening</li>
+                    </ul>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="plan-name">Enterprise</div>
+                    <div class="plan-description">For teams and institutions</div>
+                    <div class="price">$199<span>/month</span></div>
+                    <button class="cta-button">Contact Sales</button>
+
+                    <ul class="features-list">
+                        <li><span class="check">✓</span> Everything in Professional</li>
+                        <li><span class="check">✓</span> API access (1000 calls/day)</li>
+                        <li><span class="check">✓</span> Custom data integrations</li>
+                        <li><span class="check">✓</span> White-label options</li>
+                        <li><span class="check">✓</span> Priority support</li>
+                        <li><span class="check">✓</span> Team collaboration tools</li>
+                        <li><span class="check">✓</span> SSO & advanced security</li>
+                        <li><span class="check">✓</span> Dedicated account manager</li>
+                        <li><span class="check">✓</span> Custom reporting</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq">
+            <div class="container">
+                <h2>Frequently Asked Questions</h2>
+
+                <div class="faq-item">
+                    <h3>What payment methods do you accept?</h3>
+                    <p>We accept all major credit cards, PayPal, and wire transfers for Enterprise plans.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Can I upgrade or downgrade my plan?</h3>
+                    <p>Yes, you can change your plan at any time. Upgrades take effect immediately, downgrades at the end of your billing period.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Is there a free trial for Professional?</h3>
+                    <p>Yes, we offer a 14-day free trial with full access to all Professional features. No credit card required.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How often is data updated?</h3>
+                    <p>Financial data is updated quarterly. Real-time pricing (Professional+) updates every 15 minutes during market hours.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>What countries are covered?</h3>
+                    <p>We currently cover 25+ countries with focus on US, Europe, Asia, and Africa markets (319 companies total).</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Aeon Nimbus. All rights reserved.</p>
+    </footer>
+</body>
+</html>

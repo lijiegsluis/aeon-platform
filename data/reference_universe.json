@@ -1,0 +1,794 @@
+{
+ "reference": [
+  {
+   "name": "Gold Fields Limited",
+   "ticker": "GFI",
+   "exchange": "Johannesburg Stock Exchange (JSE)",
+   "country": "South Africa",
+   "sector": "Materials",
+   "currency": "USD"
+  },
+  {
+   "name": "AngloGold Ashanti",
+   "ticker": "ANG",
+   "exchange": "Johannesburg Stock Exchange (JSE)",
+   "country": "South Africa",
+   "sector": "Materials",
+   "currency": "USD"
+  },
+  {
+   "name": "Sibanye-Stillwater",
+   "ticker": "SSW",
+   "exchange": "Johannesburg Stock Exchange (JSE)",
+   "country": "South Africa",
+   "sector": "Materials",
+   "currency": "ZAR"
+  },
+  {
+   "name": "Impala Platinum Holdings",
+   "ticker": "IMP",
+   "exchange": "Johannesburg Stock Exchange (JSE)",
+   "country": "South Africa",
+   "sector": "Materials",
+   "currency": "ZAR"
+  },
+  {
+   "name": "Kumba Iron Ore",
+   "ticker": "KIO",
+   "exchange": "Johannesburg Stock Exchange (JSE)",
+   "country": "South Africa",
+   "sector": "Materials",
+   "currency": "ZAR"
+  },
+  {
+   "name": "Exxaro Resources",
+   "ticker": "EXX",
+   "exchange": "Johannesburg Stock Exchange (JSE)",
+   "country": "South Africa",
+   "sector": "Energy",
+   "currency": "ZAR"
+  },
+  {
+   "name": "Nedbank Group",
+   "ticker": "NED",
+   "exchange": "Johannesburg Stock Exchange (JSE)",
+   "country": "South Africa",
+   "sector": "Financials",
+   "currency": "ZAR"
+  },
+  {
+   "name": "Investec Limited",
+   "ticker": "INL",
+   "exchange": "Johannesburg Stock Exchange (JSE)",
+   "country": "South Africa",
+   "sector": "Financials",
+   "currency": "ZAR"
+  },
+  {
+   "name": "Discovery Limited",
+   "ticker": "DSY",
+   "exchange": "Johannesburg Stock Exchange (JSE)",
+   "country": "South Africa",
+   "sector": "Financials",
+   "currency": "ZAR"
+  },
+  {
+   "name": "Sanlam Limited",
+   "ticker": "SLM",
+   "exchange": "Johannesburg Stock Exchange (JSE)",
+   "country": "South Africa",
+   "sector": "Financials",
+   "currency": "ZAR"
+  },
+  {
+   "name": "Old Mutual Limited",
+   "ticker": "OMU",
+   "exchange": "Johannesburg Stock Exchange (JSE)",
+   "country": "South Africa",
+   "sector": "Financials",
+   "currency": "ZAR"
+  },
+  {
+   "name": "Remgro Limited",
+   "ticker": "REM",
+   "exchange": "Johannesburg Stock Exchange (JSE)",
+   "country": "South Africa",
+   "sector": "Financials",
+   "currency": "ZAR"
+  },
+  {
+   "name": "Bidvest Group",
+   "ticker": "BVT",
+   "exchange": "Johannesburg Stock Exchange (JSE)",
+   "country": "South Africa",
+   "sector": "Industrials",
+   "currency": "ZAR"
+  },
+  {
+   "name": "Woolworths Holdings",
+   "ticker": "WHL",
+   "exchange": "Johannesburg Stock Exchange (JSE)",
+   "country": "South Africa",
+   "sector": "Consumer Staples",
+   "currency": "ZAR"
+  },
+  {
+   "name": "Clicks Group",
+   "ticker": "CLS",
+   "exchange": "Johannesburg Stock Exchange (JSE)",
+   "country": "South Africa",
+   "sector": "Consumer Staples",
+   "currency": "ZAR"
+  },
+  {
+   "name": "Mr Price Group",
+   "ticker": "MRP",
+   "exchange": "Johannesburg Stock Exchange (JSE)",
+   "country": "South Africa",
+   "sector": "Consumer Discretionary",
+   "currency": "ZAR"
+  },
+  {
+   "name": "Truworths International",
+   "ticker": "TRU",
+   "exchange": "Johannesburg Stock Exchange (JSE)",
+   "country": "South Africa",
+   "sector": "Consumer Discretionary",
+   "currency": "ZAR"
+  },
+  {
+   "name": "Pick n Pay Stores",
+   "ticker": "PIK",
+   "exchange": "Johannesburg Stock Exchange (JSE)",
+   "country": "South Africa",
+   "sector": "Consumer Staples",
+   "currency": "ZAR"
+  },
+  {
+   "name": "AVI Limited",
+   "ticker": "AVI",
+   "exchange": "Johannesburg Stock Exchange (JSE)",
+   "country": "South Africa",
+   "sector": "Consumer Staples",
+   "currency": "ZAR"
+  },
+  {
+   "name": "Aspen Pharmacare",
+   "ticker": "APN",
+   "exchange": "Johannesburg Stock Exchange (JSE)",
+   "country": "South Africa",
+   "sector": "Health Care",
+   "currency": "ZAR"
+  },
+  {
+   "name": "Netcare Limited",
+   "ticker": "NTC",
+   "exchange": "Johannesburg Stock Exchange (JSE)",
+   "country": "South Africa",
+   "sector": "Health Care",
+   "currency": "ZAR"
+  },
+  {
+   "name": "Life Healthcare Group",
+   "ticker": "LHC",
+   "exchange": "Johannesburg Stock Exchange (JSE)",
+   "country": "South Africa",
+   "sector": "Health Care",
+   "currency": "ZAR"
+  },
+  {
+   "name": "MultiChoice Group",
+   "ticker": "MCG",
+   "exchange": "Johannesburg Stock Exchange (JSE)",
+   "country": "South Africa",
+   "sector": "Communication Services",
+   "currency": "ZAR"
+  },
+  {
+   "name": "Telkom SA SOC",
+   "ticker": "TKG",
+   "exchange": "Johannesburg Stock Exchange (JSE)",
+   "country": "South Africa",
+   "sector": "Telecommunications",
+   "currency": "ZAR"
+  },
+  {
+   "name": "Sappi Limited",
+   "ticker": "SAP",
+   "exchange": "Johannesburg Stock Exchange (JSE)",
+   "country": "South Africa",
+   "sector": "Materials",
+   "currency": "ZAR"
+  },
+  {
+   "name": "Mondi plc",
+   "ticker": "MNP",
+   "exchange": "Johannesburg Stock Exchange (JSE)",
+   "country": "South Africa",
+   "sector": "Materials",
+   "currency": "ZAR"
+  },
+  {
+   "name": "Barloworld Limited",
+   "ticker": "BAW",
+   "exchange": "Johannesburg Stock Exchange (JSE)",
+   "country": "South Africa",
+   "sector": "Industrials",
+   "currency": "ZAR"
+  },
+  {
+   "name": "Growthpoint Properties",
+   "ticker": "GRT",
+   "exchange": "Johannesburg Stock Exchange (JSE)",
+   "country": "South Africa",
+   "sector": "Real Estate",
+   "currency": "ZAR"
+  },
+  {
+   "name": "KenGen",
+   "ticker": "KEGN",
+   "exchange": "Nairobi Securities Exchange (NSE)",
+   "country": "Kenya",
+   "sector": "Utilities",
+   "currency": "KES"
+  },
+  {
+   "name": "Kenya Power & Lighting",
+   "ticker": "KPLC",
+   "exchange": "Nairobi Securities Exchange (NSE)",
+   "country": "Kenya",
+   "sector": "Utilities",
+   "currency": "KES"
+  },
+  {
+   "name": "BAT Kenya",
+   "ticker": "BAT",
+   "exchange": "Nairobi Securities Exchange (NSE)",
+   "country": "Kenya",
+   "sector": "Consumer Staples",
+   "currency": "KES"
+  },
+  {
+   "name": "NCBA Group",
+   "ticker": "NCBA",
+   "exchange": "Nairobi Securities Exchange (NSE)",
+   "country": "Kenya",
+   "sector": "Financials",
+   "currency": "KES"
+  },
+  {
+   "name": "Stanbic Holdings",
+   "ticker": "SBIC",
+   "exchange": "Nairobi Securities Exchange (NSE)",
+   "country": "Kenya",
+   "sector": "Financials",
+   "currency": "KES"
+  },
+  {
+   "name": "I&M Group",
+   "ticker": "IMH",
+   "exchange": "Nairobi Securities Exchange (NSE)",
+   "country": "Kenya",
+   "sector": "Financials",
+   "currency": "KES"
+  },
+  {
+   "name": "Britam Holdings",
+   "ticker": "BRIT",
+   "exchange": "Nairobi Securities Exchange (NSE)",
+   "country": "Kenya",
+   "sector": "Financials",
+   "currency": "KES"
+  },
+  {
+   "name": "Nation Media Group",
+   "ticker": "NMG",
+   "exchange": "Nairobi Securities Exchange (NSE)",
+   "country": "Kenya",
+   "sector": "Communication Services",
+   "currency": "KES"
+  },
+  {
+   "name": "Access Holdings",
+   "ticker": "ACCESSCORP",
+   "exchange": "Nigerian Exchange (NGX)",
+   "country": "Nigeria",
+   "sector": "Financials",
+   "currency": "NGN"
+  },
+  {
+   "name": "United Bank for Africa",
+   "ticker": "UBA",
+   "exchange": "Nigerian Exchange (NGX)",
+   "country": "Nigeria",
+   "sector": "Financials",
+   "currency": "NGN"
+  },
+  {
+   "name": "FBN Holdings",
+   "ticker": "FBNH",
+   "exchange": "Nigerian Exchange (NGX)",
+   "country": "Nigeria",
+   "sector": "Financials",
+   "currency": "NGN"
+  },
+  {
+   "name": "Stanbic IBTC Holdings",
+   "ticker": "STANBIC",
+   "exchange": "Nigerian Exchange (NGX)",
+   "country": "Nigeria",
+   "sector": "Financials",
+   "currency": "NGN"
+  },
+  {
+   "name": "Nestle Nigeria",
+   "ticker": "NESTLE",
+   "exchange": "Nigerian Exchange (NGX)",
+   "country": "Nigeria",
+   "sector": "Consumer Staples",
+   "currency": "NGN"
+  },
+  {
+   "name": "Guinness Nigeria",
+   "ticker": "GUINNESS",
+   "exchange": "Nigerian Exchange (NGX)",
+   "country": "Nigeria",
+   "sector": "Consumer Staples",
+   "currency": "NGN"
+  },
+  {
+   "name": "Dangote Sugar Refinery",
+   "ticker": "DANGSUGAR",
+   "exchange": "Nigerian Exchange (NGX)",
+   "country": "Nigeria",
+   "sector": "Consumer Staples",
+   "currency": "NGN"
+  },
+  {
+   "name": "Flour Mills of Nigeria",
+   "ticker": "FLOURMILL",
+   "exchange": "Nigerian Exchange (NGX)",
+   "country": "Nigeria",
+   "sector": "Consumer Staples",
+   "currency": "NGN"
+  },
+  {
+   "name": "Lafarge Africa",
+   "ticker": "WAPCO",
+   "exchange": "Nigerian Exchange (NGX)",
+   "country": "Nigeria",
+   "sector": "Materials",
+   "currency": "NGN"
+  },
+  {
+   "name": "Seplat Energy",
+   "ticker": "SEPLAT",
+   "exchange": "Nigerian Exchange (NGX)",
+   "country": "Nigeria",
+   "sector": "Energy",
+   "currency": "NGN"
+  },
+  {
+   "name": "Transcorp",
+   "ticker": "TRANSCORP",
+   "exchange": "Nigerian Exchange (NGX)",
+   "country": "Nigeria",
+   "sector": "Industrials",
+   "currency": "NGN"
+  },
+  {
+   "name": "Telecom Egypt",
+   "ticker": "ETEL",
+   "exchange": "Egyptian Exchange (EGX)",
+   "country": "Egypt",
+   "sector": "Telecommunications",
+   "currency": "EGP"
+  },
+  {
+   "name": "EFG Hermes Holding",
+   "ticker": "HRHO",
+   "exchange": "Egyptian Exchange (EGX)",
+   "country": "Egypt",
+   "sector": "Financials",
+   "currency": "EGP"
+  },
+  {
+   "name": "Talaat Moustafa Group",
+   "ticker": "TMGH",
+   "exchange": "Egyptian Exchange (EGX)",
+   "country": "Egypt",
+   "sector": "Real Estate",
+   "currency": "EGP"
+  },
+  {
+   "name": "Elsewedy Electric",
+   "ticker": "SWDY",
+   "exchange": "Egyptian Exchange (EGX)",
+   "country": "Egypt",
+   "sector": "Industrials",
+   "currency": "EGP"
+  },
+  {
+   "name": "Fawry",
+   "ticker": "FWRY",
+   "exchange": "Egyptian Exchange (EGX)",
+   "country": "Egypt",
+   "sector": "Technology",
+   "currency": "EGP"
+  },
+  {
+   "name": "Juhayna Food Industries",
+   "ticker": "JUFO",
+   "exchange": "Egyptian Exchange (EGX)",
+   "country": "Egypt",
+   "sector": "Consumer Staples",
+   "currency": "EGP"
+  },
+  {
+   "name": "Attijariwafa Bank",
+   "ticker": "ATW",
+   "exchange": "Casablanca Stock Exchange",
+   "country": "Morocco",
+   "sector": "Financials",
+   "currency": "MAD"
+  },
+  {
+   "name": "Banque Centrale Populaire",
+   "ticker": "BCP",
+   "exchange": "Casablanca Stock Exchange",
+   "country": "Morocco",
+   "sector": "Financials",
+   "currency": "MAD"
+  },
+  {
+   "name": "Bank of Africa (BMCE)",
+   "ticker": "BOA",
+   "exchange": "Casablanca Stock Exchange",
+   "country": "Morocco",
+   "sector": "Financials",
+   "currency": "MAD"
+  },
+  {
+   "name": "Cosumar",
+   "ticker": "CSR",
+   "exchange": "Casablanca Stock Exchange",
+   "country": "Morocco",
+   "sector": "Consumer Staples",
+   "currency": "MAD"
+  },
+  {
+   "name": "Ecobank Transnational (ETI)",
+   "ticker": "ETIT",
+   "exchange": "BRVM",
+   "country": "Togo",
+   "sector": "Financials",
+   "currency": "XOF"
+  },
+  {
+   "name": "Orange Cote d'Ivoire",
+   "ticker": "ORAC",
+   "exchange": "BRVM",
+   "country": "Cote d'Ivoire",
+   "sector": "Telecommunications",
+   "currency": "XOF"
+  },
+  {
+   "name": "GCB Bank",
+   "ticker": "GCB",
+   "exchange": "Ghana Stock Exchange",
+   "country": "Ghana",
+   "sector": "Financials",
+   "currency": "GHS"
+  },
+  {
+   "name": "Ecobank Ghana",
+   "ticker": "EGH",
+   "exchange": "Ghana Stock Exchange",
+   "country": "Ghana",
+   "sector": "Financials",
+   "currency": "GHS"
+  }
+ ],
+ "covered": [
+  {
+   "name": "Safaricom PLC",
+   "ticker": "SCOM",
+   "exchange": "Nairobi Securities Exchange (NSE)",
+   "country": "Kenya",
+   "sector": "Telecommunications",
+   "currency": "KES",
+   "slug": "safaricom_plc",
+   "covered": true
+  },
+  {
+   "name": "MTN Group",
+   "ticker": "MTN",
+   "exchange": "Johannesburg Stock Exchange (JSE)",
+   "country": "South Africa",
+   "sector": "Telecommunications",
+   "currency": "ZAR",
+   "slug": "mtn_group",
+   "covered": true
+  },
+  {
+   "name": "Airtel Africa plc",
+   "ticker": "AAF",
+   "exchange": "London Stock Exchange (LSE)",
+   "country": "United Kingdom",
+   "sector": "Telecommunications",
+   "currency": "USD",
+   "slug": "airtel_africa_plc",
+   "covered": true
+  },
+  {
+   "name": "Vodacom Group",
+   "ticker": "VOD",
+   "exchange": "Johannesburg Stock Exchange (JSE)",
+   "country": "South Africa",
+   "sector": "Telecommunications",
+   "currency": "ZAR",
+   "slug": "vodacom_group",
+   "covered": true
+  },
+  {
+   "name": "MTN Nigeria Communications Plc",
+   "ticker": "MTNN",
+   "exchange": "Nigerian Exchange (NGX)",
+   "country": "Nigeria",
+   "sector": "Communication Services / Telecommunications",
+   "currency": "NGN",
+   "slug": "mtn_nigeria_communications_plc",
+   "covered": true
+  },
+  {
+   "name": "Sonatel",
+   "ticker": "SNTS",
+   "exchange": "BRVM (Bourse Régionale des Valeurs Mobilières)",
+   "country": "Senegal",
+   "sector": "Telecommunications",
+   "currency": "XOF",
+   "slug": "sonatel",
+   "covered": true
+  },
+  {
+   "name": "Maroc Telecom",
+   "ticker": "IAM",
+   "exchange": "Casablanca Stock Exchange (Bourse de Casablanca)",
+   "country": "Morocco",
+   "sector": "Telecommunications",
+   "currency": "MAD",
+   "slug": "maroc_telecom",
+   "covered": true
+  },
+  {
+   "name": "Equity Group Holdings",
+   "ticker": "EQTY",
+   "exchange": "Nairobi Securities Exchange (NSE)",
+   "country": "Kenya",
+   "sector": "Financials",
+   "currency": "KES",
+   "slug": "equity_group_holdings",
+   "covered": true
+  },
+  {
+   "name": "The Co-operative Bank of Kenya Limited",
+   "ticker": "COOP",
+   "exchange": "Nairobi Securities Exchange (NSE)",
+   "country": "Kenya",
+   "sector": "Financials",
+   "currency": "KES",
+   "slug": "the_co_operative_bank_of_kenya_limited",
+   "covered": true
+  },
+  {
+   "name": "Standard Bank Group",
+   "ticker": "SBK",
+   "exchange": "JSE (Johannesburg Stock Exchange)",
+   "country": "South Africa",
+   "sector": "Financials",
+   "currency": "ZAR",
+   "slug": "standard_bank_group",
+   "covered": true
+  },
+  {
+   "name": "FirstRand",
+   "ticker": "FSR",
+   "exchange": "JSE (Johannesburg Stock Exchange)",
+   "country": "South Africa",
+   "sector": "Financials",
+   "currency": "ZAR",
+   "slug": "firstrand",
+   "covered": true
+  },
+  {
+   "name": "Absa Group",
+   "ticker": "ABG",
+   "exchange": "JSE (Johannesburg Stock Exchange)",
+   "country": "South Africa",
+   "sector": "Financials",
+   "currency": "ZAR",
+   "slug": "absa_group",
+   "covered": true
+  },
+  {
+   "name": "Commercial International Bank (CIB) Egypt",
+   "ticker": "COMI",
+   "exchange": "EGX (Egyptian Exchange)",
+   "country": "Egypt",
+   "sector": "Financials",
+   "currency": "EGP",
+   "slug": "commercial_international_bank_cib_egypt",
+   "covered": true
+  },
+  {
+   "name": "KCB Group Plc",
+   "ticker": "KCB",
+   "exchange": "Nairobi Securities Exchange (NSE)",
+   "country": "Kenya",
+   "sector": "Financials",
+   "currency": "KES",
+   "slug": "kcb_group_plc",
+   "covered": true
+  },
+  {
+   "name": "Guaranty Trust Holding Company Plc (GTCO Plc)",
+   "ticker": "GTCO",
+   "exchange": "NGX (Nigerian Exchange); also dual-listed on London Stock Exchange main market since July 2025",
+   "country": "Nigeria",
+   "sector": "Financials",
+   "currency": "NGN",
+   "slug": "guaranty_trust_holding_company_plc_gtco_plc",
+   "covered": true
+  },
+  {
+   "name": "Zenith Bank Plc",
+   "ticker": "ZENITHBANK",
+   "exchange": "Nigerian Exchange (NGX)",
+   "country": "Nigeria",
+   "sector": "Financials",
+   "currency": "NGN",
+   "slug": "zenith_bank_plc",
+   "covered": true
+  },
+  {
+   "name": "Capitec Bank Holdings Limited",
+   "ticker": "CPI",
+   "exchange": "Johannesburg Stock Exchange (JSE)",
+   "country": "South Africa",
+   "sector": "Financials",
+   "currency": "ZAR",
+   "slug": "capitec_bank_holdings_limited",
+   "covered": true
+  },
+  {
+   "name": "East African Breweries PLC",
+   "ticker": "EABL",
+   "exchange": "Nairobi Securities Exchange (NSE); cross-listed on Uganda Securities Exchange (USE) and Dar es Salaam Stock Exchange (DSE)",
+   "country": "Kenya",
+   "sector": "Consumer Staples",
+   "currency": "KES",
+   "slug": "east_african_breweries_plc",
+   "covered": true
+  },
+  {
+   "name": "Shoprite Holdings Limited",
+   "ticker": "SHP",
+   "exchange": "JSE (Johannesburg Stock Exchange); secondary listings on A2X, Namibian Stock Exchange (NSX) and Lusaka Securities Exchange (LuSE, Zambia)",
+   "country": "South Africa",
+   "sector": "Consumer Staples",
+   "currency": "ZAR",
+   "slug": "shoprite_holdings_limited",
+   "covered": true
+  },
+  {
+   "name": "Tiger Brands Limited",
+   "ticker": "TBS",
+   "exchange": "JSE (Johannesburg Stock Exchange)",
+   "country": "South Africa",
+   "sector": "Consumer Staples",
+   "currency": "ZAR",
+   "slug": "tiger_brands_limited",
+   "covered": true
+  },
+  {
+   "name": "Nigerian Breweries Plc",
+   "ticker": "NB",
+   "exchange": "Nigerian Exchange (NGX)",
+   "country": "Nigeria",
+   "sector": "Consumer Staples",
+   "currency": "NGN",
+   "slug": "nigerian_breweries_plc",
+   "covered": true
+  },
+  {
+   "name": "BUA Foods Plc",
+   "ticker": "BUAFOODS",
+   "exchange": "Nigerian Exchange (NGX)",
+   "country": "Nigeria",
+   "sector": "Consumer Staples",
+   "currency": "NGN",
+   "slug": "bua_foods_plc",
+   "covered": true
+  },
+  {
+   "name": "Dangote Cement Plc",
+   "ticker": "DANGCEM",
+   "exchange": "Nigerian Exchange (NGX)",
+   "country": "Nigeria",
+   "sector": "Materials",
+   "currency": "NGN",
+   "slug": "dangote_cement_plc",
+   "covered": true
+  },
+  {
+   "name": "BUA Cement Plc",
+   "ticker": "BUACEMENT",
+   "exchange": "Nigerian Exchange (NGX)",
+   "country": "Nigeria",
+   "sector": "Materials",
+   "currency": "NGN",
+   "slug": "bua_cement_plc",
+   "covered": true
+  },
+  {
+   "name": "Bamburi Cement PLC",
+   "ticker": "BAMB",
+   "exchange": "Nairobi Securities Exchange (NSE)",
+   "country": "Kenya",
+   "sector": "Materials",
+   "currency": "KES",
+   "slug": "bamburi_cement_plc",
+   "covered": true
+  },
+  {
+   "name": "Sasol Limited",
+   "ticker": "SOL (JSE); SSL (NYSE ADR)",
+   "exchange": "JSE (Johannesburg Stock Exchange); secondary NYSE ADR",
+   "country": "South Africa",
+   "sector": "Energy",
+   "currency": "ZAR",
+   "slug": "sasol_limited",
+   "covered": true
+  },
+  {
+   "name": "Seplat Energy Plc",
+   "ticker": "SEPL (LSE) / SEPLAT (NGX)",
+   "exchange": "London Stock Exchange (LSE) and Nigerian Exchange (NGX) — dual listing",
+   "country": "Nigeria",
+   "sector": "Energy",
+   "currency": "USD",
+   "slug": "seplat_energy_plc",
+   "covered": true
+  },
+  {
+   "name": "Naspers Limited",
+   "ticker": "NPN",
+   "exchange": "Johannesburg Stock Exchange (JSE)",
+   "country": "South Africa",
+   "sector": "Technology / Internet",
+   "currency": "USD",
+   "slug": "naspers_limited",
+   "covered": true
+  },
+  {
+   "name": "Bid Corporation Limited",
+   "ticker": "BID",
+   "exchange": "Johannesburg Stock Exchange (JSE)",
+   "country": "South Africa",
+   "sector": "Consumer Staples",
+   "currency": "ZAR",
+   "slug": "bid_corporation_limited",
+   "covered": true
+  },
+  {
+   "name": "Scancom PLC (MTN Ghana)",
+   "ticker": "MTNGH",
+   "exchange": "Ghana Stock Exchange (GSE)",
+   "country": "Ghana",
+   "sector": "Communication Services / Telecommunications",
+   "currency": "GHS",
+   "slug": "scancom_plc_mtn_ghana",
+   "covered": true
+  }
+ ]
+}

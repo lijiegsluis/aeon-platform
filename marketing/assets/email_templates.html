@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<!-- EMAIL TEMPLATE LIBRARY FOR AEON NIMBUS -->
+
+<!-- ==================== TEMPLATE 1: WELCOME EMAIL ==================== -->
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Aeon Nimbus</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #f9fafb;">
+    <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f9fafb; padding: 40px 20px;">
+        <tr>
+            <td align="center">
+                <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 8px; overflow: hidden;">
+                    <!-- Header -->
+                    <tr>
+                        <td style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px 40px 30px; text-align: center;">
+                            <h1 style="color: #ffffff; margin: 0; font-size: 28px;">Welcome to Aeon Nimbus!</h1>
+                        </td>
+                    </tr>
+                    <!-- Body -->
+                    <tr>
+                        <td style="padding: 40px;">
+                            <p style="font-size: 16px; line-height: 1.6; color: #1f2937; margin: 0 0 20px;">Hi {{name}},</p>
+                            <p style="font-size: 16px; line-height: 1.6; color: #1f2937; margin: 0 0 20px;">Welcome to Aeon Nimbus! You now have access to comprehensive financial data for 319 companies across 25+ countries.</p>
+                            <p style="font-size: 16px; line-height: 1.6; color: #1f2937; margin: 0 0 30px;"><strong>Here's how to get started:</strong></p>
+                            <ol style="font-size: 16px; line-height: 1.8; color: #1f2937; margin: 0 0 30px; padding-left: 20px;">
+                                <li>Search for a company (try "Apple" or "AAPL")</li>
+                                <li>Explore the interactive map</li>
+                                <li>Add companies to your watchlist</li>
+                                <li>Export your first report</li>
+                            </ol>
+                            <table width="100%" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td align="center" style="padding: 20px 0;">
+                                        <a href="{{platform_url}}" style="background-color: #2563eb; color: #ffffff; padding: 14px 28px; text-decoration: none; border-radius: 6px; font-weight: 600; display: inline-block;">Go to Platform</a>
+                                    </td>
+                                </tr>
+                            </table>
+                            <p style="font-size: 14px; line-height: 1.6; color: #6b7280; margin: 20px 0 0;">Need help? Check out our <a href="{{help_url}}" style="color: #2563eb;">Getting Started guide</a>.</p>
+                        </td>
+                    </tr>
+                    <!-- Footer -->
+                    <tr>
+                        <td style="background-color: #f9fafb; padding: 30px 40px; text-align: center; border-top: 1px solid #e5e7eb;">
+                            <p style="font-size: 14px; color: #6b7280; margin: 0 0 10px;">Happy investing,<br>The Aeon Nimbus Team</p>
+                            <p style="font-size: 12px; color: #9ca3af; margin: 0;">© 2026 Aeon Nimbus. All rights reserved.</p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+
+<!-- ==================== TEMPLATE 2: UPGRADE PROMPT ==================== -->
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Unlock Real-Time Data & Alerts</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #f9fafb;">
+    <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f9fafb; padding: 40px 20px;">
+        <tr>
+            <td align="center">
+                <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 8px;">
+                    <tr>
+                        <td style="padding: 40px;">
+                            <h2 style="color: #1f2937; margin: 0 0 20px; font-size: 24px;">Ready for More?</h2>
+                            <p style="font-size: 16px; line-height: 1.6; color: #1f2937; margin: 0 0 20px;">You've been using Aeon Nimbus Free for {{days}} days. Professional unlocks powerful features:</p>
+                            <ul style="font-size: 16px; line-height: 1.8; color: #1f2937; margin: 0 0 30px; padding-left: 20px;">
+                                <li>Real-time pricing</li>
+                                <li>Unlimited watchlist</li>
+                                <li>Email price alerts</li>
+                                <li>PDF exports</li>
+                                <li>Historical charts</li>
+                                <li>News integration</li>
+                            </ul>
+                            <table width="100%" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td align="center">
+                                        <a href="{{upgrade_url}}" style="background-color: #2563eb; color: #ffffff; padding: 14px 28px; text-decoration: none; border-radius: 6px; font-weight: 600; display: inline-block;">Start 14-Day Free Trial</a>
+                                    </td>
+                                </tr>
+                            </table>
+                            <p style="font-size: 14px; color: #6b7280; margin: 20px 0 0; text-align: center;">No credit card required</p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+
+<!-- ==================== TEMPLATE 3: PRICE ALERT ==================== -->
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Price Alert: {{ticker}}</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #f9fafb;">
+    <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f9fafb; padding: 40px 20px;">
+        <tr>
+            <td align="center">
+                <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 8px;">
+                    <tr>
+                        <td style="padding: 40px;">
+                            <h2 style="color: #1f2937; margin: 0 0 20px; font-size: 24px;">Price Alert: {{company_name}}</h2>
+                            <p style="font-size: 16px; line-height: 1.6; color: #1f2937; margin: 0 0 20px;">{{ticker}} has moved <strong>{{change_percent}}%</strong> to <strong>${{current_price}}</strong>.</p>
+                            <table width="100%" cellpadding="12" cellspacing="0" style="background-color: #f9fafb; border-radius: 6px; margin: 0 0 20px;">
+                                <tr>
+                                    <td style="font-size: 14px; color: #6b7280;">Previous Close</td>
+                                    <td style="font-size: 14px; color: #1f2937; text-align: right;">${{previous_close}}</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-size: 14px; color: #6b7280;">Current Price</td>
+                                    <td style="font-size: 14px; color: #1f2937; text-align: right; font-weight: 600;">${{current_price}}</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-size: 14px; color: #6b7280;">Change</td>
+                                    <td style="font-size: 14px; color: {{change_color}}; text-align: right; font-weight: 600;">{{change_percent}}%</td>
+                                </tr>
+                            </table>
+                            <table width="100%" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td align="center">
+                                        <a href="{{company_url}}" style="background-color: #2563eb; color: #ffffff; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: 600; display: inline-block;">View Details</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+
+<!-- ==================== TEMPLATE 4: WEEKLY DIGEST ==================== -->
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Your Weekly Watchlist Update</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #f9fafb;">
+    <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f9fafb; padding: 40px 20px;">
+        <tr>
+            <td align="center">
+                <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 8px;">
+                    <tr>
+                        <td style="padding: 40px;">
+                            <h2 style="color: #1f2937; margin: 0 0 10px; font-size: 24px;">Your Weekly Watchlist</h2>
+                            <p style="font-size: 14px; color: #6b7280; margin: 0 0 30px;">Here's what happened with your tracked companies this week</p>
+
+                            <!-- Top Gainer -->
+                            <h3 style="color: #10b981; margin: 0 0 15px; font-size: 18px;">📈 Top Gainer</h3>
+                            <p style="font-size: 16px; color: #1f2937; margin: 0 0 5px;"><strong>{{top_gainer_name}}</strong> ({{top_gainer_ticker}})</p>
+                            <p style="font-size: 14px; color: #10b981; margin: 0 0 30px; font-weight: 600;">+{{top_gainer_change}}%</p>
+
+                            <!-- Top Loser -->
+                            <h3 style="color: #ef4444; margin: 0 0 15px; font-size: 18px;">📉 Top Loser</h3>
+                            <p style="font-size: 16px; color: #1f2937; margin: 0 0 5px;"><strong>{{top_loser_name}}</strong> ({{top_loser_ticker}})</p>
+                            <p style="font-size: 14px; color: #ef4444; margin: 0 0 30px; font-weight: 600;">{{top_loser_change}}%</p>
+
+                            <!-- Earnings This Week -->
+                            <h3 style="color: #1f2937; margin: 0 0 15px; font-size: 18px;">📅 Upcoming Earnings</h3>
+                            <p style="font-size: 14px; color: #6b7280; margin: 0 0 30px;">{{earnings_count}} companies in your watchlist report earnings this week</p>
+
+                            <table width="100%" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td align="center">
+                                        <a href="{{watchlist_url}}" style="background-color: #2563eb; color: #ffffff; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: 600; display: inline-block;">View Full Watchlist</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+
+<!-- ==================== TEMPLATE 5: PASSWORD RESET ==================== -->
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Reset Your Password</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #f9fafb;">
+    <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f9fafb; padding: 40px 20px;">
+        <tr>
+            <td align="center">
+                <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 8px;">
+                    <tr>
+                        <td style="padding: 40px;">
+                            <h2 style="color: #1f2937; margin: 0 0 20px; font-size: 24px;">Reset Your Password</h2>
+                            <p style="font-size: 16px; line-height: 1.6; color: #1f2937; margin: 0 0 20px;">We received a request to reset your password for your Aeon Nimbus account.</p>
+                            <p style="font-size: 16px; line-height: 1.6; color: #1f2937; margin: 0 0 30px;">Click the button below to create a new password. This link expires in 1 hour.</p>
+                            <table width="100%" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td align="center">
+                                        <a href="{{reset_url}}" style="background-color: #2563eb; color: #ffffff; padding: 14px 28px; text-decoration: none; border-radius: 6px; font-weight: 600; display: inline-block;">Reset Password</a>
+                                    </td>
+                                </tr>
+                            </table>
+                            <p style="font-size: 14px; line-height: 1.6; color: #6b7280; margin: 30px 0 0;">If you didn't request this, you can safely ignore this email. Your password won't change.</p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

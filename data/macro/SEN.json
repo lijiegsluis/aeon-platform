@@ -1,0 +1,25 @@
+{
+  "country": "Senegal",
+  "iso3": "SEN",
+  "series": {
+    "gdp_usd": {
+      "error": "Expecting value: line 1 column 1 (char 0)"
+    },
+    "gdp_growth_pct": {
+      "error": "Expecting value: line 1 column 1 (char 0)"
+    },
+    "inflation_pct": {
+      "error": "Expecting value: line 1 column 1 (char 0)"
+    },
+    "gdp_per_capita_usd": {
+      "error": "Expecting value: line 1 column 1 (char 0)"
+    },
+    "lending_rate_pct": {
+      "error": "Expecting value: line 1 column 1 (char 0)"
+    },
+    "population": {
+      "error": "Expecting value: line 1 column 1 (char 0)"
+    }
+  },
+  "ok": false
+}

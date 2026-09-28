@@ -1,0 +1,9 @@
+.env
+*.pyc
+__pycache__/
+data/platform.db
+data/platform.db-shm
+data/platform.db-wal
+output/
+.venv/
+venv/

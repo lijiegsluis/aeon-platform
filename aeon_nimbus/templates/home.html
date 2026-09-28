@@ -1,0 +1,169 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aeon Nimbus — Global markets. Unhedged views.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+ :root{
+   --navy:#1C1810;--ink:#1C1810;--muted:#6B5F4A;--line:#DDD5C0;--line-2:#EDE7D8;
+   --bg:#F5F1E8;--surface:#FDFAF4;--soft:#EDE7D8;
+   --accent:#B8860B;--accent-2:#8B6508;--accent-tint:#F5EDD4;
+   --sans:"Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,Helvetica,Arial,sans-serif;
+ }
+ *{box-sizing:border-box;margin:0;padding:0}
+ body{background:var(--bg);color:var(--ink);font:15px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+
+ /* ── Topbar ── */
+ .topbar{background:var(--navy);border-bottom:2px solid var(--accent);height:56px;
+   display:flex;align-items:center;gap:20px;padding:0 max(28px,calc((100vw - 1160px)/2));
+   position:sticky;top:0;z-index:10}
+ .brand{font-size:16px;font-weight:700;letter-spacing:-.01em;color:#FDFAF4}
+ .brand em{font-style:normal;color:var(--accent)}
+ .tag{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#C4A55A;opacity:.8}
+ .spacer{flex:1}
+ .btn-signin{font-size:12px;font-weight:600;letter-spacing:.04em;padding:7px 16px;
+   background:var(--accent);color:#fff;text-decoration:none;font-family:var(--sans);border:0;border-radius:2px}
+ .btn-signin:hover{background:var(--accent-2)}
+
+ /* ── Hero ── */
+ .hero{display:flex;align-items:stretch;min-height:calc(100vh - 56px)}
+ .hero-left{flex:1;background:var(--navy);display:flex;flex-direction:column;justify-content:center;
+   padding:72px max(40px,5vw) 80px}
+ .hero-left h1{font-size:clamp(30px,4.5vw,54px);font-weight:700;letter-spacing:-.025em;
+   line-height:1.1;color:#FDFAF4;max-width:14ch}
+ .hero-left h1 em{font-style:normal;color:var(--accent)}
+ .hero-left .lede{margin-top:22px;font-size:16px;color:#9A8A6A;max-width:44ch;line-height:1.75}
+ .hero-left .cta{display:inline-block;margin-top:38px;padding:13px 28px;
+   background:var(--accent);color:#fff;text-decoration:none;font-weight:700;font-size:14px;
+   letter-spacing:.02em;border-radius:2px}
+ .hero-left .cta:hover{background:var(--accent-2)}
+ .hero-divider{margin-top:60px;height:1px;background:#3A3020;width:56px}
+ .hero-tagline{margin-top:20px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#4A3C28}
+
+ /* ── Stats panel (right side of hero) ── */
+ .hero-right{width:380px;flex-shrink:0;background:var(--surface);border-left:1px solid var(--line);
+   display:flex;flex-direction:column;justify-content:center;padding:52px 40px}
+ .hero-right .panel-head{font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+   color:var(--muted);font-weight:600;margin-bottom:28px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+ .stat-block{margin-bottom:28px}
+ .stat-n{font-size:38px;font-weight:700;letter-spacing:-.03em;color:var(--accent);line-height:1}
+ .stat-l{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);
+   font-weight:600;margin-top:4px}
+ .stat-divider{height:1px;background:var(--line-2);margin:0 0 28px}
+ .pillars{display:flex;flex-direction:column;gap:14px;margin-top:4px}
+ .pillar{padding-left:12px;border-left:2px solid var(--line-2)}
+ .pillar strong{display:block;font-size:11px;letter-spacing:.04em;color:var(--ink);font-weight:700}
+ .pillar span{display:block;font-size:12px;color:var(--muted);margin-top:2px;line-height:1.5}
+
+ /* ── Features ── */
+ .features{padding:64px max(28px,calc((100vw - 1160px)/2)) 80px}
+ .features-head{display:flex;align-items:baseline;gap:16px;margin-bottom:36px}
+ .features-head h2{font-size:19px;font-weight:700;letter-spacing:-.01em}
+ .features-head .rule{flex:1;height:1px;background:var(--line)}
+ .feat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+ .feat{background:var(--surface);border:1px solid var(--line);padding:22px 20px;
+   border-top:3px solid var(--accent)}
+ .feat h3{font-size:13px;font-weight:700;letter-spacing:.01em;margin-bottom:7px}
+ .feat p{font-size:13px;color:var(--muted);line-height:1.6}
+
+ /* ── Footer ── */
+ footer{background:var(--navy);border-top:1px solid #3A3020;
+   padding:22px max(28px,calc((100vw - 1160px)/2));
+   font-size:12px;color:#5A4C38;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+ footer a{color:#C4A55A;text-decoration:none}
+ footer a:hover{color:#FDFAF4}
+
+ @media(max-width:760px){
+   .hero{flex-direction:column}
+   .hero-right{width:100%;border-left:none;border-top:1px solid var(--line);padding:36px 24px}
+   .features{padding:40px 20px 60px}
+ }
+</style></head><body>
+
+<div class="topbar">
+  <div class="brand">Aeon <em>Nimbus</em></div>
+  <div class="tag">Research Platform</div>
+  <div class="spacer"></div>
+  <a class="btn-signin" href="/login">Sign in →</a>
+</div>
+
+<section class="hero">
+  <div class="hero-left">
+    <h1>Global markets.<br><em>Unhedged</em> views.</h1>
+    <p class="lede">Every figure traced back to a filing. Every call published with an entry, a target, and a stop. No hedging. No revisionism.</p>
+    <a class="cta" href="/login">Open the platform →</a>
+    <div class="hero-divider"></div>
+    <div class="hero-tagline">Aeon Nimbus Research · aeonnimbus.com</div>
+  </div>
+  <div class="hero-right">
+    <div class="panel-head">Coverage universe</div>
+    <div class="stat-block">
+      <div class="stat-n">{{COMPANIES}}</div>
+      <div class="stat-l">Companies covered</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-block">
+      <div class="stat-n">{{SECTORS}}</div>
+      <div class="stat-l">Sectors</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-block">
+      <div class="stat-n">{{MARKETS}}</div>
+      <div class="stat-l">Markets</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="pillars">
+      <div class="pillar">
+        <strong>Aeon Score™</strong>
+        <span>Composite signal across valuation, quality, health &amp; momentum</span>
+      </div>
+      <div class="pillar">
+        <strong>DCF &amp; bank models</strong>
+        <span>Scenario-driven valuation with live repricing</span>
+      </div>
+      <div class="pillar">
+        <strong>Sourced financials</strong>
+        <span>Every number linked to the filing page it was read from</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="features-head">
+    <h2>What this platform does</h2>
+    <div class="rule"></div>
+  </div>
+  <div class="feat-grid">
+    <div class="feat">
+      <h3>Statements linked to source</h3>
+      <p>Every revenue, EBITDA and net income figure links to the page of the filing it was read from. No unverifiable numbers in the model.</p>
+    </div>
+    <div class="feat">
+      <h3>Models that balance</h3>
+      <p>Three-statement models close by construction. If the cash flow does not reconcile, the build fails — it does not produce a wrong number.</p>
+    </div>
+    <div class="feat">
+      <h3>Sector-appropriate valuation</h3>
+      <p>DCF for industrials and tech, P/BV and Gordon Growth for banks, EV/EBITDA cross-checks throughout. The methodology is stated, not assumed.</p>
+    </div>
+    <div class="feat">
+      <h3>Timestamped calls</h3>
+      <p>Entry price, target, stop loss and position size recorded at the time of publication. Calls do not get revised after the fact.</p>
+    </div>
+    <div class="feat">
+      <h3>Aeon Score™</h3>
+      <p>A 0–100 composite across valuation, FCF quality, financial health and revenue momentum. One number to sort the universe.</p>
+    </div>
+    <div class="feat">
+      <h3>Access by invitation</h3>
+      <p>The platform is not public. Every account is issued by an administrator. Credentials are never emailed — they are passed directly.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© Aeon Nimbus Research</span>
+  <span>Access is by invitation only. <a href="/login">Sign in →</a></span>
+</footer>
+</body></html>

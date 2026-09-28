@@ -1,0 +1,166 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sign in · Aeon Nimbus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+ :root{
+   --navy:#1C1810;--ink:#1C1810;--muted:#6B5F4A;--line:#DDD5C0;--line-2:#EDE7D8;
+   --bg:#F5F1E8;--surface:#FDFAF4;--soft:#EDE7D8;
+   --accent:#B8860B;--accent-2:#8B6508;--accent-tint:#F5EDD4;
+   --reduce:#9E3B2A;
+   --sans:"Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,Helvetica,Arial,sans-serif;
+ }
+ *{box-sizing:border-box;margin:0;padding:0}
+ body{background:var(--bg);color:var(--ink);font:14px/1.5 var(--sans);-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
+
+ /* ── Topbar ── */
+ .topbar{background:var(--navy);border-bottom:1px solid #3A3020;height:56px;display:flex;align-items:center;gap:20px;padding:0 max(28px,calc((100vw - 1140px)/2));flex-shrink:0}
+ .brand{font-size:15px;font-weight:700;letter-spacing:-.01em;color:#FDFAF4}
+ .brand em{font-style:normal;color:var(--accent)}
+ .tagline{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#C4A55A;opacity:.8}
+ .topbar-spacer{flex:1}
+ .topbar-link{font-size:11px;color:#C4A55A;text-decoration:none;letter-spacing:.04em;padding:5px 0;border-bottom:1px solid transparent}
+ .topbar-link:hover{color:#FDFAF4;border-bottom-color:#C4A55A}
+
+ /* ── Main layout ── */
+ .page{flex:1;display:flex;align-items:stretch}
+ .left-panel{flex:1;background:var(--navy);display:flex;flex-direction:column;justify-content:center;padding:60px max(40px,5vw);min-width:0}
+ .left-panel h1{font-size:clamp(26px,3.5vw,42px);font-weight:700;color:#FDFAF4;letter-spacing:-.02em;line-height:1.15;max-width:14ch}
+ .left-panel h1 em{font-style:normal;color:var(--accent)}
+ .left-panel p{margin-top:18px;font-size:14px;color:#C4A55A;max-width:42ch;line-height:1.7}
+ .pillars{margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:16px 24px}
+ .pillar{border-left:2px solid #3A3020;padding-left:12px}
+ .pillar strong{display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#C4A55A;font-weight:600}
+ .pillar span{display:block;font-size:12px;color:#7A6C54;margin-top:2px}
+ .divider{margin-top:48px;height:1px;background:#3A3020;width:48px}
+ .watermark{margin-top:18px;font-size:10px;color:#4A3C28;letter-spacing:.08em;text-transform:uppercase}
+
+ /* ── Sign-in card ── */
+ .right-panel{width:400px;flex-shrink:0;display:flex;flex-direction:column;justify-content:center;padding:48px 40px;background:var(--surface);border-left:1px solid var(--line)}
+ .card-head{margin-bottom:28px}
+ .card-brand{font-size:13px;font-weight:700;letter-spacing:-.01em;color:var(--ink);margin-bottom:6px}
+ .card-brand em{font-style:normal;color:var(--accent)}
+ .card-sub{font-size:12px;color:var(--muted)}
+ label{display:block;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:18px 0 5px}
+ input{width:100%;padding:10px 11px;border:1px solid var(--line);border-radius:2px;font-size:13px;font-family:var(--sans);background:var(--bg);color:var(--ink)}
+ input:focus{outline:2px solid var(--accent);outline-offset:-1px;border-color:transparent}
+ .btn-primary{width:100%;margin-top:22px;padding:11px;border:0;border-radius:2px;background:var(--accent);color:#fff;font-weight:700;font-size:13px;font-family:var(--sans);cursor:pointer;letter-spacing:.02em}
+ .btn-primary:hover{background:var(--accent-2)}
+ .btn-primary:disabled{opacity:.55;cursor:default}
+
+ /* ── Separator ── */
+ .sep{display:flex;align-items:center;gap:10px;margin:22px 0}
+ .sep-line{flex:1;height:1px;background:var(--line)}
+ .sep-text{font-size:10px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+
+ /* ── Create profile button ── */
+ .btn-ghost{width:100%;padding:10px;border:1px solid var(--line);border-radius:2px;background:transparent;color:var(--ink);font-weight:600;font-size:13px;font-family:var(--sans);cursor:pointer;letter-spacing:.01em}
+ .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+ .btn-note{margin-top:10px;font-size:11px;color:var(--muted);line-height:1.5}
+
+ /* ── Error ── */
+ .err{margin-top:14px;padding:9px 11px;background:#F6E4E1;border-left:3px solid var(--reduce);color:#7A2E22;font-size:12px;display:none}
+
+ @media(max-width:720px){
+   .left-panel{display:none}
+   .right-panel{width:100%;padding:40px 24px;border-left:none;border-top:3px solid var(--accent)}
+   .page{align-items:flex-start;padding-top:0}
+ }
+</style></head><body>
+
+<div class="topbar">
+  <div>
+    <div class="brand">Aeon <em>Nimbus</em></div>
+  </div>
+  <div class="tagline">Research Platform</div>
+  <div class="topbar-spacer"></div>
+  <a class="topbar-link" href="/">← World map</a>
+</div>
+
+<div class="page">
+  <div class="left-panel">
+    <h1>Global financial<br>intelligence <em>platform</em>.</h1>
+    <p>Aeon Nimbus delivers institutional-grade research tools for analyzing 50,000+ global companies — automated financial modeling, real-time data, and AI-powered insights.</p>
+    <div class="pillars">
+      <div class="pillar">
+        <strong>50,000+ Companies</strong>
+        <span>Global coverage across all major markets and sectors</span>
+      </div>
+      <div class="pillar">
+        <strong>Automated DCF Models</strong>
+        <span>Build 3-statement models and valuations in minutes</span>
+      </div>
+      <div class="pillar">
+        <strong>Real-time Data</strong>
+        <span>Live prices, filings, news, and market events</span>
+      </div>
+      <div class="pillar">
+        <strong>AI Analysis</strong>
+        <span>Peer benchmarking, screening, and research automation</span>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="watermark">Aeon Nimbus Research · aeonnimbus.com</div>
+  </div>
+
+  <div class="right-panel">
+    <div class="card-head">
+      <div class="card-brand">Aeon <em>Nimbus</em></div>
+      <div class="card-sub">Sign in to your research account</div>
+    </div>
+
+    <form id="f">
+      <label for="em">Username or Email</label>
+      <input id="em" type="text" required autocomplete="username" placeholder="admin or you@example.com">
+      <label for="pw">Password</label>
+      <input id="pw" type="password" required autocomplete="current-password" placeholder="••••••••">
+      <button class="btn-primary" id="go" type="submit">Sign in</button>
+    </form>
+    <div class="err" id="err"></div>
+
+    <div class="sep">
+      <div class="sep-line"></div>
+      <div class="sep-text">access</div>
+      <div class="sep-line"></div>
+    </div>
+
+    <button class="btn-ghost" onclick="location.href='/admin'">Create a profile</button>
+    <div class="btn-note">Admin access required to create and manage accounts. Contact the platform administrator if you need credentials.</div>
+  </div>
+</div>
+
+<script>
+const params = new URLSearchParams(location.search);
+const next   = params.get('next') || '/';
+document.getElementById('f').addEventListener('submit', async ev => {
+  ev.preventDefault();
+  const b = document.getElementById('go');
+  const e = document.getElementById('err');
+  b.disabled = true; b.textContent = 'Signing in…'; e.style.display = 'none';
+  try {
+    const r = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        identifier: document.getElementById('em').value,
+        password: document.getElementById('pw').value
+      })
+    });
+    if (r.ok) {
+      const d = await r.json();
+      location.href = d.next || next;
+    } else {
+      const d = await r.json().catch(() => ({}));
+      e.textContent = d.detail || 'Invalid username/email or password.';
+      e.style.display = 'block';
+      b.disabled = false; b.textContent = 'Sign in';
+    }
+  } catch(err) {
+    e.textContent = 'Could not reach the server.';
+    e.style.display = 'block';
+    b.disabled = false; b.textContent = 'Sign in';
+  }
+});
+</script>
+</body></html>

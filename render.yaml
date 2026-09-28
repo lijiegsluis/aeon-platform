@@ -1,0 +1,17 @@
+# Render Blueprint — one-click deploy of the Aeon Nimbus interactive platform.
+# On Render: New → Blueprint → connect this repo. Native Python build (no Docker needed).
+services:
+  - type: web
+    name: aeon-nimbus
+    runtime: python
+    plan: free            # free web service (spins down when idle → ~50s cold start)
+    region: frankfurt     # adjust to the region closest to your primary user base
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn aeon_nimbus.api:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.6"
+    # DB defaults to SQLite, re-seeded from data/extracted on each boot (baseline always
+    # present). For durable visitor edits, switch to an upgraded plan + a disk, or a
+    # managed Postgres, and set DATABASE_URL — the app already reads it (12-factor).

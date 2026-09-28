@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "aeon-nimbus-platform",
+      "runtimeExecutable": ".venv/bin/uvicorn",
+      "runtimeArgs": ["aeon_nimbus.api:app", "--host", "127.0.0.1", "--port", "5174"],
+      "port": 5174,
+      "autoPort": false
+    }
+  ]
+}

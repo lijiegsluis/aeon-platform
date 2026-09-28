@@ -1,0 +1,244 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Access · Aeon Nimbus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+ :root{
+   --ink:#191C1A;--muted:#575D57;--line:#D8D7CF;--line-2:#E7E6DF;
+   --navy:#1C1810;--ink:#1C1810;--muted:#6B5F4A;--line:#DDD5C0;--line-2:#E8E2D4;
+   --bg:#F5F1E8;--surface:#FDFAF4;--soft:#EDE7D8;
+   --accent:#B8860B;--accent-2:#8B6508;--accent-tint:#F5EDD4;
+   --buy:#2E6B3A;--hold:#B8860B;--reduce:#8B2A2A;--gold:#B8860B;
+   --buy:#1F6B4A;--reduce:#9E3B2A;--gold:#8F6F1F;
+   --sans:"Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,Helvetica,Arial,sans-serif;
+   --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+ }
+ *{box-sizing:border-box}
+ body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 var(--sans);
+      -webkit-font-smoothing:antialiased}
+ .topbar{background:var(--surface);border-top:3px solid var(--accent);
+   border-bottom:1px solid var(--line);height:58px;display:flex;align-items:center;
+   gap:14px;padding:0 max(24px,calc((100vw - 1180px)/2));position:sticky;top:0;z-index:5}
+ .lockup{display:flex;flex-direction:column;line-height:1.15}
+ .brand{font-size:15px;font-weight:700;letter-spacing:-.01em}
+ .brand em{font-style:normal;color:var(--accent)}
+ .tag{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+ .spacer{flex:1}
+ .topbar a{font-size:11px;letter-spacing:.02em;padding:6px 10px;border:1px solid var(--line);
+   border-radius:2px;color:var(--ink);text-decoration:none}
+ .topbar a:hover{border-color:var(--accent);color:var(--accent)}
+ .wrap{max-width:1180px;margin:0 auto;padding:30px max(24px,calc((100vw - 1180px)/2)) 60px;
+   display:grid;grid-template-columns:1fr 330px;gap:38px;align-items:start}
+ @media (max-width:900px){.wrap{grid-template-columns:1fr;gap:28px;padding-left:16px;padding-right:16px}}
+ h2{margin:0 0 3px;font-size:17px;font-weight:700;letter-spacing:-.01em}
+ .lede{margin:0 0 18px;color:var(--muted);font-size:13px;max-width:60ch}
+ table{width:100%;border-collapse:collapse;background:var(--surface);
+   border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+ th{text-align:left;font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--muted);font-weight:600;padding:9px 10px;border-bottom:1px solid var(--line)}
+ td{padding:11px 10px;border-bottom:1px solid var(--line-2);vertical-align:middle}
+ tr:last-child td{border-bottom:0}
+ .em{font-weight:600}
+ .sub{color:var(--muted);font-size:11px;font-variant-numeric:tabular-nums}
+ .pill{display:inline-block;padding:2px 7px;border-radius:2px;font-size:10px;font-weight:600;
+   letter-spacing:.05em;text-transform:uppercase}
+ .r-admin{background:var(--accent-tint);color:var(--accent-2)}
+ .r-analyst{background:#EFEADB;color:var(--gold)}
+ .r-viewer{background:var(--soft);color:var(--muted)}
+ .off{background:#F6E4E1;color:var(--reduce)}
+ .acts{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}
+ button,select{font-family:inherit;font-size:12px}
+ .mini{padding:4px 8px;border:1px solid var(--line);background:transparent;border-radius:2px;
+   color:var(--ink);cursor:pointer}
+ .mini:hover{border-color:var(--accent);color:var(--accent)}
+ .mini.danger:hover{border-color:var(--reduce);color:var(--reduce)}
+ aside{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--accent);
+   padding:20px 18px;position:sticky;top:88px}
+ aside h3{margin:0 0 4px;font-size:13px;letter-spacing:.02em}
+ aside p{margin:0 0 16px;font-size:12px;color:var(--muted)}
+ label{display:block;font-size:10px;letter-spacing:.07em;text-transform:uppercase;
+   color:var(--muted);font-weight:600;margin:12px 0 4px}
+ input,select.full{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:2px;
+   font-size:13px;font-family:inherit;background:var(--surface);color:var(--ink)}
+ input:focus,select:focus{outline:2px solid var(--accent);outline-offset:-1px;border-color:transparent}
+ .go{width:100%;margin-top:18px;padding:10px;border:0;border-radius:2px;background:var(--accent);
+   color:#fff;font-weight:600;font-size:13px;cursor:pointer}
+ .go:hover{background:var(--accent-2)} .go:disabled{opacity:.55;cursor:default}
+ .issued{margin-top:16px;padding:12px;background:var(--accent-tint);border-left:3px solid var(--accent);
+   display:none}
+ .issued b{display:block;font-size:11px;letter-spacing:.05em;text-transform:uppercase;
+   color:var(--accent-2);margin-bottom:6px}
+ .issued code{display:block;font-family:var(--mono);font-size:14px;word-break:break-all;
+   background:var(--surface);padding:8px;border:1px solid var(--line)}
+ .issued small{display:block;margin-top:7px;font-size:11px;color:var(--muted)}
+ .note{margin-top:14px;display:none}
+ .note-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+ .note-head b{font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--accent-2)}
+ .note-head .sp{flex:1}
+ .copy{padding:3px 9px;border:1px solid var(--line);background:var(--surface);border-radius:2px;
+   font-size:11px;font-family:inherit;color:var(--ink);cursor:pointer}
+ .copy:hover{border-color:var(--accent);color:var(--accent)}
+ .note textarea{width:100%;height:230px;padding:10px;border:1px solid var(--line);border-radius:2px;
+   font-family:var(--mono);font-size:11px;line-height:1.5;background:var(--surface);
+   color:var(--ink);resize:vertical}
+ .msg{margin-top:14px;padding:9px 11px;font-size:12px;display:none;border-left:3px solid}
+ .msg.bad{background:#F6E4E1;border-color:var(--reduce);color:#7A2E22}
+ .empty{padding:26px 10px;color:var(--muted);font-size:13px}
+</style></head><body>
+<div class="topbar">
+  <div class="lockup">
+    <span class="brand">Aeon <em>Nimbus</em></span>
+    <span class="tag">Access control</span>
+  </div>
+  <span class="spacer"></span>
+  <a href="/">← Back to research</a>
+</div>
+
+<div class="wrap">
+  <main>
+    <h2>People with access</h2>
+    <p class="lede">Everyone who can open the platform. Accounts exist only because they were issued here.</p>
+    <table>
+      <thead><tr><th>Person</th><th>Access</th><th>Added</th><th>Last signed in</th><th></th></tr></thead>
+      <tbody id="rows"><tr><td colspan="5" class="empty">Loading…</td></tr></tbody>
+    </table>
+  </main>
+
+  <aside>
+    <h3>Issue access</h3>
+    <p>A password is generated and shown once. Pass it on yourself.</p>
+    <form id="f">
+      <label for="em">Email</label>
+      <input id="em" type="email" required autocomplete="off" placeholder="name@example.com">
+      <label for="nm">Name</label>
+      <input id="nm" type="text" autocomplete="off" placeholder="Optional">
+      <label for="rl">Access level</label>
+      <select id="rl" class="full">
+        <option value="viewer">Viewer (read only)</option>
+        <option value="analyst">Analyst (can edit and refresh)</option>
+        <option value="admin">Admin (can also manage people)</option>
+      </select>
+      <button class="go" id="go" type="submit">Create account</button>
+    </form>
+    <div class="issued" id="issued">
+      <b id="issuedFor">Password</b>
+      <code id="pw"></code>
+      <small>This is the only time it is shown. It is stored hashed and cannot be read back.</small>
+    </div>
+    <div class="note" id="note">
+      <div class="note-head">
+        <b>Welcome note</b><span class="sp"></span>
+        <button class="copy" type="button" id="copyNote">Copy</button>
+      </div>
+      <textarea id="noteText" readonly></textarea>
+      <small style="display:block;margin-top:6px;font-size:11px;color:var(--muted)">
+        Nothing is emailed from here. Copy this and send it yourself.</small>
+    </div>
+    <div class="msg bad" id="msg"></div>
+  </aside>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c =>
+  ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const when = t => {
+  if (!t) return '-';
+  const d = new Date(t);
+  return d.toLocaleDateString(undefined, {month:'short',day:'numeric'}) + ' ' +
+         d.toLocaleTimeString(undefined, {hour:'2-digit',minute:'2-digit'});
+};
+
+function fail(text){ $('msg').textContent = text; $('msg').style.display = 'block'; }
+
+async function load(){
+  const r = await fetch('/api/admin/users');
+  if (!r.ok){ $('rows').innerHTML = '<tr><td colspan="5" class="empty">Could not load.</td></tr>'; return; }
+  const users = (await r.json()).results || [];
+  $('rows').innerHTML = users.map(u => `
+    <tr>
+      <td><div class="em">${esc(u.name || u.email)}</div>
+          <div class="sub">${esc(u.email)}</div></td>
+      <td><span class="pill r-${esc(u.role)}">${esc(u.role)}</span>
+          ${u.active ? '' : ' <span class="pill off">suspended</span>'}</td>
+      <td class="sub">${when(u.created_at)}<br>${esc(u.created_by || '')}</td>
+      <td class="sub">${when(u.last_login)}</td>
+      <td><div class="acts">
+        <select class="mini" onchange="setRole(${u.id}, this.value)">
+          ${['viewer','analyst','admin'].map(r =>
+            `<option value="${r}"${r===u.role?' selected':''}>${r}</option>`).join('')}
+        </select>
+        <button class="mini" onclick="resetPw(${u.id},'${esc(u.email)}')">New password</button>
+        <button class="mini danger" onclick="setActive(${u.id},${!u.active})">
+          ${u.active ? 'Suspend' : 'Restore'}</button>
+        <button class="mini danger" onclick="removeUser(${u.id},'${esc(u.email)}')">Delete</button>
+      </div></td>
+    </tr>`).join('') ||
+    '<tr><td colspan="5" class="empty">Nobody yet.</td></tr>';
+}
+
+async function post(url){
+  $('msg').style.display = 'none';
+  const r = await fetch(url, {method:'POST'});
+  const d = await r.json().catch(() => ({}));
+  if (!r.ok){ fail(d.detail || 'That did not work.'); return null; }
+  await load(); return d;
+}
+const setRole   = (id, role) => post(`/api/admin/users/${id}/role?role=${role}`);
+const setActive = (id, on)   => post(`/api/admin/users/${id}/active?active=${on}`);
+
+async function removeUser(id, email){
+  const typed = prompt('Remove ' + email + ' for good (cannot be undone).\n\nType the email to confirm:');
+  if (typed === null) return;
+  if (typed.trim().toLowerCase() !== email.toLowerCase()){ fail('Email did not match.'); return; }
+  $('msg').style.display = 'none';
+  const r = await fetch(`/api/admin/users/${id}`, {method:'DELETE'});
+  const d = await r.json().catch(() => ({}));
+  if (!r.ok){ fail(d.detail || 'Could not delete.'); return; }
+  await load();
+  fail(d.note || email + ' was deleted.');
+}
+
+async function resetPw(id, email){
+  const d = await post(`/api/admin/users/${id}/reset-password`);
+  if (d) show(email, d.password, d.welcome);
+}
+
+function show(email, pw, welcome){
+  $('issuedFor').textContent = 'Password for ' + email;
+  $('pw').textContent = pw;
+  $('issued').style.display = 'block';
+  if (welcome && welcome.body){
+    $('noteText').value = 'To: ' + welcome.to + '\nSubject: ' + welcome.subject + '\n\n' + welcome.body;
+    $('note').style.display = 'block';
+  } else { $('note').style.display = 'none'; }
+}
+
+$('copyNote').addEventListener('click', () => {
+  const t = $('noteText'); t.select();
+  navigator.clipboard.writeText(t.value).then(() => {
+    const b = $('copyNote'); b.textContent = 'Copied';
+    setTimeout(() => { b.textContent = 'Copy'; }, 1600);
+  }).catch(() => document.execCommand('copy'));
+});
+
+$('f').addEventListener('submit', async ev => {
+  ev.preventDefault();
+  const b = $('go'); b.disabled = true; b.textContent = 'Creating…';
+  $('msg').style.display = 'none';
+  try {
+    const r = await fetch('/api/admin/users', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({email: $('em').value, name: $('nm').value, role: $('rl').value})
+    });
+    const d = await r.json().catch(() => ({}));
+    if (r.ok){ show(d.user.email, d.password, d.welcome); $('f').reset(); await load(); }
+    else fail(d.detail || 'Could not create that account.');
+  } catch(e){ fail('Could not reach the server.'); }
+  b.disabled = false; b.textContent = 'Create account';
+});
+
+load();
+</script></body></html>

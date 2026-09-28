@@ -1,0 +1,17 @@
+pandas
+numpy
+plotly
+jinja2
+pymupdf
+requests
+pytest
+fastapi
+uvicorn
+sqlalchemy>=2.0
+python-multipart
+httpx
+openpyxl
+lxml
+msal>=1.28
+bcrypt
+itsdangerous

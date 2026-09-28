@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ r.meta.name }} — Initiation of Coverage | Aeon Nimbus Research</title>
+<style>
+  :root {
+    --navy:#123142; --navy-2:#0f2733; --teal:#0c7a6b; --ink:#17262e; --muted:#5c6b72;
+    --line:#e4e9eb; --line-2:#eef2f3; --bg:#f6f8f8; --surface:#ffffff; --gold:#9a7b1f;
+    --buy:#197243; --hold:#a96c00; --reduce:#b0352c; --soft:#f0f4f4;
+  }
+  * { box-sizing:border-box; }
+  html { -webkit-font-smoothing:antialiased; }
+  body {
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Inter","Helvetica Neue",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    font-size:14px; line-height:1.55;
+  }
+  .tnum { font-variant-numeric:tabular-nums; }
+  .sheet { max-width:900px; margin:28px auto; background:var(--surface); border:1px solid var(--line);
+           box-shadow:0 1px 3px rgba(18,49,66,.06); }
+  /* masthead */
+  .mast { background:var(--navy); color:#eaf1f2; display:flex; justify-content:space-between;
+          align-items:center; padding:12px 28px; letter-spacing:.06em; }
+  .mast .brand { font-weight:700; font-size:13px; }
+  .mast .brand b { color:#e7c766; font-weight:700; }
+  .mast .kind { font-size:11px; text-transform:uppercase; letter-spacing:.16em; color:#9db4bc; }
+  .mast .date { font-size:11px; color:#9db4bc; font-variant-numeric:tabular-nums; }
+  /* header */
+  .head { display:flex; justify-content:space-between; gap:24px; padding:26px 28px 20px;
+          border-bottom:2px solid var(--navy); }
+  .head h1 { font-size:26px; line-height:1.12; margin:0 0 4px; letter-spacing:-.01em; color:var(--navy-2); }
+  .head .sub { color:var(--muted); font-size:12.5px; }
+  .head .sub b { color:var(--ink); font-weight:600; }
+  /* rating box */
+  .rating { min-width:238px; border:1px solid var(--line); border-top:3px solid var(--navy);
+            padding:12px 14px; background:var(--soft); }
+  .stance { display:inline-block; font-weight:700; font-size:12px; letter-spacing:.08em; text-transform:uppercase;
+            padding:3px 10px; border-radius:2px; color:#fff; }
+  .s-Buy{background:var(--buy);} .s-Hold{background:var(--hold);} .s-Reduce{background:var(--reduce);}
+  .s-Under\ review{background:var(--muted);}
+  .rating .grid { margin-top:10px; display:grid; grid-template-columns:auto auto; gap:4px 12px; font-size:12.5px; }
+  .rating .grid .k { color:var(--muted); }
+  .rating .grid .v { text-align:right; font-weight:600; font-variant-numeric:tabular-nums; }
+  .up-pos{color:var(--buy);} .up-neg{color:var(--reduce);}
+  /* body */
+  .body { padding:8px 28px 26px; }
+  section { padding:18px 0; border-bottom:1px solid var(--line-2); }
+  section:last-child { border-bottom:none; }
+  .lbl { font-size:11px; text-transform:uppercase; letter-spacing:.14em; color:var(--teal); font-weight:700;
+         margin:0 0 10px; }
+  h2.title { font-size:16px; margin:0 0 8px; color:var(--navy-2); }
+  p { margin:0 0 10px; }
+  .thesis li { margin:0 0 8px; }
+  .callout { background:var(--soft); border-left:3px solid var(--teal); padding:10px 14px; font-size:13px; }
+  .callout .t { font-weight:600; color:var(--navy-2); }
+  /* tables */
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  th, td { padding:7px 10px; text-align:right; border-bottom:1px solid var(--line-2); font-variant-numeric:tabular-nums; }
+  th:first-child, td:first-child { text-align:left; font-variant-numeric:normal; }
+  thead th { color:var(--muted); font-weight:600; font-size:11.5px; text-transform:uppercase; letter-spacing:.04em;
+             border-bottom:1px solid var(--line); }
+  tbody tr:hover { background:#fafcfc; }
+  .target-row td { font-weight:700; color:var(--navy-2); background:var(--soft); border-top:1px solid var(--line); }
+  /* metric strip */
+  .strip { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
+  .strip .cell { background:var(--surface); padding:11px 12px; }
+  .strip .cell .k { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; }
+  .strip .cell .v { font-size:18px; font-weight:600; color:var(--navy-2); font-variant-numeric:tabular-nums; margin-top:2px; }
+  /* scenario cards */
+  .scen { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+  .scen .c { border:1px solid var(--line); padding:12px 14px; }
+  .scen .c.base { border-top:3px solid var(--teal); }
+  .scen .c .name { font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); }
+  .scen .c .val { font-size:22px; font-weight:700; color:var(--navy-2); font-variant-numeric:tabular-nums; margin:3px 0; }
+  .scen .c .meta { font-size:11.5px; color:var(--muted); }
+  /* risks */
+  .rk { display:inline-block; width:60px; text-align:center; font-size:11px; font-weight:700; padding:2px 0; border-radius:2px; color:#fff; }
+  .rk-High{background:var(--reduce);} .rk-Medium{background:var(--hold);} .rk-Low{background:var(--buy);}
+  .risk-tbl td { text-align:left; font-variant-numeric:normal; vertical-align:top; }
+  /* catalysts */
+  ul.tick { list-style:none; padding:0; margin:0; }
+  ul.tick li { padding-left:20px; position:relative; margin-bottom:6px; }
+  ul.tick li:before { content:"▸"; color:var(--teal); position:absolute; left:2px; }
+  /* caveat */
+  .caveat { background:#fbf6ec; border:1px solid #ecdcbc; color:#6b551f; padding:10px 14px; font-size:12.5px; border-radius:3px; }
+  /* sources */
+  .src { font-size:11.5px; color:var(--muted); }
+  .src table td, .src table th { padding:6px 10px; }
+  .src a { color:var(--teal); text-decoration:none; }
+  .src a:hover { text-decoration:underline; }
+  .conf { font-variant-numeric:tabular-nums; }
+  /* footer */
+  .foot { background:var(--navy-2); color:#a9c0c8; font-size:11px; padding:14px 28px;
+          display:flex; justify-content:space-between; align-items:center; letter-spacing:.03em; }
+  .foot .wm { color:#cbb26a; font-weight:600; letter-spacing:.08em; }
+  .two { display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+  @media (max-width:720px){ .two,.scen,.strip{grid-template-columns:1fr 1fr;} .head{flex-direction:column;} }
+  @media print { body{background:#fff;} .sheet{box-shadow:none; border:none; margin:0; max-width:none;} section{break-inside:avoid;} }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="mast">
+    <div class="brand">AEON <b>NIMBUS</b></div>
+    <div class="kind">Global Markets · Unhedged Views · Initiation of Coverage</div>
+    <div class="date tnum">{{ r.meta.as_of }}</div>
+  </div>
+
+  <div class="head">
+    <div>
+      <h1>{{ r.meta.name }}</h1>
+      <div class="sub"><b>{{ r.meta.ticker }}</b> · {{ r.meta.exchange }} · {{ r.meta.country }} · {{ r.meta.sector }} · reported in {{ r.meta.currency }}</div>
+      <div class="sub" style="margin-top:4px;">Primary source: {{ r.meta.latest_filing }}</div>
+    </div>
+    <div class="rating">
+      <span class="stance s-{{ r.rating.stance }}">{{ r.rating.stance }}</span>
+      <div class="grid">
+        <div class="k">Entry / current price</div><div class="v tnum">{{ r.rating.current_price | price(r.meta.currency) }}</div>
+        <div class="k">Target price</div><div class="v tnum">{{ r.rating.target_price | price(r.meta.currency) }}</div>
+        <div class="k">Stop</div><div class="v tnum">{{ r.rating.stop_loss | price(r.meta.currency) if r.rating.stop_loss is not none else "—" }}</div>
+        <div class="k">Upside / downside</div><div class="v tnum {{ 'up-pos' if r.rating.upside >= 0 else 'up-neg' }}">{{ r.rating.upside | pct }}</div>
+        <div class="k">Position size</div><div class="v tnum">{{ r.rating.position_size_pct | pct if r.rating.position_size_pct is not none else "—" }}</div>
+        <div class="k">Horizon</div><div class="v">{{ (r.rating.horizon_months ~ "m") if r.rating.horizon_months is not none else "—" }}</div>
+        <div class="k">Conviction</div><div class="v">{{ r.rating.conviction.split(' ')[0] }}</div>
+        <div class="k">Market cap</div><div class="v tnum">{{ r.rating.market_cap | money(r.meta.currency) }}</div>
+        <div class="k">EV / EBITDA</div><div class="v tnum">{{ r.rating.ev_ebitda | mult }}</div>
+        <div class="k">P / E</div><div class="v tnum">{{ r.rating.pe | mult }}</div>
+        <div class="k">Dividend yield</div><div class="v tnum">{{ r.rating.dividend_yield | pct }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="body">
+    <section>
+      <p class="lbl">Investment thesis</p>
+      <ul class="thesis" style="padding-left:18px;">
+        {% for t in r.thesis %}<li>{{ t }}</li>{% endfor %}
+      </ul>
+      <div class="callout" style="margin-top:6px;"><span class="t">Key debate.</span> {{ r.key_debate }}</div>
+    </section>
+
+    <section>
+      <p class="lbl">Financial summary</p>
+      <table>
+        <thead><tr><th>{{ r.meta.currency }} (m unless stated)</th>{% for y in r.financials_table.years %}<th>{{ y }}</th>{% endfor %}</tr></thead>
+        <tbody>
+          {% for row in r.financials_table.rows %}
+          <tr><td>{{ row.label }}</td>{% for c in row.cells %}<td class="tnum">{{ c }}</td>{% endfor %}</tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <p class="lbl">Valuation — trading multiples</p>
+      <div class="strip">
+        <div class="cell"><div class="k">EV / EBITDA</div><div class="v">{{ r.multiples.ev_ebitda | mult }}</div></div>
+        <div class="cell"><div class="k">P / E</div><div class="v">{{ r.multiples.pe | mult }}</div></div>
+        <div class="cell"><div class="k">Price / book</div><div class="v">{{ r.multiples.price_book | mult }}</div></div>
+        <div class="cell"><div class="k">FCF yield</div><div class="v">{{ r.multiples.fcf_yield | pct }}</div></div>
+      </div>
+      <table style="margin-top:14px;">
+        <thead><tr><th>Peer</th><th>Country</th><th>EV/EBITDA</th><th>P/E</th><th>ROE</th><th>EBITDA margin</th></tr></thead>
+        <tbody>
+          <tr class="target-row"><td>{{ r.meta.name }}</td><td style="text-align:left">{{ r.meta.country }}</td><td class="tnum">{{ r.multiples.ev_ebitda | mult }}</td><td class="tnum">{{ r.multiples.pe | mult }}</td><td class="tnum">{{ r.multiples.roe | pct }}</td><td class="tnum">{{ r.multiples.ebitda_margin | pct }}</td></tr>
+          {% for p in r.peers %}
+          <tr><td>{{ p.name }}</td><td style="text-align:left">{{ p.country }}</td><td class="tnum">{{ p.ev_ebitda | mult }}</td><td class="tnum">{{ p.pe | mult }}</td><td class="tnum">{{ p.roe | pct }}</td><td class="tnum">{{ p.ebitda_margin | pct }}</td></tr>
+          {% endfor %}
+          <tr><td>Peer median EV/EBITDA</td><td></td><td class="tnum">{{ r.peer_median_ev_ebitda | mult }}</td><td></td><td></td><td></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <p class="lbl">Valuation — DCF scenarios ({{ r.meta.currency }} per share)</p>
+      <div class="scen">
+        {% for name in ['downside','base','upside'] %}
+        {% set s = r.scenarios[name] %}
+        <div class="c {{ 'base' if name=='base' else '' }}">
+          <div class="name">{{ name }}</div>
+          <div class="val tnum">{{ s.value_per_share | price(r.meta.currency) }}</div>
+          <div class="meta tnum">WACC {{ s.assumptions.wacc | pct }} · growth {{ s.assumptions.revenue_growth | pct }} · term. {{ s.assumptions.terminal_growth | pct }}</div>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="two" style="margin-top:14px;">
+        <div>
+          <p class="lbl" style="color:var(--muted)">Cost of capital build</p>
+          <table>
+            <tbody>
+              <tr><td>Risk-free rate</td><td class="tnum">{{ r.wacc_build.risk_free_rate | pct }}</td></tr>
+              <tr><td>Beta</td><td class="tnum">{{ '%.2f'|format(r.wacc_build.beta) }}</td></tr>
+              <tr><td>Equity risk premium</td><td class="tnum">{{ r.wacc_build.equity_risk_premium | pct }}</td></tr>
+              <tr><td>Country risk premium</td><td class="tnum">{{ r.wacc_build.country_risk_premium | pct }}</td></tr>
+              <tr><td>FX risk premium</td><td class="tnum">{{ r.wacc_build.fx_risk_premium | pct }}</td></tr>
+              <tr class="target-row"><td>Cost of equity</td><td class="tnum">{{ r.wacc_build.cost_of_equity | pct }}</td></tr>
+              <tr class="target-row"><td>WACC</td><td class="tnum">{{ r.wacc_build.wacc | pct }}</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <p class="lbl" style="color:var(--muted)">Valuation bridge</p>
+          <table>
+            <tbody>
+              {% for b in r.valuation_bridge %}
+              <tr><td>{{ b.item }}</td><td class="tnum">{% if b.unit == 'ratio' %}{{ b.value | pct }}{% else %}{{ b.value | price(r.meta.currency) }}{% endif %}</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    {% for heading, bodytext in r.sections %}
+    {% if heading in ['Sector context','Country and macro','Liquidity','Capital structure'] %}
+    <section>
+      <h2 class="title">{{ heading }}</h2>
+      <p>{{ bodytext }}</p>
+    </section>
+    {% endif %}
+    {% endfor %}
+
+    <section>
+      <p class="lbl">Risk register</p>
+      <table class="risk-tbl">
+        <thead><tr><th>Level</th><th>Type</th><th>Description</th><th style="text-align:right">Source</th></tr></thead>
+        <tbody>
+          {% for rk in r.risks %}
+          <tr>
+            <td><span class="rk rk-{{ rk.risk_level }}">{{ rk.risk_level }}</span></td>
+            <td>{{ rk.risk_type }}</td>
+            <td>{{ rk.description }}</td>
+            <td style="text-align:right" class="src">{{ rk.source_page }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <div class="two">
+        <div>
+          <p class="lbl">Catalysts</p>
+          <ul class="tick">{% for c in r.catalysts %}<li>{{ c }}</li>{% endfor %}</ul>
+        </div>
+        <div>
+          <p class="lbl">Variant view</p>
+          <p>{{ r.variant_view }}</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="caveat">{{ r.data_caveat }}</div>
+    </section>
+
+    <section class="src">
+      <p class="lbl">Source appendix</p>
+      <table>
+        <thead><tr><th>Document</th><th>Period</th><th>Pages</th><th>Status</th><th style="text-align:right">Confidence</th></tr></thead>
+        <tbody>
+          {% for d in r.documents %}
+          <tr>
+            <td>{% if d.source_url %}<a href="{{ d.source_url }}">{{ d.title }}</a>{% else %}{{ d.title }}{% endif %}</td>
+            <td>{{ d.period }}</td>
+            <td class="tnum">{{ d.page_count or '—' }}</td>
+            <td>{{ d.review_status }}</td>
+            <td class="conf" style="text-align:right">{{ (d.confidence * 100) | round | int }}%</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <div class="foot">
+    <div>Source-linked equity research · every figure traces to a filing or is marked. Not investment advice.</div>
+    <div class="wm">AEON NIMBUS RESEARCH</div>
+  </div>
+</div>
+</body>
+</html>

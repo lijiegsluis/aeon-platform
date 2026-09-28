@@ -1,0 +1,1619 @@
+[
+  {
+    "slug": "safaricom_plc",
+    "name": "Safaricom PLC",
+    "country": "Kenya",
+    "sector": "Telecommunications",
+    "valuation_model": "dcf",
+    "annual_report": true,
+    "annual_report_mb": 14.19,
+    "interim_report": true,
+    "investor_presentation": false,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": 9.5,
+      "fx": true
+    },
+    "sector_kpis": 8,
+    "peers": 6,
+    "macro_sources": true,
+    "documents": {
+      "interim_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/safaricom_plc/interim_report.pdf",
+        "bytes": 6015600,
+        "mb": 5.74,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "36de7f120ed053b85fba838440cbb31fa3b8fd540b7bf2371412edebbb6d3314",
+        "via": "requests"
+      },
+      "annual_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/safaricom_plc/annual_report.pdf",
+        "bytes": 14884465,
+        "mb": 14.19,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "5fb610c47d74c99a1f0bfbbbb26670db81e54a5a2ae5190f453bc49887beb72d",
+        "via": "requests"
+      }
+    }
+  },
+  {
+    "slug": "mtn_group",
+    "name": "MTN Group",
+    "country": "South Africa",
+    "sector": "Telecommunications",
+    "valuation_model": "dcf",
+    "annual_report": true,
+    "annual_report_mb": 16.25,
+    "interim_report": true,
+    "investor_presentation": false,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": 25.2,
+      "fx": true
+    },
+    "sector_kpis": 8,
+    "peers": 6,
+    "macro_sources": true,
+    "documents": {
+      "interim_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/mtn_group/interim_report.pdf",
+        "bytes": 7695221,
+        "mb": 7.34,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "42101db50a261242ece5875f360ba5c7f512d793a468c2e3bce04c8385ddd435",
+        "via": "requests"
+      },
+      "annual_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/mtn_group/annual_report.pdf",
+        "bytes": 17036314,
+        "mb": 16.25,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "bea72f5adefd24ecb4dd8ed36e523730e19a3efb2fa9f79b63567bc4fac2e59b",
+        "via": "requests"
+      }
+    }
+  },
+  {
+    "slug": "airtel_africa_plc",
+    "name": "Airtel Africa plc",
+    "country": "United Kingdom",
+    "sector": "Telecommunications",
+    "valuation_model": "dcf",
+    "annual_report": true,
+    "annual_report_mb": 13.99,
+    "interim_report": true,
+    "investor_presentation": false,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": 17.5,
+      "fx": true
+    },
+    "sector_kpis": 8,
+    "peers": 6,
+    "macro_sources": true,
+    "documents": {
+      "interim_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/airtel_africa_plc/interim_report.pdf",
+        "bytes": 1289133,
+        "mb": 1.23,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "d931a37f3ca1d9689b30c68ad658c8cbb76a40fd9f5c8f4caf89324acd6294dc",
+        "via": "requests"
+      },
+      "annual_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/airtel_africa_plc/annual_report.pdf",
+        "bytes": 14673235,
+        "mb": 13.99,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "6cf002c680ea501912f9cb2abd4329e67912f627d700e01b13ba0d498095f2d0",
+        "via": "requests"
+      }
+    }
+  },
+  {
+    "slug": "vodacom_group",
+    "name": "Vodacom Group",
+    "country": "South Africa",
+    "sector": "Telecommunications",
+    "valuation_model": "dcf",
+    "annual_report": true,
+    "annual_report_mb": 16.3,
+    "interim_report": true,
+    "investor_presentation": false,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": 16,
+      "fx": true
+    },
+    "sector_kpis": 8,
+    "peers": 6,
+    "macro_sources": true,
+    "documents": {
+      "interim_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/vodacom_group/interim_report.pdf",
+        "bytes": 2791153,
+        "mb": 2.66,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "e8f4845366959accb9a2bb4c7c87fa59ceda04bccb21c0f16735450df79ab326",
+        "via": "requests"
+      },
+      "annual_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/vodacom_group/annual_report.pdf",
+        "bytes": 17088773,
+        "mb": 16.3,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "78ea19e1fab0e00472247cb7a476b247141f65917b9aca61c730d7e00e148806",
+        "via": "requests"
+      }
+    }
+  },
+  {
+    "slug": "mtn_nigeria_communications_plc",
+    "name": "MTN Nigeria Communications Plc",
+    "country": "Nigeria",
+    "sector": "Communication Services / Telecommunications",
+    "valuation_model": "dcf",
+    "annual_report": true,
+    "annual_report_mb": 16.84,
+    "interim_report": true,
+    "investor_presentation": false,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": 11,
+      "fx": true
+    },
+    "sector_kpis": 8,
+    "peers": 6,
+    "macro_sources": true,
+    "documents": {
+      "interim_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/mtn_nigeria_communications_plc/interim_report.pdf",
+        "bytes": 2743238,
+        "mb": 2.62,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "847a566ae907a6cf376f1207c5b687cbe80112921ea3ae1c78bef568a88ba934",
+        "via": "requests"
+      },
+      "annual_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/mtn_nigeria_communications_plc/annual_report.pdf",
+        "bytes": 17654491,
+        "mb": 16.84,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "8d845b8dc1e481996d70fff7c813883327d16371a8121bfd280f530d97b3189e",
+        "via": "requests"
+      }
+    }
+  },
+  {
+    "slug": "sonatel",
+    "name": "Sonatel",
+    "country": "Senegal",
+    "sector": "Telecommunications",
+    "valuation_model": "dcf",
+    "annual_report": true,
+    "annual_report_mb": 18.61,
+    "interim_report": true,
+    "investor_presentation": false,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": 5,
+      "fx": true
+    },
+    "sector_kpis": 8,
+    "peers": 6,
+    "macro_sources": true,
+    "documents": {
+      "interim_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/sonatel/interim_report.pdf",
+        "bytes": 1695237,
+        "mb": 1.62,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "bc38a495726c25122810bb89384154f596cd025b01788d4f7e5784fd2297cd72",
+        "via": "requests"
+      },
+      "annual_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/sonatel/annual_report.pdf",
+        "bytes": 19510339,
+        "mb": 18.61,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "7f1e767d76bc5e85474caffb99b532f81eb11d60448cd67e9845ca3e625de682",
+        "via": "requests"
+      }
+    }
+  },
+  {
+    "slug": "maroc_telecom",
+    "name": "Maroc Telecom",
+    "country": "Morocco",
+    "sector": "Telecommunications",
+    "valuation_model": "dcf",
+    "annual_report": true,
+    "annual_report_mb": 0.39,
+    "interim_report": false,
+    "investor_presentation": false,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": 10.8,
+      "fx": true
+    },
+    "sector_kpis": 8,
+    "peers": 6,
+    "macro_sources": true,
+    "documents": {
+      "annual_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/maroc_telecom/annual_report.pdf",
+        "bytes": 407781,
+        "mb": 0.39,
+        "http_code": "200",
+        "content_type": "text/html; charset=utf-8",
+        "sha256": "ad8db15d5d424ad3c78b9cd0b7274c925cd9bc445d34cf37499fd8ffeac9eeac",
+        "via": "curl"
+      },
+      "interim_report": {
+        "ok": false,
+        "reason": "requests http 403, content-type 'text/html; charset=UTF-8'; curl http 403, content-type 'text/html; charset=UTF-8'"
+      }
+    }
+  },
+  {
+    "slug": "equity_group_holdings",
+    "name": "Equity Group Holdings",
+    "country": "Kenya",
+    "sector": "Financials",
+    "valuation_model": "bank_pb_ddm",
+    "annual_report": true,
+    "annual_report_mb": 31.37,
+    "interim_report": true,
+    "investor_presentation": false,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": 2.4,
+      "fx": true
+    },
+    "sector_kpis": 9,
+    "peers": 6,
+    "macro_sources": true,
+    "documents": {
+      "annual_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/equity_group_holdings/annual_report.pdf",
+        "bytes": 32889334,
+        "mb": 31.37,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "5431588ae3f75aa8bcd5aabf1cdfe7f34c60ec6a203a0163c8f9f4e2feabcdae",
+        "via": "requests"
+      },
+      "interim_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/equity_group_holdings/interim_report.pdf",
+        "bytes": 19143030,
+        "mb": 18.26,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "9a9924cc76d01774ee766f1769b93c072949e708132239d2c537954791b069d5",
+        "via": "requests"
+      }
+    }
+  },
+  {
+    "slug": "the_co_operative_bank_of_kenya_limited",
+    "name": "The Co-operative Bank of Kenya Limited",
+    "country": "Kenya",
+    "sector": "Financials",
+    "valuation_model": "bank_pb_ddm",
+    "annual_report": true,
+    "annual_report_mb": 16.33,
+    "interim_report": true,
+    "investor_presentation": false,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": 1.55,
+      "fx": true
+    },
+    "sector_kpis": 9,
+    "peers": 6,
+    "macro_sources": true,
+    "documents": {
+      "interim_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/the_co_operative_bank_of_kenya_limited/interim_report.pdf",
+        "bytes": 74398,
+        "mb": 0.07,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "16c8d25777751199aede41150df0a7c60be23532a1e47bcf30170d3574dea527",
+        "via": "requests"
+      },
+      "annual_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/the_co_operative_bank_of_kenya_limited/annual_report.pdf",
+        "bytes": 17120770,
+        "mb": 16.33,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "774239144fcd81ba98ed27bb5fd5de9aa78674bfe2e62f4e0ea2a0822e61bf44",
+        "via": "requests"
+      }
+    }
+  },
+  {
+    "slug": "standard_bank_group",
+    "name": "Standard Bank Group",
+    "country": "South Africa",
+    "sector": "Financials",
+    "valuation_model": "bank_pb_ddm",
+    "annual_report": true,
+    "annual_report_mb": 10.15,
+    "interim_report": true,
+    "investor_presentation": false,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": 32,
+      "fx": true
+    },
+    "sector_kpis": 9,
+    "peers": 6,
+    "macro_sources": true,
+    "documents": {
+      "annual_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/standard_bank_group/annual_report.pdf",
+        "bytes": 10643373,
+        "mb": 10.15,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "3aae0a478e39047098ab2259b77adea9a361491afe5113bd42b11d16e0982255",
+        "via": "requests"
+      },
+      "interim_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/standard_bank_group/interim_report.pdf",
+        "bytes": 4823833,
+        "mb": 4.6,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "87f82a8e842d156eb145e441e0b42ddf6f3eaf72f10ece5c24c7b9fe90dd8c07",
+        "via": "requests"
+      }
+    }
+  },
+  {
+    "slug": "firstrand",
+    "name": "FirstRand",
+    "country": "South Africa",
+    "sector": "Financials",
+    "valuation_model": "bank_pb_ddm",
+    "annual_report": true,
+    "annual_report_mb": 2.2,
+    "interim_report": true,
+    "investor_presentation": false,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": 33.4,
+      "fx": true
+    },
+    "sector_kpis": 9,
+    "peers": 6,
+    "macro_sources": true,
+    "documents": {
+      "annual_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/firstrand/annual_report.pdf",
+        "bytes": 2307311,
+        "mb": 2.2,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "9490c04c4961356e82899cc1ff5be57ea6531e8d5ebe4ed950b1962ec81d5b89",
+        "via": "requests"
+      },
+      "interim_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/firstrand/interim_report.pdf",
+        "bytes": 7395517,
+        "mb": 7.05,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "dd9abb7aa3494279c4d36330ce35967ea183377c437d17c0ff5427966fe2a6b2",
+        "via": "requests"
+      }
+    }
+  },
+  {
+    "slug": "absa_group",
+    "name": "Absa Group",
+    "country": "South Africa",
+    "sector": "Financials",
+    "valuation_model": "bank_pb_ddm",
+    "annual_report": true,
+    "annual_report_mb": 13.74,
+    "interim_report": true,
+    "investor_presentation": false,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": 11.4,
+      "fx": true
+    },
+    "sector_kpis": 9,
+    "peers": 6,
+    "macro_sources": true,
+    "documents": {
+      "interim_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/absa_group/interim_report.pdf",
+        "bytes": 4724789,
+        "mb": 4.51,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "8cebc27c47ea6207eee90390478ae26513bde10b24078499d0459f0030791e7b",
+        "via": "requests"
+      },
+      "annual_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/absa_group/annual_report.pdf",
+        "bytes": 14408636,
+        "mb": 13.74,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "2682361e128c3300727f6ee40de20ee3bfc139693b58d5b356e907207be48657",
+        "via": "requests"
+      }
+    }
+  },
+  {
+    "slug": "commercial_international_bank_cib_egypt",
+    "name": "Commercial International Bank (CIB) Egypt",
+    "country": "Egypt",
+    "sector": "Financials",
+    "valuation_model": "bank_pb_ddm",
+    "annual_report": false,
+    "annual_report_mb": null,
+    "interim_report": false,
+    "investor_presentation": false,
+    "financials_5yr_source": true,
+    "notes_schedules_source": false,
+    "market_data": {
+      "market_cap_usd_bn": 9.2,
+      "fx": true
+    },
+    "sector_kpis": 9,
+    "peers": 6,
+    "macro_sources": true,
+    "documents": {
+      "annual_report": {
+        "ok": false,
+        "reason": "requests http 200, content-type 'text/html'; curl http 200, content-type 'text/html'"
+      },
+      "interim_report": {
+        "ok": false,
+        "reason": "requests http 200, content-type 'text/html'; curl http 200, content-type 'text/html'"
+      }
+    }
+  },
+  {
+    "slug": "kcb_group_plc",
+    "name": "KCB Group Plc",
+    "country": "Kenya",
+    "sector": "Financials",
+    "valuation_model": "bank_pb_ddm",
+    "annual_report": true,
+    "annual_report_mb": 3.06,
+    "interim_report": true,
+    "investor_presentation": true,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": 1.96,
+      "fx": true
+    },
+    "sector_kpis": 11,
+    "peers": 6,
+    "macro_sources": 5,
+    "documents": {
+      "annual_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/kcb_group_plc/annual_report.pdf",
+        "bytes": 3210952,
+        "mb": 3.06,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "4035c28f39948995ece3111af56d486b2bbaffbac5f5f380a391753b3fee324a",
+        "via": "requests"
+      },
+      "interim_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/kcb_group_plc/interim_report.pdf",
+        "bytes": 91175,
+        "mb": 0.09,
+        "http_code": "200",
+        "content_type": "text/html",
+        "sha256": "c837e55e748bcb5a29d474c6fcd3815dc2556708da1c69f5e0dd64856dbcbbda",
+        "via": "curl"
+      },
+      "investor_presentation": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/kcb_group_plc/investor_presentation.pdf",
+        "bytes": 91414,
+        "mb": 0.09,
+        "http_code": "200",
+        "content_type": "text/html",
+        "sha256": "6215f9d2c88b3a858bda2ffec8fd91b0240ae4465f8d69c4a99b12aacec8ff47",
+        "via": "curl"
+      }
+    }
+  },
+  {
+    "slug": "guaranty_trust_holding_company_plc_gtco_plc",
+    "name": "Guaranty Trust Holding Company Plc (GTCO Plc)",
+    "country": "Nigeria",
+    "sector": "Financials",
+    "valuation_model": "bank_pb_ddm",
+    "annual_report": true,
+    "annual_report_mb": 5.85,
+    "interim_report": true,
+    "investor_presentation": true,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": 3.4,
+      "fx": true
+    },
+    "sector_kpis": 10,
+    "peers": 6,
+    "macro_sources": 5,
+    "documents": {
+      "annual_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/guaranty_trust_holding_company_plc_gtco_plc/annual_report.pdf",
+        "bytes": 6131558,
+        "mb": 5.85,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "8aad74006d0227326ff9f2e3c4865af1233b32074c99a7d0e5b6b54484dbe862",
+        "via": "requests"
+      },
+      "interim_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/guaranty_trust_holding_company_plc_gtco_plc/interim_report.pdf",
+        "bytes": 3212321,
+        "mb": 3.06,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "3251fb364bf1460447adcf77e2f81765d86cfcb44d9bd8bd54bc20e705b1de54",
+        "via": "requests"
+      },
+      "investor_presentation": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/guaranty_trust_holding_company_plc_gtco_plc/investor_presentation.pdf",
+        "bytes": 14812825,
+        "mb": 14.13,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "3761b9a93578eee366462b3c599cef4d95339746f65deb938b869d087372fcb0",
+        "via": "requests"
+      }
+    }
+  },
+  {
+    "slug": "zenith_bank_plc",
+    "name": "Zenith Bank Plc",
+    "country": "Nigeria",
+    "sector": "Financials",
+    "valuation_model": "bank_pb_ddm",
+    "annual_report": true,
+    "annual_report_mb": 4.4,
+    "interim_report": true,
+    "investor_presentation": true,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": 3.3,
+      "fx": true
+    },
+    "sector_kpis": 10,
+    "peers": 6,
+    "macro_sources": 6,
+    "documents": {
+      "annual_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/zenith_bank_plc/annual_report.pdf",
+        "bytes": 4612008,
+        "mb": 4.4,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "f1dd93877a2134d4bf02ecdd7a54b4e51d7ff13a2eafc462d6af8fc83923d4d6",
+        "via": "requests"
+      },
+      "interim_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/zenith_bank_plc/interim_report.pdf",
+        "bytes": 2109779,
+        "mb": 2.01,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "17276c206f6c051bcebf8445ed5b0261dfddd48dbed758acd7c310cd2bfb8bf0",
+        "via": "requests"
+      },
+      "investor_presentation": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/zenith_bank_plc/investor_presentation.pdf",
+        "bytes": 6183,
+        "mb": 0.01,
+        "http_code": "200",
+        "content_type": "text/html; charset=UTF-8",
+        "sha256": "17b1fe51f059405f65471ef89a04d6f65583402dc1de2ecb5fa6859642b6c869",
+        "via": "requests"
+      }
+    }
+  },
+  {
+    "slug": "capitec_bank_holdings_limited",
+    "name": "Capitec Bank Holdings Limited",
+    "country": "South Africa",
+    "sector": "Financials",
+    "valuation_model": "bank_pb_ddm",
+    "annual_report": true,
+    "annual_report_mb": 6.22,
+    "interim_report": false,
+    "investor_presentation": false,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": 33,
+      "fx": true
+    },
+    "sector_kpis": 11,
+    "peers": 5,
+    "macro_sources": 5,
+    "documents": {
+      "interim_report": {
+        "ok": false,
+        "reason": "requests http 403, content-type 'text/html; charset=UTF-8'; curl http 403, content-type 'text/html; charset=UTF-8'"
+      },
+      "investor_presentation": {
+        "ok": false,
+        "reason": "requests http 403, content-type 'text/html; charset=UTF-8'; curl http 403, content-type 'text/html; charset=UTF-8'"
+      },
+      "annual_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/capitec_bank_holdings_limited/annual_report.pdf",
+        "bytes": 6519465,
+        "mb": 6.22,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "62e9b44c0dda0dbd854d20a4a2d28720002960adde2deaf5584c538ad8f429d1",
+        "via": "requests"
+      }
+    }
+  },
+  {
+    "slug": "east_african_breweries_plc",
+    "name": "East African Breweries PLC",
+    "country": "Kenya",
+    "sector": "Consumer Staples",
+    "valuation_model": "dcf",
+    "annual_report": true,
+    "annual_report_mb": 17.5,
+    "interim_report": true,
+    "investor_presentation": true,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": 1.64,
+      "fx": true
+    },
+    "sector_kpis": 9,
+    "peers": 5,
+    "macro_sources": 5,
+    "documents": {
+      "interim_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/east_african_breweries_plc/interim_report.pdf",
+        "bytes": 393091,
+        "mb": 0.37,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "113b48af57445a75915a245125df0d992294d6b35d710d5d2913de0e7994a00a",
+        "via": "requests"
+      },
+      "annual_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/east_african_breweries_plc/annual_report.pdf",
+        "bytes": 18345863,
+        "mb": 17.5,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "048d3edab68d198ed70cbf023f164d6baab96ec9a5c84580d710c233f200e87c",
+        "via": "requests"
+      },
+      "investor_presentation": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/east_african_breweries_plc/investor_presentation.pdf",
+        "bytes": 5785160,
+        "mb": 5.52,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "ef52dd0377518e55b3b33bc04cd1871fc582061deb5050a56d4ef58306f263d4",
+        "via": "requests"
+      }
+    }
+  },
+  {
+    "slug": "shoprite_holdings_limited",
+    "name": "Shoprite Holdings Limited",
+    "country": "South Africa",
+    "sector": "Consumer Staples",
+    "valuation_model": "dcf",
+    "annual_report": true,
+    "annual_report_mb": 18.71,
+    "interim_report": true,
+    "investor_presentation": true,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": 9.5,
+      "fx": true
+    },
+    "sector_kpis": 12,
+    "peers": 5,
+    "macro_sources": 5,
+    "documents": {
+      "interim_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/shoprite_holdings_limited/interim_report.pdf",
+        "bytes": 2330573,
+        "mb": 2.22,
+        "http_code": "200",
+        "content_type": "application/pdf;charset=utf-8",
+        "sha256": "2b778f8dd66a04ac34bb95eea9c4d93287f602f7212d303e975fc7217eac8819",
+        "via": "requests"
+      },
+      "investor_presentation": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/shoprite_holdings_limited/investor_presentation.pdf",
+        "bytes": 11208151,
+        "mb": 10.69,
+        "http_code": "200",
+        "content_type": "application/pdf;charset=utf-8",
+        "sha256": "2879eeb0de80bcf04be379c3f6500c3574eecefd24cca0033109b19c1c81d26e",
+        "via": "requests"
+      },
+      "annual_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/shoprite_holdings_limited/annual_report.pdf",
+        "bytes": 19619250,
+        "mb": 18.71,
+        "http_code": "200",
+        "content_type": "application/pdf;charset=utf-8",
+        "sha256": "707574a604d0a368678ccae86d540cf115a0b31df47bbb734412b6a47e82394f",
+        "via": "requests"
+      }
+    }
+  },
+  {
+    "slug": "tiger_brands_limited",
+    "name": "Tiger Brands Limited",
+    "country": "South Africa",
+    "sector": "Consumer Staples",
+    "valuation_model": "dcf",
+    "annual_report": true,
+    "annual_report_mb": 9.99,
+    "interim_report": true,
+    "investor_presentation": true,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": 2.64,
+      "fx": true
+    },
+    "sector_kpis": 9,
+    "peers": 5,
+    "macro_sources": 5,
+    "documents": {
+      "investor_presentation": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/tiger_brands_limited/investor_presentation.pdf",
+        "bytes": 3429562,
+        "mb": 3.27,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "011a5b47e4721cc56bdddfa93462d89d7c116a71636e77a8f4f90836babaf203",
+        "via": "requests"
+      },
+      "interim_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/tiger_brands_limited/interim_report.pdf",
+        "bytes": 4154779,
+        "mb": 3.96,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "f03d1cf8e9a39f3edd8189727a3c355479928955dc9342c605f59d8f55001ae6",
+        "via": "requests"
+      },
+      "annual_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/tiger_brands_limited/annual_report.pdf",
+        "bytes": 10473600,
+        "mb": 9.99,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "5c487d3f1d63874eebfdce8fffbc44d3a9464d07b2bae5864ae031732b596ea3",
+        "via": "requests"
+      }
+    }
+  },
+  {
+    "slug": "nigerian_breweries_plc",
+    "name": "Nigerian Breweries Plc",
+    "country": "Nigeria",
+    "sector": "Consumer Staples",
+    "valuation_model": "dcf",
+    "annual_report": true,
+    "annual_report_mb": 16.16,
+    "interim_report": true,
+    "investor_presentation": true,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": 1.64,
+      "fx": true
+    },
+    "sector_kpis": 11,
+    "peers": 5,
+    "macro_sources": 5,
+    "documents": {
+      "annual_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/nigerian_breweries_plc/annual_report.pdf",
+        "bytes": 16948862,
+        "mb": 16.16,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "c8496a1ec289340dadad7d7d3834ea940067b78eee348df3c9689b64bf8c54ce",
+        "via": "requests"
+      },
+      "interim_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/nigerian_breweries_plc/interim_report.pdf",
+        "bytes": 593866,
+        "mb": 0.57,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "1abb8a17ad003a8299d71da4b338e4cb9539618af58c92b1dc45924704936bb5",
+        "via": "requests"
+      },
+      "investor_presentation": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/nigerian_breweries_plc/investor_presentation.pdf",
+        "bytes": 2632402,
+        "mb": 2.51,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "2d8bc9e8a0a70a046f83d21fdb318bb76c478bcfa4da047385adcb6f745f6ff3",
+        "via": "requests"
+      }
+    }
+  },
+  {
+    "slug": "bua_foods_plc",
+    "name": "BUA Foods Plc",
+    "country": "Nigeria",
+    "sector": "Consumer Staples",
+    "valuation_model": "dcf",
+    "annual_report": true,
+    "annual_report_mb": 3.59,
+    "interim_report": true,
+    "investor_presentation": false,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": 12.25,
+      "fx": true
+    },
+    "sector_kpis": 10,
+    "peers": 6,
+    "macro_sources": 5,
+    "documents": {
+      "annual_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/bua_foods_plc/annual_report.pdf",
+        "bytes": 3761865,
+        "mb": 3.59,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "b7d8f2c700459eaa2a6c7cd056bd6ae304ccc0ca6d6affa5843d9318cb99badb",
+        "via": "requests"
+      },
+      "interim_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/bua_foods_plc/interim_report.pdf",
+        "bytes": 506016,
+        "mb": 0.48,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "30f3ed4260a67eb27093137c59afbee9b46b8ce152714f57ecbd5a39f10b53db",
+        "via": "requests"
+      }
+    }
+  },
+  {
+    "slug": "dangote_cement_plc",
+    "name": "Dangote Cement Plc",
+    "country": "Nigeria",
+    "sector": "Materials",
+    "valuation_model": "dcf",
+    "annual_report": true,
+    "annual_report_mb": 24.07,
+    "interim_report": false,
+    "investor_presentation": true,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": 11.7,
+      "fx": true
+    },
+    "sector_kpis": 7,
+    "peers": 5,
+    "macro_sources": 5,
+    "documents": {
+      "annual_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/dangote_cement_plc/annual_report.pdf",
+        "bytes": 25238286,
+        "mb": 24.07,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "8f4c342e4b369b2a79dfb489761e8e5e969e393d29edab344a6d3e2e21fc7ef5",
+        "via": "requests"
+      },
+      "interim_report": {
+        "ok": false,
+        "reason": "requests error: HTTPSConnectionPool(host='www.dangotecement.com', port=443): Max retries exceeded with url: /wp-content/uploads/2025/08/Dangote-Cement-H1-2025-Financial-Statements.pdf (Caused by SSLError(CertificateError(\"hostname 'www.dangotecement.com' doesn't match '*.azureedge.net'\"))); curl http 000, content-type ''"
+      },
+      "investor_presentation": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/dangote_cement_plc/investor_presentation.pdf",
+        "bytes": 463761,
+        "mb": 0.44,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "051f0070091777b4e0c6cca06fe5daa2bb073a4d0d57cc27180e72574cd74014",
+        "via": "requests"
+      }
+    }
+  },
+  {
+    "slug": "bua_cement_plc",
+    "name": "BUA Cement Plc",
+    "country": "Nigeria",
+    "sector": "Materials",
+    "valuation_model": "dcf",
+    "annual_report": false,
+    "annual_report_mb": null,
+    "interim_report": false,
+    "investor_presentation": true,
+    "financials_5yr_source": true,
+    "notes_schedules_source": false,
+    "market_data": {
+      "market_cap_usd_bn": 8.3,
+      "fx": true
+    },
+    "sector_kpis": 9,
+    "peers": 5,
+    "macro_sources": 4,
+    "documents": {
+      "annual_report": {
+        "ok": false,
+        "reason": "requests http 403, content-type 'text/html; charset=UTF-8'; curl http 403, content-type 'text/html; charset=UTF-8'"
+      },
+      "investor_presentation": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/bua_cement_plc/investor_presentation.pdf",
+        "bytes": 6471834,
+        "mb": 6.17,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "eae117ac79d99b07af2a839f15cd61e32cdd83a025bfe18eb2361333bb7ce0fe",
+        "via": "requests"
+      },
+      "interim_report": {
+        "ok": false,
+        "reason": "requests error: Exceeded 30 redirects.; curl http 307, content-type ''"
+      }
+    }
+  },
+  {
+    "slug": "bamburi_cement_plc",
+    "name": "Bamburi Cement PLC",
+    "country": "Kenya",
+    "sector": "Materials",
+    "valuation_model": "dcf",
+    "annual_report": true,
+    "annual_report_mb": 14.0,
+    "interim_report": true,
+    "investor_presentation": false,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": 0.18,
+      "fx": true
+    },
+    "sector_kpis": 10,
+    "peers": 5,
+    "macro_sources": 5,
+    "documents": {
+      "annual_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/bamburi_cement_plc/annual_report.pdf",
+        "bytes": 14678745,
+        "mb": 14.0,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "30112abdd9a3a6322958cdb37bab27e414235e43db586bb98a8da332f9cd183f",
+        "via": "requests"
+      },
+      "interim_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/bamburi_cement_plc/interim_report.pdf",
+        "bytes": 127053,
+        "mb": 0.12,
+        "http_code": "200",
+        "content_type": "text/html; charset=UTF-8",
+        "sha256": "cf12bd66bbc2626897ff863f98500c0f020febe164e8c1aa51aa11322df17776",
+        "via": "curl"
+      }
+    }
+  },
+  {
+    "slug": "sasol_limited",
+    "name": "Sasol Limited",
+    "country": "South Africa",
+    "sector": "Energy",
+    "valuation_model": "dcf",
+    "annual_report": true,
+    "annual_report_mb": 24.81,
+    "interim_report": true,
+    "investor_presentation": true,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": 8.7,
+      "fx": true
+    },
+    "sector_kpis": 11,
+    "peers": 6,
+    "macro_sources": 7,
+    "documents": {
+      "annual_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/sasol_limited/annual_report.pdf",
+        "bytes": 26015341,
+        "mb": 24.81,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "75854e96bcfbc698842e5f3c4433edd16ee22bab3bc57dda0eaa9d58d06b013e",
+        "via": "requests"
+      },
+      "interim_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/sasol_limited/interim_report.pdf",
+        "bytes": 1269930,
+        "mb": 1.21,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "206123bc98c0e02d89d9966d546bc2d17bb1df9af802924836bcbf0b5c5595fe",
+        "via": "requests"
+      },
+      "investor_presentation": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/sasol_limited/investor_presentation.pdf",
+        "bytes": 3002480,
+        "mb": 2.86,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "83feecbe86295869a841535400be92df529e9ecb8d9a1d7a417b86e0b4883173",
+        "via": "requests"
+      }
+    }
+  },
+  {
+    "slug": "seplat_energy_plc",
+    "name": "Seplat Energy Plc",
+    "country": "Nigeria",
+    "sector": "Energy",
+    "valuation_model": "dcf",
+    "annual_report": false,
+    "annual_report_mb": null,
+    "interim_report": false,
+    "investor_presentation": false,
+    "financials_5yr_source": true,
+    "notes_schedules_source": false,
+    "market_data": {
+      "market_cap_usd_bn": 2.9,
+      "fx": true
+    },
+    "sector_kpis": 11,
+    "peers": 5,
+    "macro_sources": 6,
+    "documents": {
+      "annual_report": {
+        "ok": false,
+        "reason": "requests http 403, content-type 'text/html; charset=UTF-8'; curl http 403, content-type 'text/html; charset=UTF-8'"
+      },
+      "interim_report": {
+        "ok": false,
+        "reason": "requests http 403, content-type 'text/html; charset=UTF-8'; curl http 403, content-type 'text/html; charset=UTF-8'"
+      },
+      "investor_presentation": {
+        "ok": false,
+        "reason": "requests http 403, content-type 'text/html; charset=UTF-8'; curl http 403, content-type 'text/html; charset=UTF-8'"
+      }
+    }
+  },
+  {
+    "slug": "naspers_limited",
+    "name": "Naspers Limited",
+    "country": "South Africa",
+    "sector": "Technology / Internet",
+    "valuation_model": "sum_of_parts",
+    "annual_report": true,
+    "annual_report_mb": 19.49,
+    "interim_report": true,
+    "investor_presentation": true,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": 37,
+      "fx": true
+    },
+    "sector_kpis": 10,
+    "peers": 6,
+    "macro_sources": 5,
+    "documents": {
+      "interim_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/naspers_limited/interim_report.pdf",
+        "bytes": 495090,
+        "mb": 0.47,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "42a10d2ccf95da255d061fe393c2ae688447c63bcaf7d6a23a23dcf435eabb24",
+        "via": "requests"
+      },
+      "annual_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/naspers_limited/annual_report.pdf",
+        "bytes": 20438904,
+        "mb": 19.49,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "f5749f3bb4357cfe2e5b3bf688b7d051b723a9cff41fe12ae914ae0c3a7573b7",
+        "via": "requests"
+      },
+      "investor_presentation": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/naspers_limited/investor_presentation.pdf",
+        "bytes": 12268557,
+        "mb": 11.7,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "832794b45c7dbd925a8884484b07c734ac12eb961827005dc99e9176c4c58f8a",
+        "via": "requests"
+      }
+    }
+  },
+  {
+    "slug": "bid_corporation_limited",
+    "name": "Bid Corporation Limited",
+    "country": "South Africa",
+    "sector": "Consumer Staples",
+    "valuation_model": "dcf",
+    "annual_report": true,
+    "annual_report_mb": 12.43,
+    "interim_report": true,
+    "investor_presentation": true,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": 8.95,
+      "fx": true
+    },
+    "sector_kpis": 9,
+    "peers": 5,
+    "macro_sources": 5,
+    "documents": {
+      "annual_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/bid_corporation_limited/annual_report.pdf",
+        "bytes": 13030039,
+        "mb": 12.43,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "f2516d780aff52d4a5de8be9a2f02e753e948e13450e77f2b1603784b5215c9f",
+        "via": "requests"
+      },
+      "interim_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/bid_corporation_limited/interim_report.pdf",
+        "bytes": 1583291,
+        "mb": 1.51,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "5baf2d8fa14b91c584c8dc4a5de0597f4422069f1c4550b9808ddb74882bc07a",
+        "via": "requests"
+      },
+      "investor_presentation": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/bid_corporation_limited/investor_presentation.pdf",
+        "bytes": 8504431,
+        "mb": 8.11,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "ff0539cbd0276536ca8ad52ccde38c8b41d22de721d8cafde2db76459198e8ce",
+        "via": "requests"
+      }
+    }
+  },
+  {
+    "slug": "scancom_plc_mtn_ghana",
+    "name": "Scancom PLC (MTN Ghana)",
+    "country": "Ghana",
+    "sector": "Communication Services / Telecommunications",
+    "valuation_model": "dcf",
+    "annual_report": true,
+    "annual_report_mb": 19.07,
+    "interim_report": true,
+    "investor_presentation": true,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": 8,
+      "fx": true
+    },
+    "sector_kpis": 10,
+    "peers": 5,
+    "macro_sources": 6,
+    "documents": {
+      "annual_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/scancom_plc_mtn_ghana/annual_report.pdf",
+        "bytes": 19995611,
+        "mb": 19.07,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "424811646ed2eb5e46021d698aa5605baee9abe8cd51d27eb155028df6be65d7",
+        "via": "requests"
+      },
+      "investor_presentation": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/scancom_plc_mtn_ghana/investor_presentation.pdf",
+        "bytes": 1557025,
+        "mb": 1.48,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "12faeb2e280ee98ea043c00890110a949bea8f3fc8790451e968cbc5d73f121f",
+        "via": "requests"
+      },
+      "interim_report": {
+        "ok": true,
+        "path": "/Users/nikolasdionsavio/Documents/Personal Projects/Hamilcar_project/ER_Safaricom_algo/data/raw_docs/scancom_plc_mtn_ghana/interim_report.pdf",
+        "bytes": 9589817,
+        "mb": 9.15,
+        "http_code": "200",
+        "content_type": "application/pdf",
+        "sha256": "0809d68a705eccc9ab459850271ebaa0be0224b3a1a590481a5cc179a7622c0f",
+        "via": "requests"
+      }
+    }
+  },
+  {
+    "slug": "apple_inc",
+    "name": "Apple Inc.",
+    "country": "United States",
+    "sector": "Technology",
+    "valuation_model": "dcf",
+    "annual_report": true,
+    "annual_report_mb": null,
+    "interim_report": false,
+    "investor_presentation": false,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": null,
+      "fx": false
+    },
+    "sector_kpis": 4,
+    "peers": 3,
+    "macro_sources": true,
+    "documents": {}
+  },
+  {
+    "slug": "microsoft_corporation",
+    "name": "Microsoft Corporation",
+    "country": "United States",
+    "sector": "Technology",
+    "valuation_model": "dcf",
+    "annual_report": true,
+    "annual_report_mb": null,
+    "interim_report": false,
+    "investor_presentation": false,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": null,
+      "fx": false
+    },
+    "sector_kpis": 4,
+    "peers": 3,
+    "macro_sources": true,
+    "documents": {}
+  },
+  {
+    "slug": "alphabet_inc",
+    "name": "Alphabet Inc.",
+    "country": "United States",
+    "sector": "Technology",
+    "valuation_model": "dcf",
+    "annual_report": true,
+    "annual_report_mb": null,
+    "interim_report": false,
+    "investor_presentation": false,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": null,
+      "fx": false
+    },
+    "sector_kpis": 4,
+    "peers": 3,
+    "macro_sources": true,
+    "documents": {}
+  },
+  {
+    "slug": "amazon_com_inc",
+    "name": "Amazon.com Inc.",
+    "country": "United States",
+    "sector": "Consumer Discretionary",
+    "valuation_model": "dcf",
+    "annual_report": true,
+    "annual_report_mb": null,
+    "interim_report": false,
+    "investor_presentation": false,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": null,
+      "fx": false
+    },
+    "sector_kpis": 4,
+    "peers": 3,
+    "macro_sources": true,
+    "documents": {}
+  },
+  {
+    "slug": "nvidia_corporation",
+    "name": "NVIDIA Corporation",
+    "country": "United States",
+    "sector": "Technology",
+    "valuation_model": "dcf",
+    "annual_report": true,
+    "annual_report_mb": null,
+    "interim_report": false,
+    "investor_presentation": false,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": null,
+      "fx": false
+    },
+    "sector_kpis": 4,
+    "peers": 3,
+    "macro_sources": true,
+    "documents": {}
+  },
+  {
+    "slug": "meta_platforms_inc",
+    "name": "Meta Platforms Inc.",
+    "country": "United States",
+    "sector": "Communication Services",
+    "valuation_model": "dcf",
+    "annual_report": true,
+    "annual_report_mb": null,
+    "interim_report": false,
+    "investor_presentation": false,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": null,
+      "fx": false
+    },
+    "sector_kpis": 4,
+    "peers": 3,
+    "macro_sources": true,
+    "documents": {}
+  },
+  {
+    "slug": "broadcom_inc",
+    "name": "Broadcom Inc.",
+    "country": "United States",
+    "sector": "Technology",
+    "valuation_model": "dcf",
+    "annual_report": true,
+    "annual_report_mb": null,
+    "interim_report": false,
+    "investor_presentation": false,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": null,
+      "fx": false
+    },
+    "sector_kpis": 4,
+    "peers": 3,
+    "macro_sources": true,
+    "documents": {}
+  },
+  {
+    "slug": "tesla_inc",
+    "name": "Tesla Inc.",
+    "country": "United States",
+    "sector": "Consumer Discretionary",
+    "valuation_model": "dcf",
+    "annual_report": true,
+    "annual_report_mb": null,
+    "interim_report": false,
+    "investor_presentation": false,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": null,
+      "fx": false
+    },
+    "sector_kpis": 4,
+    "peers": 3,
+    "macro_sources": true,
+    "documents": {}
+  },
+  {
+    "slug": "advanced_micro_devices_inc",
+    "name": "Advanced Micro Devices Inc.",
+    "country": "United States",
+    "sector": "Technology",
+    "valuation_model": "dcf",
+    "annual_report": true,
+    "annual_report_mb": null,
+    "interim_report": false,
+    "investor_presentation": false,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": null,
+      "fx": false
+    },
+    "sector_kpis": 4,
+    "peers": 3,
+    "macro_sources": true,
+    "documents": {}
+  },
+  {
+    "slug": "salesforce_inc",
+    "name": "Salesforce Inc.",
+    "country": "United States",
+    "sector": "Technology",
+    "valuation_model": "dcf",
+    "annual_report": true,
+    "annual_report_mb": null,
+    "interim_report": false,
+    "investor_presentation": false,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": null,
+      "fx": false
+    },
+    "sector_kpis": 4,
+    "peers": 3,
+    "macro_sources": true,
+    "documents": {}
+  },
+  {
+    "slug": "oracle_corporation",
+    "name": "Oracle Corporation",
+    "country": "United States",
+    "sector": "Technology",
+    "valuation_model": "dcf",
+    "annual_report": true,
+    "annual_report_mb": null,
+    "interim_report": false,
+    "investor_presentation": false,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": null,
+      "fx": false
+    },
+    "sector_kpis": 4,
+    "peers": 3,
+    "macro_sources": true,
+    "documents": {}
+  },
+  {
+    "slug": "marvell_technology_inc",
+    "name": "Marvell Technology Inc.",
+    "country": "United States",
+    "sector": "Technology",
+    "valuation_model": "dcf",
+    "annual_report": true,
+    "annual_report_mb": null,
+    "interim_report": false,
+    "investor_presentation": false,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": null,
+      "fx": false
+    },
+    "sector_kpis": 4,
+    "peers": 3,
+    "macro_sources": true,
+    "documents": {}
+  },
+  {
+    "slug": "reddit_inc",
+    "name": "Reddit Inc.",
+    "country": "United States",
+    "sector": "Communication Services",
+    "valuation_model": "dcf",
+    "annual_report": true,
+    "annual_report_mb": null,
+    "interim_report": false,
+    "investor_presentation": false,
+    "financials_5yr_source": true,
+    "notes_schedules_source": true,
+    "market_data": {
+      "market_cap_usd_bn": null,
+      "fx": false
+    },
+    "sector_kpis": 4,
+    "peers": 3,
+    "macro_sources": true,
+    "documents": {}
+  }
+]
